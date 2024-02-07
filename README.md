@@ -12,3 +12,4 @@
 	- https://tailwindcss.com/docs/guides/vite#vue
 	- https://pt.vuejs.org/guide/quick-start.html
 	- https://laravel.com/docs/10.x#why-laravel
+	- https://animate.style/
