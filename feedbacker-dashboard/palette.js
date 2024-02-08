@@ -1,9 +1,11 @@
 // eslint-disable-next-line no-undef
 module.exports = {
 	brand: {
-		main: '#EF4983',
+		pink: '#EF4983',
+		violet: '#8296FB',
+		main: '#AF77F7',
 		gray: '#F9F9F9',
-		info: '#8296FB',
+		info: '#55ACEE',
 		graydark: '#C0BCB0',
 		warning: '#E4B52E',
 		danger: '#F88676'

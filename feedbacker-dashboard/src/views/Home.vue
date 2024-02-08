@@ -3,18 +3,19 @@
     @create-account="handleAccountCreate"
     @login="handleLogin"
   />
-  <main>
-    <h1 class="font-black text-brand-main">Home</h1>
+  <main class="bg-white">
+    <!--<h1 class="font-black text-brand-main">Home</h1>-->
     <Contact/>
   </main>
   <Footer/>
 </template>
 
 <script setup>
+import {onMounted} from 'vue'
+import {useRouter} from 'vue-router'
 import HomeHeader from "@/components/HomeHeader.vue";
 import Footer from "@/components/Footer.vue";
 import Contact from "@/components/Contact.vue"
-import {useRouter} from 'vue-router'
 </script>
 
 <script>
