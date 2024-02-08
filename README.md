@@ -2,6 +2,10 @@
 
 - Dashboard com login e instalador do web component de envio e recebimento de feedbacks para sites;
 
+- A pasta feedbacker-backend, contém o projeto criado com o frameowork Laravel, e a pasta feedbacker-dashboard contém o projeto Vue;
+
+- Inicialmente está sendo criada a parte front-end do projeto, que tem base no treinamento gratuido da Vue.js Brasil;
+
 * Tecnologias utilizadas:
 	- Laravel Framework
 	- Vue3
