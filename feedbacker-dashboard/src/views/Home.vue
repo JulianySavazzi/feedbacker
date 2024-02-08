@@ -5,6 +5,7 @@
   />
   <main class="bg-white">
     <!--<h1 class="font-black text-brand-main">Home</h1>-->
+    <Banner/>
     <Contact/>
   </main>
   <Footer/>
@@ -16,6 +17,7 @@ import {useRouter} from 'vue-router'
 import HomeHeader from "@/components/HomeHeader.vue";
 import Footer from "@/components/Footer.vue";
 import Contact from "@/components/Contact.vue"
+import Banner from "@/components/Banner.vue"
 </script>
 
 <script>
