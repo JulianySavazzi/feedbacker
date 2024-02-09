@@ -39,7 +39,7 @@ export default{
 		
 		return {
 			state,
-			handleModalToggle()
+			handleModalToggle
 		}
 	}
 }
