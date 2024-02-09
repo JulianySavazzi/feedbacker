@@ -11,6 +11,9 @@
 	- Vue3
 	- TailwindCSS
 
+* Executar aplicação:
+	- servidor web via node, na pasta do projeto vue: npm run dev
+
 * Links úteis:
 	- https://igorhalfeld.teachable.com/p/treinamento-completo-e-gratuito-de-vue-js-3-do-iniciante-ao-avancado
 	- https://tailwindcss.com/docs/guides/vite#vue
