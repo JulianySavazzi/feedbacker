@@ -12,7 +12,7 @@
 	- TailwindCSS
 
 * Executar aplicação:
-	- servidor web via node, na pasta do projeto vue: npm run dev
+	- servidor web via node, na pasta do projeto vue pelo terminal: npm run dev
 
 * Links úteis:
 	- https://igorhalfeld.teachable.com/p/treinamento-completo-e-gratuito-de-vue-js-3-do-iniciante-ao-avancado
