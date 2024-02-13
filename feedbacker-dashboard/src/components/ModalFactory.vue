@@ -20,12 +20,16 @@
 
 <script>
 
-import {reactive} from 'vue'
+import {onMounted, reactive} from 'vue'
+import useModal from "@/hooks/useModal.js"
 
 const DEFAULT_WIDTH = 'w-3/4 lg:w-1/3'
+const modal = useModal()
 
 export default{
+
 	setup(){
+
 		const state = reactive({
 			isActive: false,
 			component: {},
@@ -33,6 +37,10 @@ export default{
 			width: DEFAULT_WIDTH
 		})
 		
+		onMounted(() => {
+			modal.listen(handleModalToggle)
+		})
+
 		function handleModalToggle({ status }){
 			
 		}

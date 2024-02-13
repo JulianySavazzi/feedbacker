@@ -20,3 +20,4 @@
 	- https://pt.vuejs.org/guide/quick-start.html
 	- https://laravel.com/docs/10.x#why-laravel
 	- https://animate.style/
+	- https://www.npmjs.com/package/tiny-emitter
