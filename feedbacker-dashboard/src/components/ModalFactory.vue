@@ -20,8 +20,12 @@
 
 <script>
 
-import {onMounted, reactive} from 'vue'
+import {defineAsyncComponent, onMounted, reactive} from 'vue'
 import useModal from "@/hooks/useModal.js"
+
+const ModalLogin = defineAsyncComponent({
+
+})
 
 const DEFAULT_WIDTH = 'w-3/4 lg:w-1/3'
 const modal = useModal()
@@ -38,11 +42,27 @@ export default{
 		})
 		
 		onMounted(() => {
+			//status true para emitir o componente
 			modal.listen(handleModalToggle)
 		})
 
-		function handleModalToggle({ status }){
-			
+		onBeforeUnmount(() => {
+			//status false para fechar o componente
+			modal.off(handleModalToggle())
+		})
+
+		function handleModalToggle({ payload }){
+			if(payload.status){
+				//montando o componente
+				state.component = payload.component
+				state.props = payload.props
+				state.width = payload.width ?? DEFAULT_WIDTH
+			} else {
+				//desmontando o componente
+				state.component = {}
+				state.props = {}
+				state.width = DEFAULT_WIDTH
+			}
 		}
 		
 		return {
