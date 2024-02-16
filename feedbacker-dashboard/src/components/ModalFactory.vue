@@ -19,8 +19,7 @@
 </template>
 
 <script>
-
-import {defineAsyncComponent, onMounted, onBeforeUnmount, reactive} from 'vue'
+import {defineEmits, defineAsyncComponent, onMounted, onBeforeUnmount, reactive} from 'vue'
 import useModal from "@/hooks/useModal.js"
 
 const ModalLogin = defineAsyncComponent(
@@ -32,7 +31,6 @@ const DEFAULT_WIDTH = 'w-3/4 lg:w-1/3'
 const modal = useModal()
 
 export default{
-
 	setup(){
 
 		const state = reactive({
