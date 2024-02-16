@@ -39,6 +39,7 @@ export default {
     })
 
     function handleLogin(){
+      console.log('handleLogin')
       modal.open({
         component: 'ModalLogin'
       })
@@ -49,6 +50,9 @@ export default {
 	  }
 
     return {
+      router,
+      modal,
+      onMounted,
       handleLogin,
       handleAccountCreate
     }

@@ -20,7 +20,7 @@
 
 <script>
 
-import {defineAsyncComponent, onMounted, reactive} from 'vue'
+import {defineAsyncComponent, onMounted, onBeforeUnmount, reactive} from 'vue'
 import useModal from "@/hooks/useModal.js"
 
 const ModalLogin = defineAsyncComponent(
@@ -45,17 +45,19 @@ export default{
 		})
 		
 		onMounted(() => {
+			//chamado antes de montar o componente
 			//status true para emitir o componente
 			modal.listen(handleModalToggle)
 		})
 
 		onBeforeUnmount(() => {
-			//status false para fechar o componente
-			modal.off(handleModalToggle())
+				//chamado antes de desmontar o componente
+				//status false para fechar o componente
+				modal.off(handleModalToggle)
 		})
 
 		function handleModalToggle({ payload }){
-			console.log('payload', payload)
+			console.log('payload ', payload)
 			if(payload.status){
 				//montando o componente
 				state.component = payload.component
@@ -71,6 +73,8 @@ export default{
 		
 		return {
 			state,
+			onMounted,
+			onBeforeUnmount,
 			handleModalToggle
 		}
 	}

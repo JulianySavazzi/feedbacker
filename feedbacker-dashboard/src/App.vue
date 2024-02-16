@@ -1,9 +1,3 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-//import ModalFactory from './components/ModalFactory.vue'
-//import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
   <RouterView />
   <ModalFactory />
@@ -11,8 +5,9 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <script>
   import ModalFactory from "@/components/ModalFactory.vue";
+  import { RouterLink, RouterView } from 'vue-router';
 
   export default {
-    components: {ModalFactory}
+    components: { ModalFactory }
   }
 </script>
