@@ -1,3 +1,51 @@
+<script setup>
+
+	import {defineAsyncComponent, onMounted, onBeforeUnmount, reactive} from 'vue'
+	import useModal from "@/hooks/useModal.js"
+
+	const ModalLogin = defineAsyncComponent(
+		//definir o componente asincrono de login
+		() => import('@/components/ModalLogin.vue')
+	)
+	const DEFAULT_WIDTH = 'w-3/4 lg:w-1/3'
+	const modal = useModal()
+	const state = reactive({
+		isActive: false,
+		component: {
+			ModalLogin
+		},
+		props: {},
+		width: DEFAULT_WIDTH
+	})
+
+		onMounted(() => {
+			//chamado antes de montar o componente
+			//status true para emitir o componente
+			modal.listen(handleModalToggle)
+		})
+
+		onBeforeUnmount(() => {
+			//chamado antes de desmontar o componente
+			//status false para fechar o componente
+			modal.off(handleModalToggle)
+		})
+
+		function handleModalToggle({ payload }){
+			console.log('payload ', payload)
+			if(payload.status){
+				//montando o componente
+				state.component = payload.component
+				state.props = payload.props
+				state.width = payload.width ?? DEFAULT_WIDTH
+			} else {
+				//desmontando o componente
+				state.component = {}
+				state.props = {}
+				state.width = DEFAULT_WIDTH
+			}
+		}
+</script>
+
 <template>
 <!--modal components-->
 	<teleport to="body">
@@ -19,62 +67,7 @@
 </template>
 
 <script>
-import {defineEmits, defineAsyncComponent, onMounted, onBeforeUnmount, reactive} from 'vue'
-import useModal from "@/hooks/useModal.js"
-
-const ModalLogin = defineAsyncComponent(
-	//definir o componente asincrono de login
-	() => import('@/components/ModalLogin.vue')
-)
-
-const DEFAULT_WIDTH = 'w-3/4 lg:w-1/3'
-const modal = useModal()
-
 export default{
-	setup(){
 
-		const state = reactive({
-			isActive: false,
-			component: {
-				ModalLogin
-			},
-			props: {},
-			width: DEFAULT_WIDTH
-		})
-		
-		onMounted(() => {
-			//chamado antes de montar o componente
-			//status true para emitir o componente
-			modal.listen(handleModalToggle)
-		})
-
-		onBeforeUnmount(() => {
-				//chamado antes de desmontar o componente
-				//status false para fechar o componente
-				modal.off(handleModalToggle)
-		})
-
-		function handleModalToggle({ payload }){
-			console.log('payload ', payload)
-			if(payload.status){
-				//montando o componente
-				state.component = payload.component
-				state.props = payload.props
-				state.width = payload.width ?? DEFAULT_WIDTH
-			} else {
-				//desmontando o componente
-				state.component = {}
-				state.props = {}
-				state.width = DEFAULT_WIDTH
-			}
-		}
-		
-		return {
-			state,
-			onMounted,
-			onBeforeUnmount,
-			handleModalToggle
-		}
-	}
 }
 </script>
