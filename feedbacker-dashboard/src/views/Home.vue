@@ -50,11 +50,11 @@
   <Footer/>
 </template>
 
-<!--<script>-->
-<!--//executa apenas na primeira vez que o componente é importado-->
-<!--//objetos aqui dentro sao executados apenas uma vez-->
-<!--export default {-->
-<!--  //composition api-->
-<!--  //em vez de usar setup(){return{}} usar <script setup>-->
-<!--}-->
-<!--</script>-->
+<script>
+//executa apenas na primeira vez que o componente é importado
+//objetos aqui dentro sao executados apenas uma vez
+export default {
+  //composition api
+  //em vez de usar setup(){return{}} usar <script setup>
+}
+</script>
