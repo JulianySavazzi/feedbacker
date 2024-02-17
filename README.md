@@ -23,3 +23,4 @@
 	- https://www.npmjs.com/package/tiny-emitter
 	- https://github.com/logaretm/vee-validate
 	- https://github.com/axios/axios
+	- https://github.com/Maronato/vue-toastification

@@ -1,7 +1,9 @@
 <script setup>
 	import useModal from '@/hooks/useModal.js'
+	import useRouter from 'vue-router'
 	import {useField} from 'vee-validate'
-	import {validateEmptyAndLength, validadeEmptyAndEmail} from "@/utils/validators.js";
+	import {validateEmptyAndLength, validadeEmptyAndEmail} from "@/utils/validators.js"
+	import services from '@/services'
 
 	const {
 		value: emailValue,
@@ -14,6 +16,7 @@
 	} = useField('password', validateEmptyAndLength)
 
 	const modal = useModal()
+	const router = useRouter()
 
 	const state = reactive({
 		hasErrors: false,
@@ -28,8 +31,30 @@
 		}
 	})
 
-	function handleSubmit(){
+	async function handleSubmit(){
+		try {
+			state.isLoading = true
+			const {data, errors} = await services.auth.login({
+				email: state.email.value,
+				password: state.password.value
+			})
 
+			if(!errors){
+				window.localStorage.setItem('token', data.token)
+				router.push({name: 'Feedbacks'})
+				state.isLoading = false
+				modal.close()
+				return
+			}
+
+			//error handling if(errors.status ==== ?)
+
+			state.isLoading = false
+
+		} catch(error){
+			state.isLoading = false
+			state.hasErrors = !!error
+		}
 	}
 
 </script>
