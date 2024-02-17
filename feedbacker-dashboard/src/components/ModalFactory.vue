@@ -1,5 +1,5 @@
 <script setup>
-//setup
+//setup -  executa toda vez que instancia o componente
 	const modal = useModal()
 	const state = reactive({
 		isActive: false,
@@ -50,6 +50,7 @@
 		>
 			<div class="fixed mx-10"
 				:class="state.width"
+				@click.stop
 			>
 				<div class="flex flex-col overflow-hidden bg-white rounded-lg animate__animated animate__fadeInDown animate__faster">
 					<div class="flex flex-col px-12 py-10 bg-white">
@@ -63,13 +64,15 @@
 </template>
 
 <script>
+//executa apenas na primeira vez que o componente é importado
 	import {defineAsyncComponent, onMounted, onBeforeUnmount, reactive} from 'vue'
 
 	import useModal from "@/hooks/useModal.js"
-	//definir o componente asincrono de login
+	//definir o componente assincrono de login
 	const ModalLogin = defineAsyncComponent(() => import('@/components/ModalLogin.vue'))
 	const DEFAULT_WIDTH = 'w-3/4 lg:w-1/3'
 	export default {
+		//exportando os componentes para serem usados
 		components: {
 			ModalLogin
 		}

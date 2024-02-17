@@ -55,6 +55,7 @@
 //objetos aqui dentro sao executados apenas uma vez
 export default {
   //composition api
+  //precisamos exportar os componentes em components: {}
   //em vez de usar setup(){return{}} usar <script setup>
 }
 </script>
