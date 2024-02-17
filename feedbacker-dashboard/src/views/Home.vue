@@ -25,6 +25,10 @@
     }
 
    function handleAccountCreate() {
+     console.log('handleAccountCreate')
+     modal.open({
+       component: 'ModalCreateAccount'
+     })
    }
 
   onMounted(() => {

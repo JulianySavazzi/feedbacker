@@ -68,13 +68,17 @@
 	import {defineAsyncComponent, onMounted, onBeforeUnmount, reactive} from 'vue'
 
 	import useModal from "@/hooks/useModal.js"
-	//definir o componente assincrono de login
+
+	//definir o componente assincrono de login e criacao de comta
 	const ModalLogin = defineAsyncComponent(() => import('@/components/ModalLogin.vue'))
+	const ModalCreateAccount = defineAsyncComponent(() => import('@/components/ModalCreateAccount.vue'))
+
 	const DEFAULT_WIDTH = 'w-3/4 lg:w-1/3'
 	export default {
 		//exportando os componentes para serem usados
 		components: {
-			ModalLogin
+			ModalLogin,
+			ModalCreateAccount
 		}
 	}
 </script>
