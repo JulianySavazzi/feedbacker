@@ -1,17 +1,30 @@
 <script setup>
 	import useModal from '@/hooks/useModal.js'
+	import {useField} from 'vee-validate'
+	import {validateEmptyAndLength, validadeEmptyAndEmail} from "@/utils/validators.js";
+
+	const {
+		value: emailValue,
+		errorMessage: emailErrorMessage
+	} = useField('email', validadeEmptyAndEmail)
+
+	const {
+		value: passValue,
+		errorMessage: passErrorMessage
+	} = useField('password', validateEmptyAndLength)
 
 	const modal = useModal()
+
 	const state = reactive({
 		hasErrors: false,
 		isLoading: false,
 		email: {
-			value: '',
-			errorMessage: ''
+			value: emailValue,
+			errorMessage: emailErrorMessage
 		},
 		password: {
-			value: '',
-			errorMessage: ''
+			value: passValue,
+			errorMessage: passErrorMessage
 		}
 	})
 
@@ -68,14 +81,14 @@
 				class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 borber-2 border-transparent rounded"
 				>
 				<span
-				v-if="!!state.email.errorMessage"
+				v-if="!!state.password.errorMessage"
 				class="block font-medium text-brand-danger">
 					{{ state.password.errorMessage }}
 				</span>
 			</label>
 			<!--botao de entrar-->
 			<button
-			:disabled
+			:disabled="state.isLoading"
 			type="submit"
 			:class="{
 				'opacity-50': state.isLoading
