@@ -59,7 +59,7 @@
 				:class="{
 					'border-brand-danger': !!state.email.errorMessage
 				}"
-				class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 borber-2 border-transparent rounded"
+				class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 borber-2 border-transparent rounded text-black"
 				placeholder="seuemail@email.com">
 				<span
 				v-if="!!state.email.errorMessage"
@@ -68,7 +68,7 @@
 				</span>
 			</label>
 			<!--senha-->
-			<label for="" class="block">
+			<label for="" class="block mt-9">
 				<span class="text-lg font-medium text-gray-800">
 					Senha
 				</span>
@@ -78,7 +78,7 @@
 				:class="{
 					'border-brand-danger': !!state.password.errorMessage
 				}"
-				class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 borber-2 border-transparent rounded"
+				class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 borber-2 border-transparent rounded text-black"
 				>
 				<span
 				v-if="!!state.password.errorMessage"

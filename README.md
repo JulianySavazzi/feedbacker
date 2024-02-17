@@ -21,4 +21,5 @@
 	- https://laravel.com/docs/10.x#why-laravel
 	- https://animate.style/
 	- https://www.npmjs.com/package/tiny-emitter
-	- https://github.com/logaretm/vee-validate 
+	- https://github.com/logaretm/vee-validate
+	- https://github.com/axios/axios
