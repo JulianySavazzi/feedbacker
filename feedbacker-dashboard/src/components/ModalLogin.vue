@@ -1,9 +1,11 @@
 <script setup>
+	import { reactive } from 'vue'
 	import useModal from '@/hooks/useModal.js'
-	import useRouter from 'vue-router'
 	import {useField} from 'vee-validate'
 	import {validateEmptyAndLength, validadeEmptyAndEmail} from "@/utils/validators.js"
 	import services from '@/services'
+	import {useRouter} from 'vue-router'
+	import { useToast } from "vue-toastification"
 
 	const {
 		value: emailValue,
@@ -17,6 +19,7 @@
 
 	const modal = useModal()
 	const router = useRouter()
+	const toast = useToast()
 
 	const state = reactive({
 		hasErrors: false,
@@ -33,10 +36,11 @@
 
 	async function handleSubmit(){
 		try {
+			toast.clear()
 			state.isLoading = true
 			const {data, errors} = await services.auth.login({
 				email: state.email.value,
-				password: state.password.value
+				password: state.email.value
 			})
 
 			if(!errors){
@@ -48,12 +52,26 @@
 			}
 
 			//error handling if(errors.status ==== ?)
+			if(errors.status === 404){
+				console.log('404')
+				toast.error('E-mail não encontrado!')
+			}
+			if(errors.status === 401){
+				console.log('401')
+				toast.error('E-mail ou senha não inválidos!')
+			}
+			if(errors.status === 400){
+				console.log('400')
+				toast.error('Erro ao fazer login!')
+			}
 
 			state.isLoading = false
 
-		} catch(error){
+		}
+		catch(error){
 			state.isLoading = false
 			state.hasErrors = !!error
+			toast.error('Erro ao fazer login, tente novamente!')
 		}
 	}
 
@@ -127,7 +145,6 @@
 </template>
 
 <script>
-	import { reactive } from 'vue'
 	export default {
 		
 	}
