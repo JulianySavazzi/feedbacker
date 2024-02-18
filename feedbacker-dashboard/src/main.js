@@ -1,3 +1,4 @@
+//configuraçoes globais do app
 import './assets/main.css'
 import './assets/fonts.css'
 import 'animate.css'

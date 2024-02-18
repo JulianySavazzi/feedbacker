@@ -7,11 +7,12 @@
 	import {useRouter} from 'vue-router'
 	import { useToast } from "vue-toastification"
 
+	//vee-validade email
 	const {
 		value: emailValue,
 		errorMessage: emailErrorMessage
 	} = useField('email', validadeEmptyAndEmail)
-
+	//vee-validade password
 	const {
 		value: passValue,
 		errorMessage: passErrorMessage
