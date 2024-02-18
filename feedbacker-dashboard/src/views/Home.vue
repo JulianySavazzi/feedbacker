@@ -19,6 +19,7 @@
 
     function handleLogin(){
       console.log('handleLogin')
+      //abrir componente de login
       modal.open({
         component: 'ModalLogin'
       })
@@ -26,12 +27,14 @@
 
    function handleAccountCreate() {
      console.log('handleAccountCreate')
+     //abrir componente de criar conta
      modal.open({
        component: 'ModalCreateAccount'
      })
    }
 
   onMounted(() => {
+    //validar o token do usuario para saber se ele pode acessar a rota
     const token = window.localStorage.getItem('token')
     if(token){
       //se o token nao for vazio, usuario autenticado
@@ -39,7 +42,6 @@
       router.push({name: 'Feedbacks'})
     }
   })
-
 </script>
 
 <template>

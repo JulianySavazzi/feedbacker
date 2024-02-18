@@ -44,6 +44,7 @@
 			})
 
 			if(!errors){
+				//salvar o token de autenticaçao
 				window.localStorage.setItem('token', data.token)
 				router.push({name: 'Feedbacks'})
 				state.isLoading = false
@@ -64,6 +65,10 @@
 				console.log('400')
 				toast.error('Erro ao fazer login!')
 			}
+			if(errors.status === 500){
+				console.log('500')
+				toast.error('Servidor indisponível no momento, aguarde...')
+			}
 
 			state.isLoading = false
 
@@ -71,6 +76,7 @@
 		catch(error){
 			state.isLoading = false
 			state.hasErrors = !!error
+			//falha na requisição
 			toast.error('Erro ao fazer login, tente novamente!')
 		}
 	}
