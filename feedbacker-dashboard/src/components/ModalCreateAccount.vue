@@ -50,19 +50,18 @@ async function handleSubmit() {
 		toast.clear()
 		state.isLoading = true
 		//pegando retorno da promisse de login
-		const {data, errors} = await services.auth.login({
+		const {data, errors} = await services.auth.register({
+			name: state.name.value,
 			email: state.email.value,
 			password: state.password.value
 		})
 
-		console.log(state.email.value, state.password.value)
+		console.log(state.name.value, state.email.value, state.password.value)
 		console.log('errors: ', errors)
 
 		if (!errors) {
-			console.log('salvando token...')
-			//salvar o token de autenticaçao
-			window.localStorage.setItem('token', data.token)
-			router.push({name: 'Feedbacks'})
+			console.log('craindo conta...')
+			toast("Vamos criar sua conta em breve...")
 			state.isLoading = false
 			modal.close()
 			return
@@ -72,16 +71,9 @@ async function handleSubmit() {
 
 		if (errors.status === 404) {
 			//console.log('404')
-			toast.error('E-mail não encontrado!')
+			toast.error('Não estamos criando novas contas no momento....')
 		}
-		if (errors.status === 401) {
-			//console.log('401')
-			toast.error('E-mail ou senha inválidos!')
-		}
-		if (errors.status === 400) {
-			//console.log('400')
-			toast.error('Erro ao fazer login!')
-		}
+
 		if (errors.status === 500) {
 			//console.log('500')
 			toast.error('Servidor indisponível no momento, aguarde...')
@@ -94,7 +86,7 @@ async function handleSubmit() {
 		state.hasErrors = !!error
 		//falha na requisição
 		console.log('Oooops: ', error)
-		toast.error('Erro ao fazer login, tente novamente!')
+		toast.error('Erro ao criar conta, tente novamente mais tarde!')
 	}
 }
 </script>
