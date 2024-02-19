@@ -49,7 +49,7 @@
 				console.log('tentando salvar token...')
 				//salvar o token de autenticaçao
 				window.localStorage.setItem('token', data.token)
-				//router.push({name: 'Feedbacks'})
+				router.push({name: 'Feedbacks'})
 				state.isLoading = false
 				modal.close()
 				return
@@ -81,7 +81,7 @@
 			state.isLoading = false
 			state.hasErrors = !!error
 			//falha na requisição
-			console.log(error)
+			console.log('Oooops: ', error)
 			toast.error('Erro ao fazer login, tente novamente!')
 		}
 	}
