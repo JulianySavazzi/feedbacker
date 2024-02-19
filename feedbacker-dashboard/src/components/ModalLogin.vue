@@ -41,43 +41,47 @@
 			state.isLoading = true
 			const {data, errors} = await services.auth.login({
 				email: state.email.value,
-				password: state.email.value
+				password: state.password.value
 			})
-
+			console.log('data ', data)
+			console.log('errors ', errors)
 			if(!errors){
+				console.log('tentando salvar token...')
 				//salvar o token de autenticaçao
 				window.localStorage.setItem('token', data.token)
-				router.push({name: 'Feedbacks'})
+				//router.push({name: 'Feedbacks'})
 				state.isLoading = false
 				modal.close()
 				return
-			}
+			} else {
+				//error handling if(errors.status ==== ?)
+				console.log('status ', errors.status)
+				if(errors.status === 404){
+					console.log('404')
+					toast.error('E-mail não encontrado!')
+				}
+				if(errors.status === 401){
+					console.log('401')
+					toast.error('E-mail ou senha não inválidos!')
+				}
+				if(errors.status === 400){
+					console.log('400')
+					toast.error('Erro ao fazer login!')
+				}
+				if(errors.status === 500){
+					console.log('500')
+					toast.error('Servidor indisponível no momento, aguarde...')
+				}
 
-			//error handling if(errors.status ==== ?)
-			if(errors.status === 404){
-				console.log('404')
-				toast.error('E-mail não encontrado!')
+				state.isLoading = false
 			}
-			if(errors.status === 401){
-				console.log('401')
-				toast.error('E-mail ou senha não inválidos!')
-			}
-			if(errors.status === 400){
-				console.log('400')
-				toast.error('Erro ao fazer login!')
-			}
-			if(errors.status === 500){
-				console.log('500')
-				toast.error('Servidor indisponível no momento, aguarde...')
-			}
-
-			state.isLoading = false
 
 		}
 		catch(error){
 			state.isLoading = false
 			state.hasErrors = !!error
 			//falha na requisição
+			console.log(error)
 			toast.error('Erro ao fazer login, tente novamente!')
 		}
 	}
