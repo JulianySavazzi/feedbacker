@@ -2,10 +2,16 @@ import axios from 'axios'
 import AuthService from './auth.js'
 
 //constantes das APIs
+//const API_ENVS = {
+//	production: '',
+//	development: '',
+//	local: 'http://localhost:8000/api'
+//}
+
 const API_ENVS = {
 	production: '',
 	development: '',
-	local: 'http://localhost:8000/api'
+	local: 'http://192.168.5.101:8000/api'
 }
 
 const httpClient = axios.create({
