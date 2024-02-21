@@ -24,3 +24,4 @@
 	- https://github.com/logaretm/vee-validate
 	- https://github.com/axios/axios
 	- https://github.com/Maronato/vue-toastification
+	- https://inertiajs.com/server-side-setup
