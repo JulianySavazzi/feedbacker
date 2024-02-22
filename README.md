@@ -24,7 +24,7 @@
 	- https://laravel.com/docs/10.x#why-laravel
 	- https://animate.style/
 	- https://github.com/Maronato/vue-toastification
+	- https://github.com/logaretm/vee-validate
 	- https://nuxt.com/docs/getting-started/installation
 	- https://www.npmjs.com/package/tiny-emitter
-	- https://github.com/logaretm/vee-validate
 	- https://github.com/axios/axios
