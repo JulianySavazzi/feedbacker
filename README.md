@@ -13,7 +13,9 @@
 	- TailwindCSS
 
 * Executar aplicação:
-	-  servidor web via node na pasta feedbacker-dashboard pelo terminal: npm run dev
+	- servidor web via node na pasta feedbacker-dashboard pelo terminal: npm run dev
+	- servidor web via node na pasta nuxt-feedbacker pelo terminal: npm run dev -- -o
+
 
 * Links úteis:
 	- https://igorhalfeld.teachable.com/p/treinamento-completo-e-gratuito-de-vue-js-3-do-iniciante-ao-avancado
