@@ -1,3 +1,13 @@
+<script setup>
+import {useToast} from 'vue-toastification'
+const toast = useToast()
+
+onMounted(() => {
+  toast("oiii funcionou!")
+})
+
+</script>
+
 <template>
   <body>
     <div>
