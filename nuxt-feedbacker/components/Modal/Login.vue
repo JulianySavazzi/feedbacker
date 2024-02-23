@@ -6,7 +6,6 @@ import {validateEmptyAndLength, validadeEmptyAndEmail} from "/assets/js/utils/va
 //import services from '@/services'
 //import {useRouter} from 'vue-router'
 import {useToast} from "vue-toastification"
-import Icon from '/components/Icons/Index.vue'
 
 //vee-validade email
 const {
@@ -20,7 +19,7 @@ const {
 } = useField('password', validateEmptyAndLength)
 
 const modal = useModal()
-const router = useRouter()
+//const router = useRouter()
 const toast = useToast()
 
 const state = reactive({
@@ -153,9 +152,10 @@ async function handleSubmit() {
 			}"
 				class="px-8 py-3 mt-10 text-2xl font-bold text-white rounded-full bg-brand-main focus:outline:none transition-all duration-150"
 			>
-				<Icon name="Loading" v-if="state.isLoading"
-					class="animate-spin"></Icon>
+				<Icons name="Loading" v-if="state.isLoading"
+					class="animate-spin"></Icons>
 				<span v-if="!state.isLoading">Entrar</span>
+
 			</button>
 		</form>
 	</div>
