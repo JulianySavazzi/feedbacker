@@ -33,7 +33,7 @@ const modal = useModal();
 //  })
 
 onMounted(() => {
-  toast.error("bem vindo")
+  toast.success("bem vindo")
 })
 </script>
 
