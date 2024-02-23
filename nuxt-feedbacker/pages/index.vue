@@ -1,17 +1,50 @@
 <script setup>
+//executa toda vez que uma instancia do componente é criada
+//definir props e emits aqui dentro
+
+//imports funcoes e consts
 import {useToast} from 'vue-toastification'
+import useModal from '@/assets/js/hooks/useModal'
+
+//constants
 const toast = useToast()
+const modal = useModal();
+
+    function handleLogin(){
+      modal.open({
+        component: 'ModalLogin'
+      })
+    }
+
+   function handleAccountCreate() {
+     modal.open({
+       component: 'ModalCreateAccount'
+     })
+   }
+
+//  onMounted(() => {
+//    //validar o token do usuario para saber se ele pode acessar a rota
+//    const token = window.localStorage.getItem('token')
+//    if(token){
+//      //se o token nao for vazio, usuario autenticado
+//      //podemos acessar a rota feedback
+//      router.push({name: 'Feedbacks'})
+//    }
+//  })
 
 onMounted(() => {
-  toast("oiii funcionou!")
+  toast.error("bem vindo")
 })
-
 </script>
 
 <template>
-  <body class="">
-    <div>
-      <h1 class="mt-10 ml-10 animate__animated animate__swing">welcome nuxt</h1>
-    </div>
-  </body>
+  <HomeHeader
+    @create-account="handleAccountCreate"
+    @login="handleLogin"
+    />
+  <main class="bg-white">
+    <Banner/>
+    <Contact/>
+  </main>
+  <Footer/>
 </template>
