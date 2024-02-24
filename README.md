@@ -28,3 +28,4 @@
 	- https://nuxt.com/docs/getting-started/installation
 	- https://www.npmjs.com/package/tiny-emitter
 	- https://github.com/axios/axios
+	- https://github.com/manchenkoff/nuxt-auth-sanctum
