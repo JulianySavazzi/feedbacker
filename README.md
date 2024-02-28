@@ -29,3 +29,5 @@
 	- https://www.npmjs.com/package/tiny-emitter
 	- https://github.com/axios/axios
 	- https://github.com/manchenkoff/nuxt-auth-sanctum
+	- https://manchenkoff.gitbook.io/nuxt-auth-sanctum/usage/configuration
+

@@ -6,6 +6,7 @@ import {validateEmptyAndLength, validadeEmptyAndEmail} from "/assets/js/utils/va
 //import services from '@/services'
 //import {useRouter} from 'vue-router'
 import {useToast} from "vue-toastification"
+import { FetchError } from 'ofetch'
 
 //vee-validade email
 const {
@@ -21,6 +22,7 @@ const {
 const modal = useModal()
 //const router = useRouter()
 const toast = useToast()
+const { login } = useSanctumAuth();
 
 const state = reactive({
 	hasErrors: false,
@@ -35,57 +37,61 @@ const state = reactive({
 	}
 })
 
+//const errorF = error instanceof FetchError
+//const errorF = FetchError()
+
 async function handleSubmit() {
 	try {
 		toast.clear()
 		state.isLoading = true
-		//pegando retorno da promisse de login
-//		const {data, errors} = await services.auth.login({
-//			email: state.email.value,
-//			password: state.password.value
-//		})
+
+		const userCredentials = {
+			email: state.email.value,
+			password: state.password.value
+		}
 
 		console.log(state.email.value, state.password.value)
-		console.log('errors: ', errors)
 
-		if (!errors) {
-			console.log('entrando...')
-			toast("entrando...")
-			//salvar o token de autenticaçao
-	//		window.localStorage.setItem('token', data.token)
-			//router.push({name: 'Feedbacks'})
-			state.isLoading = false
-			modal.close()
-			return
-		}
-		//error handling if(errors.status ==== ?)
-		console.log('status: ', errors.status)
-
-		if (errors.status === 404) {
-			//console.log('404')
-			toast.error('E-mail não encontrado!')
-		}
-		if (errors.status === 401) {
-			//console.log('401')
-			toast.error('E-mail ou senha inválidos!')
-		}
-		if (errors.status === 400) {
-			//console.log('400')
-			toast.error('Erro ao fazer login!')
-		}
-		if (errors.status === 500) {
-			//console.log('500')
-			toast.error('Servidor indisponível no momento, aguarde...')
-		}
-
+		await login(userCredentials)
+		toast("entrando...")
 		state.isLoading = false
+		modal.close()
+	//	return
+//		state.isLoading = false
 
-	} catch (error) {
+	} catch (e) {
 		state.isLoading = false
-		state.hasErrors = !!error
+		state.hasErrors = !!e
 		//falha na requisição
-		console.log('Oooops: ', error)
-		toast.error('Erro ao fazer login, tente novamente!')
+		// here you can extract errors from a response
+		const errorF = (e) => {
+			const isFetchError = e instanceof FetchError
+			return {
+				isFetchError
+			}
+		}
+		console.log("STATUS: ",errorF.response?._data.errors)
+//		if (errorF.response?.status === 0) {
+//			toast.error('Erro ao fazer login, tente novamente!')
+//		}
+//		if (errorF.response?.status === 404) {
+//			//console.log('404')
+//			toast.error('E-mail não encontrado!')
+//		}
+//		if (errorF.response?.status === 401) {
+//			//console.log('401')
+//			toast.error('E-mail ou senha inválidos!')
+//		}
+//		if (errorF.response?.status === 400) {
+//			//console.log('400')
+//			toast.error('Erro ao fazer login!')
+//		}
+//		if (errorF.response?.status === 500) {
+//			//console.log('500')
+//			toast.error('Servidor indisponível no momento, aguarde...')
+//		}
+		toast.error('Erro: ', e.message)
+		console.log('Oooops: ', e.message)
 	}
 }
 </script>
