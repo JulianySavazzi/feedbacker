@@ -19,7 +19,12 @@ const {
 
 const modal = useModal()
 const toast = useToast()
+
+//useSanctumAuth - provides access to the current user and authentication methods
+//useSanctumUser - provides access to the current user
+//useSanctumClient - provides access to the ofetch client with pre-configured CSRF token header and cookie management
 const { login } = useSanctumAuth()
+const client = useSanctumClient()
 
 const state = reactive({
 	hasErrors: false,
@@ -49,7 +54,12 @@ async function handleSubmit() {
 
 		console.log(state.email.value, state.password.value)
 
-		await login(userCredentials)
+//		await $fetch('/sanctum/csrf-cookie').then(response => {
+//			// Login...
+//
+//		});
+
+		login(userCredentials)
 		toast("entrando...")
 		state.isLoading = false
 		modal.close()

@@ -30,4 +30,5 @@
 	- https://github.com/axios/axios
 	- https://github.com/manchenkoff/nuxt-auth-sanctum
 	- https://manchenkoff.gitbook.io/nuxt-auth-sanctum/usage/configuration
+	- https://nuxt.com/modules/nuxt-auth-sanctum
 
