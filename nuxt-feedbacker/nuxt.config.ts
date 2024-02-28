@@ -13,6 +13,9 @@ export default defineNuxtConfig({
       logout: '/logout', // Endpoint to destroy the current session
       user: '/api/user', // Endpoint that return current user information
     },
+    redirect: {
+      onLogin: '/feedbacks', // Custom route after successful login
+    },
   },
   devtools: { enabled: true },
   app:{

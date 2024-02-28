@@ -60,7 +60,7 @@ async function handleSubmit() {
 //		});
 
 		login(userCredentials)
-		toast("entrando...")
+		//toast("entrando...")
 		state.isLoading = false
 		modal.close()
 		return
@@ -70,33 +70,6 @@ async function handleSubmit() {
 		state.isLoading = false
 		state.hasErrors = !!e
 		//falha na requisição
-		// here you can extract errors from a response
-//		const errorF = (e) => {
-//			const isFetchError = e instanceof FetchError
-//			return {
-//				isFetchError
-//			}
-//		}
-
-//		if (errorF.response?.status === 0) {
-//			toast.error('Erro ao fazer login, tente novamente!')
-//		}
-//		if (errorF.response?.status === 404) {
-//			//console.log('404')
-//			toast.error('E-mail não encontrado!')
-//		}
-//		if (errorF.response?.status === 401) {
-//			//console.log('401')
-//			toast.error('E-mail ou senha inválidos!')
-//		}
-//		if (errorF.response?.status === 400) {
-//			//console.log('400')
-//			toast.error('Erro ao fazer login!')
-//		}
-//		if (errorF.response?.status === 500) {
-//			//console.log('500')
-//			toast.error('Servidor indisponível no momento, aguarde...')
-//		}
 		console.log('response error: ',e)
 		toast.error('Erro: ', e.message)
 		console.log('Oooops: ', e.message)
