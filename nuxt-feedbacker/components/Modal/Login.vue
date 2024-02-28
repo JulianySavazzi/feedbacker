@@ -3,8 +3,6 @@ import {reactive} from 'vue'
 import useModal from '/assets/js/hooks/useModal.js'
 import {useField} from 'vee-validate'
 import {validateEmptyAndLength, validadeEmptyAndEmail} from "/assets/js/utils/validators.js"
-//import services from '@/services'
-//import {useRouter} from 'vue-router'
 import {useToast} from "vue-toastification"
 import { FetchError } from 'ofetch'
 
@@ -20,9 +18,8 @@ const {
 } = useField('password', validateEmptyAndLength)
 
 const modal = useModal()
-//const router = useRouter()
 const toast = useToast()
-const { login } = useSanctumAuth();
+const { login } = useSanctumAuth()
 
 const state = reactive({
 	hasErrors: false,
@@ -56,7 +53,7 @@ async function handleSubmit() {
 		toast("entrando...")
 		state.isLoading = false
 		modal.close()
-	//	return
+		return
 //		state.isLoading = false
 
 	} catch (e) {
@@ -64,13 +61,13 @@ async function handleSubmit() {
 		state.hasErrors = !!e
 		//falha na requisição
 		// here you can extract errors from a response
-		const errorF = (e) => {
-			const isFetchError = e instanceof FetchError
-			return {
-				isFetchError
-			}
-		}
-		console.log("STATUS: ",errorF.response?._data.errors)
+//		const errorF = (e) => {
+//			const isFetchError = e instanceof FetchError
+//			return {
+//				isFetchError
+//			}
+//		}
+
 //		if (errorF.response?.status === 0) {
 //			toast.error('Erro ao fazer login, tente novamente!')
 //		}
@@ -90,6 +87,7 @@ async function handleSubmit() {
 //			//console.log('500')
 //			toast.error('Servidor indisponível no momento, aguarde...')
 //		}
+		console.log('response error: ',e)
 		toast.error('Erro: ', e.message)
 		console.log('Oooops: ', e.message)
 	}
