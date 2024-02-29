@@ -4,6 +4,12 @@ export default defineNuxtConfig({
   //add sanctum
   modules: ['nuxt-auth-sanctum'],
   // nuxt-auth-sanctum options (also configurable via environment variables)
+  runtimeConfig: {
+    public:{
+      baseUrl: 'http://127.0.0.1:8000', // Laravel API
+      origin: 'http://localhost:3000',
+    }
+  },
   sanctum: {
     baseUrl: 'http://127.0.0.1:8000', // Laravel API
     origin: 'http://localhost:3000', // Nuxt app (required for CSRF cookie), by default uses `useRequestURL().origin`
@@ -13,9 +19,9 @@ export default defineNuxtConfig({
       logout: '/logout', // Endpoint to destroy the current session
       user: '/api/user', // Endpoint that return current user information
     },
-    redirect: {
-      onLogin: '/feedbacks', // Custom route after successful login
-    },
+//    redirect: {
+//      onLogin: '/feedbacks', // Custom route after successful login
+//    },
   },
   devtools: { enabled: true },
   app:{

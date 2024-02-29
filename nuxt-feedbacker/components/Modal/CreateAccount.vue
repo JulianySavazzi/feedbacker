@@ -3,8 +3,6 @@ import {reactive} from 'vue'
 import useModal from '/assets/js/hooks/useModal.js'
 import {useField} from 'vee-validate'
 import {validateEmptyAndLength, validadeEmptyAndEmail} from "/assets/js/utils/validators.js"
-//import services from '@/services'
-//import {useRouter} from 'vue-router'
 import {useToast} from "vue-toastification"
 import Icon from '/components/Icons/Index.vue'
 
@@ -25,7 +23,6 @@ const {
 } = useField('name', validateEmptyAndLength)
 
 const modal = useModal()
-//const router = useRouter()
 const toast = useToast()
 
 const state = reactive({
@@ -50,36 +47,50 @@ async function handleSubmit() {
 		toast.clear()
 		state.isLoading = true
 		//pegando retorno da promisse de login
-//		const {data, errors} = await services.auth.register({
-//			name: state.name.value,
-//			email: state.email.value,
-//			password: state.password.value
-//		})
+		//		const {data, errors} = await services.auth.register({
+		//			name: state.name.value,
+		//			email: state.email.value,
+		//			password: state.password.value
+		//		})
 
-		console.log(state.name.value, state.email.value, state.password.value)
-		console.log('errors: ', errors)
-
-		if (!errors) {
-			console.log('craindo conta...')
-			toast("Vamos criar sua conta em breve...")
-			state.isLoading = false
-			modal.close()
-			return
-		}
-		//error handling if(errors.status ==== ?)
-		console.log('status: ', errors.status)
-
-		if (errors.status === 404) {
-			//console.log('404')
-			toast.error('Não estamos criando novas contas no momento....')
+		const accountData = {
+			name: state.name.value,
+			email: state.email.value,
+			password: state.password.value
 		}
 
-		if (errors.status === 500) {
-			//console.log('500')
-			toast.error('Servidor indisponível no momento, aguarde...')
-		}
+		//		console.log(state.name.value, state.email.value, state.password.value)
 
+		//		if (!errors) {
+		await $fetch(`http://127.0.0.1:8000/sanctum/csrf-cookie`, {method: "GET"}).then(response => {
+			// register...
+			console.log('criando conta... ', accountData)
+			const {data, status, error} = $fetch(`http://127.0.0.1:8000/register`, {
+				method: 'POST',
+//				headers: 'XSRF-TOKEN',
+				body: {accountData}
+			})
+			console.log('response: ',response)
+		})
 		state.isLoading = false
+		modal.close()
+		//			return
+		//		}
+		//error handling if(errors.status ==== ?)
+		console.log('status: ', status)
+		console.log('data: ', data)
+//
+//		if (errors.status === 404) {
+//			//console.log('404')
+//			toast.error('Não estamos criando novas contas no momento....')
+//		}
+//
+//		if (errors.status === 500) {
+//			//console.log('500')
+//			toast.error('Servidor indisponível no momento, aguarde...')
+//		}
+
+//		state.isLoading = false
 
 	} catch (error) {
 		state.isLoading = false
@@ -125,7 +136,7 @@ async function handleSubmit() {
 					{{ state.name.errorMessage }}
 				</span>
 			</label>
-					<!--email-->
+			<!--email-->
 			<label for="" class="block mt-9">
 				<span class="text-lg font-medium text-gray-800">
 					E-mail
@@ -156,7 +167,7 @@ async function handleSubmit() {
 						'border-brand-danger': !!state.password.errorMessage
 					}"
 					class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 borber-2 border-transparent rounded text-black"
-					>
+				>
 				<span
 					v-if="!!state.password.errorMessage"
 					class="block font-medium text-brand-danger">
@@ -171,9 +182,9 @@ async function handleSubmit() {
 					'opacity-50': state.isLoading
 				}"
 				class="px-8 py-3 mt-10 text-2xl font-bold text-white rounded-full bg-brand-main focus:outline:none transition-all duration-150"
-				>
+			>
 				<Icon name="Loading" v-if="state.isLoading"
-					class="animate-spin"></Icon>
+					  class="animate-spin"></Icon>
 				<span v-if="!state.isLoading">Criar conta</span>
 			</button>
 		</form>

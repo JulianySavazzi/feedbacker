@@ -8,7 +8,8 @@ import useModal from '@/assets/js/hooks/useModal'
 
 //constants
 const toast = useToast()
-const modal = useModal();
+const modal = useModal()
+const runtimeConfig = useRuntimeConfig()
 
     function handleLogin(){
       modal.open({
@@ -33,6 +34,11 @@ const modal = useModal();
 //  })
 
 onMounted(() => {
+  runtimeConfig.public
+//  const token = $fetch(`http://127.0.0.1:8000/sanctum/csrf-cookie`, {method: "GET"})
+//  .then(response => {
+//    window.localStorage.getItem('XSRF-TOKEN')
+//  });
   toast.success("bem vindo")
 })
 </script>
