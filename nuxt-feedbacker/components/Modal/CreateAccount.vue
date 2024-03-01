@@ -46,12 +46,6 @@ async function handleSubmit() {
 	try {
 		toast.clear()
 		state.isLoading = true
-		//pegando retorno da promisse de login
-		//		const {data, errors} = await services.auth.register({
-		//			name: state.name.value,
-		//			email: state.email.value,
-		//			password: state.password.value
-		//		})
 
 		const accountData = {
 			name: state.name.value,
@@ -59,26 +53,34 @@ async function handleSubmit() {
 			password: state.password.value
 		}
 
-		//		console.log(state.name.value, state.email.value, state.password.value)
+		// For development only (CORS issues)
+//		const cors = {
+//			"Access-Control-Allow-Origin": "http://localhost:3000",
+//			"Access-Control-Allow-Methods": "GET, POST",
+//			"Access-Control-Allow-Headers": "origin, content-type, accept, x-requested-with",
+//			"Content-Type": "application/json"
+//		}
 
-		//		if (!errors) {
-		await $fetch(`http://127.0.0.1:8000/sanctum/csrf-cookie`, {method: "GET"}).then(response => {
+		await useAsyncData('register', () => $fetch(`http://127.0.0.1:8000/sanctum/csrf-cookie`, {method: "GET"}).then(response => {
 			// register...
 			console.log('criando conta... ', accountData)
 			const {data, status, error} = $fetch(`http://127.0.0.1:8000/register`, {
 				method: 'POST',
-//				headers: 'XSRF-TOKEN',
-				body: {accountData}
+//				headers: cors,
+				body: {
+					"name": accountData.name,
+					"email": accountData.email,
+					"password": accountData.password
+				}
 			})
 			console.log('response: ',response)
-		})
+			console.log('status: ', status)
+			console.log('data: ', data)
+		}))
 		state.isLoading = false
 		modal.close()
-		//			return
-		//		}
+
 		//error handling if(errors.status ==== ?)
-		console.log('status: ', status)
-		console.log('data: ', data)
 //
 //		if (errors.status === 404) {
 //			//console.log('404')
