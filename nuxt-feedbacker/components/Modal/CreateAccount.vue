@@ -66,7 +66,7 @@ async function handleSubmit() {
 			console.log('criando conta... ', accountData)
 			const {data, status, error} = $fetch(`http://127.0.0.1:8000/register`, {
 				method: 'POST',
-//				headers: {"X-XSRF-TOKEN": },
+//				headers: {"X-XSRF-TOKEN": "csrf-token"},
 				body: {
 					"name": accountData.name,
 					"email": accountData.email,
