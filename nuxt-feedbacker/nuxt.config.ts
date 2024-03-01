@@ -7,21 +7,34 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public:{
       baseUrl: 'http://127.0.0.1:8000', // Laravel API
-      origin: 'http://localhost:3000',
+      origin: 'http://localhost:3000', // front end
     }
   },
   sanctum: {
     baseUrl: 'http://127.0.0.1:8000', // Laravel API
     origin: 'http://localhost:3000', // Nuxt app (required for CSRF cookie), by default uses `useRequestURL().origin`
+    userStateKey: 'sanctum.user.identity',
+    redirectIfAuthenticated: false,
     endpoints: {
       csrf: '/sanctum/csrf-cookie', // CSRF cookie endpoint
       login: '/login', // Endpoint that accepts user credentials
       logout: '/logout', // Endpoint to destroy the current session
       user: '/api/user', // Endpoint that return current user information
     },
-//    redirect: {
-//      onLogin: '/feedbacks', // Custom route after successful login
-//    },
+    csrf: {
+      cookie: 'XSRF-TOKEN',
+      header: 'X-XSRF-TOKEN',
+    },
+    client: {
+      retry: false,
+    },
+    redirect: {
+      keepRequestedRoute: false,
+      onLogin: '/',
+      onLogout: '/',
+      onAuthOnly: '/login',
+      onGuestOnly: '/',
+    },
   },
   devtools: { enabled: true },
   app:{

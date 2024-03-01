@@ -9,7 +9,20 @@ import useModal from '@/assets/js/hooks/useModal'
 //constants
 const toast = useToast()
 const modal = useModal()
-const runtimeConfig = useRuntimeConfig()
+//const runtimeConfig = useRuntimeConfig()
+//const client = useSanctumClient()
+//const user = useSanctumUser()
+
+//usuario
+//interface MyCustomUser {
+//  id: number;
+//  login: string;
+//  custom_metadata: {
+//    group: string;
+//    role: string;
+//  };
+//}
+//const user = useSanctumUser<MyCustomUser>();
 
     function handleLogin(){
       modal.open({
@@ -23,23 +36,18 @@ const runtimeConfig = useRuntimeConfig()
      })
    }
 
-//  onMounted(() => {
-//    //validar o token do usuario para saber se ele pode acessar a rota
-//    const token = window.localStorage.getItem('token')
-//    if(token){
-//      //se o token nao for vazio, usuario autenticado
-//      //podemos acessar a rota feedback
-//      router.push({name: 'Feedbacks'})
-//    }
-//  })
+//autenticar SPA
+//async function getToken(){
+//  const { data, pending, error, refresh } = await useAsyncData('users', () =>
+//    client('/api/users'))
+//  console.log("onMounted: ", data, pending, error, refresh)
+//}
 
 onMounted(() => {
-  runtimeConfig.public
-//  const token = $fetch(`http://127.0.0.1:8000/sanctum/csrf-cookie`, {method: "GET"})
-//  .then(response => {
-//    window.localStorage.getItem('XSRF-TOKEN')
-//  });
+//  runtimeConfig.public
+//  getToken()
   toast.success("bem vindo")
+
 })
 </script>
 

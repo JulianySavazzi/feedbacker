@@ -66,7 +66,7 @@ async function handleSubmit() {
 			console.log('criando conta... ', accountData)
 			const {data, status, error} = $fetch(`http://127.0.0.1:8000/register`, {
 				method: 'POST',
-//				headers: {"X-XSRF-TOKEN": "csrf-token"},
+				credentials: 'include',
 				body: {
 					"name": accountData.name,
 					"email": accountData.email,
@@ -81,18 +81,6 @@ async function handleSubmit() {
 		modal.close()
 
 		//error handling if(errors.status ==== ?)
-//
-//		if (errors.status === 404) {
-//			//console.log('404')
-//			toast.error('Não estamos criando novas contas no momento....')
-//		}
-//
-//		if (errors.status === 500) {
-//			//console.log('500')
-//			toast.error('Servidor indisponível no momento, aguarde...')
-//		}
-
-//		state.isLoading = false
 
 	} catch (error) {
 		state.isLoading = false
