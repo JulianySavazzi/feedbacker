@@ -20,11 +20,6 @@ const {
 const modal = useModal()
 const toast = useToast()
 
-//useSanctumAuth - provides access to the current user and authentication methods
-//useSanctumUser - provides access to the current user
-//useSanctumClient - provides access to the ofetch client with pre-configured CSRF token header and cookie management
-//const { login } = useSanctumAuth()
-
 const state = reactive({
 	hasErrors: false,
 	isLoading: false,
@@ -51,24 +46,19 @@ async function handleSubmit() {
 			password: state.password.value
 		}
 
-		await $fetch('http://127.0.0.1:8000/sanctum/csrf-cookie', {
-			method: "GET",
-			credentials: "include"
-		})
+		await useApiFetch('/sanctum/csrf-cookie')
 
-		const token = useCookie('XSRF-TOKEN')
-
-		await $fetch('http://127.0.0.1:8000/login', {
+		await useApiFetch('/login', {
 			method: "POST",
-			credentials: "include",
 			body: {
 				'email': userCredentials.email,
 				'password': userCredentials.password
 			},
-			headers: {
-				'X-XSRF-TOKEN': token.value,
-			}
 		})
+
+		//usuario logado
+		const {data} = await useApiFetch("/api/user")
+		console.log(data)
 
 		//toast("entrando...")
 		state.isLoading = false
