@@ -20,11 +20,5 @@ use Illuminate\Support\Facades\Route;
 * devem ser autenticadas por meio de tokens e não terão acesso ao estado da sessão.
 */
 
-//Route::post('/tokens/create', function (Request $request) {
-//    $token = $request->user()->createToken($request->token_name);
-//
-//    return ['token' => $token->plainTextToken];
-//});
-
 Route::get('/user', function (Request $request) {
 })->middleware(['auth:sanctum']);

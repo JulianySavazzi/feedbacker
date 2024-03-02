@@ -15,7 +15,7 @@ return [
     |
     */
 
-    //update values for fix cors issues
+    //update values for fix cors issues - headers
     'paths' => ['api/*', 'sanctum/csrf-cookie', '/*'],
 
     'allowed_methods' => ['*'],

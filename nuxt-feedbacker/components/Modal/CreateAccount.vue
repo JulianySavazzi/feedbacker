@@ -53,14 +53,6 @@ async function handleSubmit() {
 			password: state.password.value
 		}
 
-		// For development only (CORS issues)
-//		const cors = {
-//			"Access-Control-Allow-Origin": "http://localhost:3000",
-//			"Access-Control-Allow-Methods": "GET, POST",
-//			"Access-Control-Allow-Headers": "origin, content-type, accept, x-requested-with",
-//			"Content-Type": "application/json"
-//		}
-
 		await useAsyncData('register', () => $fetch(`http://127.0.0.1:8000/sanctum/csrf-cookie`, {
 			method: "GET",
 			credentials: 'include',

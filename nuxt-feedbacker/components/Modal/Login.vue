@@ -67,7 +67,6 @@ async function handleSubmit() {
 			},
 			headers: {
 				'X-XSRF-TOKEN': token.value,
-//				'Access-Control-Allow-Origin': 'http://127.0.0.1:3000'
 			}
 		})
 
