@@ -42,7 +42,7 @@ const state = reactive({
 //const errorF = FetchError()
 
 async function handleSubmit() {
-	try {
+//	try {
 		toast.clear()
 		state.isLoading = true
 
@@ -55,26 +55,34 @@ async function handleSubmit() {
 			method: "GET",
 			credentials: "include"
 		})
-	//	console.log(state.email.value, state.password.value)
 
-//		await $fetch('/sanctum/csrf-cookie').then(response => {
-//			// Login...
-//			login(userCredentials)
-//		});
+		const token = useCookie('XSRF-TOKEN')
 
+		await $fetch('http://127.0.0.1:8000/login', {
+			method: "POST",
+			credentials: "include",
+			body: {
+				'email': userCredentials.email,
+				'password': userCredentials.password
+			},
+			headers: {
+				'X-XSRF-TOKEN': token.value,
+//				'Access-Control-Allow-Origin': 'http://127.0.0.1:3000'
+			}
+		})
 
 		//toast("entrando...")
 		state.isLoading = false
 		modal.close()
 
-	} catch (e) {
-		state.isLoading = false
-		state.hasErrors = !!e
-		//falha na requisição
-		console.log('response error: ',e)
-		toast.error('Erro: ', e.message)
-		console.log('Oooops: ', e.message)
-	}
+//	} catch (e) {
+//		state.isLoading = false
+//		state.hasErrors = !!e
+//		//falha na requisição
+//		console.log('response error: ',e)
+//		toast.error('Erro: ', e.message)
+//		console.log('Oooops: ', e.message)
+//	}
 }
 </script>
 

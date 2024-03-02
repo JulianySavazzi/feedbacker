@@ -27,6 +27,4 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/user', function (Request $request) {
-//    $token = $request->user()->createToken($request->token_name);
-//    return ['token' => $token->plainTextToken];
 })->middleware(['auth:sanctum']);

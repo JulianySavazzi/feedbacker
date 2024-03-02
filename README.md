@@ -13,8 +13,9 @@
 	- TailwindCSS
 
 * Executar aplicação:
-	- servidor web via node na pasta feedbacker-dashboard pelo terminal: npm run dev
-	- servidor web via node na pasta nuxt-feedbacker pelo terminal: npm run dev -- -o
+	- desativar o prevent tracking no navegador
+	- servidor backend na pasta laravel-feedbacker pelo terminal: php artisan serve
+	- servidor web via node na pasta nuxt-feedbacker pelo terminal: npm run dev
 
 
 * Links úteis:

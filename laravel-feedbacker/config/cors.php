@@ -15,16 +15,16 @@ return [
     |
     */
 
-    //update values for fiz cors issues
-    'paths' => ['api/*', 'sanctum/csrf-cookie', '/register'],
+    //update values for fix cors issues
+    'paths' => ['api/*', 'sanctum/csrf-cookie', '/*'],
 
-    'allowed_methods' => ['GET, POST'],
+    'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:3000', 'http://127.0.0.1:3000'],
+    'allowed_origins' => ['http://127.0.0.1:3000', 'http://localhost:3000'],
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['origin, content-type, accept, x-requested-with'],
+    'allowed_headers' => ['*'],
 
     'exposed_headers' => [],
 
