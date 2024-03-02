@@ -51,6 +51,10 @@ async function handleSubmit() {
 			password: state.password.value
 		}
 
+		await $fetch('http://127.0.0.1:8000/sanctum/csrf-cookie', {
+			method: "GET",
+			credentials: "include"
+		})
 	//	console.log(state.email.value, state.password.value)
 
 //		await $fetch('/sanctum/csrf-cookie').then(response => {
