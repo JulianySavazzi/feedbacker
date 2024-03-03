@@ -1,15 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   components: true,
+  modules: [
+    '@pinia/nuxt',
+    ],
   runtimeConfig: {
     public:{
       baseUrl: 'http://127.0.0.1:8000', // Laravel API
       origin: 'http://127.0.0.1:3000', // front end
     }
   },
-  modules: [
-    '@pinia/nuxt',
-    ],
   devtools: { enabled: true },
   app:{
     head:{

@@ -19,7 +19,7 @@ const {
 
 const modal = useModal()
 const toast = useToast()
-const	auth = useAuthStore()
+//const	auth = useAuthStore()
 
 const state = reactive({
 	hasErrors: false,

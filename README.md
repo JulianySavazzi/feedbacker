@@ -17,6 +17,8 @@
 	- servidor backend na pasta laravel-feedbacker pelo terminal: php artisan serve
 	- servidor web via node na pasta nuxt-feedbacker pelo terminal: npm run dev
 
+	* se aparecer um erro de pacotes do pinia ao executar o servidor nuxt verificar se o pinia foi instalado e fazer o seguinte comando na pasta nuxt-feedbacker: npm i pinia -f
+
 
 * Links úteis:
 	- https://igorhalfeld.teachable.com/p/treinamento-completo-e-gratuito-de-vue-js-3-do-iniciante-ao-avancado
