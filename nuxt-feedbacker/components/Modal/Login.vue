@@ -19,6 +19,7 @@ const {
 
 const modal = useModal()
 const toast = useToast()
+const	auth = useAuthStore()
 
 const state = reactive({
 	hasErrors: false,
@@ -33,45 +34,22 @@ const state = reactive({
 	}
 })
 
-//const errorF = error instanceof FetchError
-//const errorF = FetchError()
-
 async function handleSubmit() {
-//	try {
 		toast.clear()
 		state.isLoading = true
 
+	//form login
 		const userCredentials = {
 			email: state.email.value,
 			password: state.password.value
 		}
 
-		await useApiFetch('/sanctum/csrf-cookie')
+		const {error} = await  auth.login(userCredentials.value)
 
-		await useApiFetch('/login', {
-			method: "POST",
-			body: {
-				'email': userCredentials.email,
-				'password': userCredentials.password
-			},
-		})
+		console.log(error)
 
-		//usuario logado
-		const {data} = await useApiFetch("/api/user")
-		console.log(data)
-
-		//toast("entrando...")
 		state.isLoading = false
 		modal.close()
-
-//	} catch (e) {
-//		state.isLoading = false
-//		state.hasErrors = !!e
-//		//falha na requisição
-//		console.log('response error: ',e)
-//		toast.error('Erro: ', e.message)
-//		console.log('Oooops: ', e.message)
-//	}
 }
 </script>
 

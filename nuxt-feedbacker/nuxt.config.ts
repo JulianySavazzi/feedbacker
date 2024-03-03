@@ -7,6 +7,9 @@ export default defineNuxtConfig({
       origin: 'http://127.0.0.1:3000', // front end
     }
   },
+  modules: [
+    '@pinia/nuxt',
+    ],
   devtools: { enabled: true },
   app:{
     head:{
