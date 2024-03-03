@@ -28,11 +28,10 @@
 	- https://github.com/logaretm/vee-validate
 	- https://nuxt.com/docs/getting-started/installation
 	- https://www.npmjs.com/package/tiny-emitter
-	- https://github.com/axios/axios
-	- https://github.com/manchenkoff/nuxt-auth-sanctum
-	- https://manchenkoff.gitbook.io/nuxt-auth-sanctum/usage/configuration
 	- https://nuxt.com/modules/nuxt-auth-sanctum
 	- https://laravel.com/docs/10.x/fortify
 	- https://mokkapps.de/blog/a-comprehensive-guide-to-data-fetching-in-nuxt-3
 	- https://codingoblin.com/post-request-in-nuxt-3/
+	- https://pinia.vuejs.org/
+
 
