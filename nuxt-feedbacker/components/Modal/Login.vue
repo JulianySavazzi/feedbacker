@@ -4,7 +4,6 @@ import useModal from '/assets/js/hooks/useModal.js'
 import {useField} from 'vee-validate'
 import {validateEmptyAndLength, validadeEmptyAndEmail} from "/assets/js/utils/validators.js"
 import {useToast} from "vue-toastification"
-import { FetchError } from 'ofetch'
 
 //vee-validade email
 const {
@@ -19,7 +18,7 @@ const {
 
 const modal = useModal()
 const toast = useToast()
-//const	auth = useAuthStore()
+const auth = useAuthStore()
 
 const state = reactive({
 	hasErrors: false,
@@ -34,19 +33,18 @@ const state = reactive({
 	}
 })
 
+console.log(state.email.value, state.password.value)
+
 async function handleSubmit() {
 		toast.clear()
 		state.isLoading = true
 
-	//form login
-		const userCredentials = {
+		const {error} = await  auth.login({
 			email: state.email.value,
 			password: state.password.value
-		}
+		})
 
-		const {error} = await  auth.login(userCredentials.value)
-
-		console.log(error)
+		console.log("ERROR: ",error)
 
 		state.isLoading = false
 		modal.close()
@@ -58,7 +56,6 @@ async function handleSubmit() {
 		<h1 class="text-black text-4xl font-black">
 			Entrar
 		</h1>
-		<
 		<button
 			@click="modal.close()"
 			class="text-4xl text-gray-600 focus:outline-none">

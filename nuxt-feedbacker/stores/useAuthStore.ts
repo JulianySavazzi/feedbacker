@@ -26,6 +26,7 @@ export const useAuthStore = defineStore('auth', () => {
 		//usuario logado
 		const { data } = await useApiFetch("/api/user")
 		user.value = data.value as User;
+		console.log(user.value)
 
 		return login
 	}
