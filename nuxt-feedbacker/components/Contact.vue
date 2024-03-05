@@ -1,3 +1,7 @@
+<script setup>
+const auth = useAuthStore()
+//const loged = await useAsyncData('user', () => auth.user)
+</script>
 <template>
 <!--<h1>Contato</h1>-->
 	<div class="flex justify-center w-full">
@@ -8,6 +12,9 @@
 			<p class="text-lg text-center text-gray-800 font-regular">
 			Quer saber melhor como funciona e quais são os preços?
 			</p>
+			<pre class="mt-9 text-gray-800 bg-blue-300 rounded px-6 py-3">
+			{{ auth.user }}
+			</pre>
 			<button class="mt-10">
 				<a href="mailto:"
 				class="px-6 py-2 mt-10 font-bold text-white rounded-full bg-brand-main facus:outline-none">
@@ -17,11 +24,3 @@
 		</div>
 	</div>
 </template>
-
-<script>
-
-export default{
-
-}
-
-</script>

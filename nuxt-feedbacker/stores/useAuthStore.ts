@@ -20,7 +20,7 @@ export const useAuthStore = defineStore('auth', () => {
 
 		const login = await useApiFetch('/login', {
 			method: "POST",
-			body: credentials,
+			body: credentials
 		})
 
 		//usuario logado
