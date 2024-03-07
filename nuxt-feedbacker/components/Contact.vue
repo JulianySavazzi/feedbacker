@@ -1,6 +1,5 @@
 <script setup>
 const auth = useAuthStore()
-//const loged = await useAsyncData('user', () => auth.user)
 </script>
 <template>
 <!--<h1>Contato</h1>-->
@@ -12,7 +11,9 @@ const auth = useAuthStore()
 			<p class="text-lg text-center text-gray-800 font-regular">
 			Quer saber melhor como funciona e quais são os preços?
 			</p>
-			<pre class="mt-9 text-gray-800 bg-blue-300 rounded px-6 py-3">
+			<pre
+				v-if="auth.user != null"
+				class="mt-9 text-gray-800 bg-blue-300 rounded px-6 py-3">
 			{{ auth.user }}
 			</pre>
 			<button class="mt-10">
