@@ -23,6 +23,7 @@ const auth = useAuthStore()
 const state = reactive({
 	hasErrors: false,
 	isLoading: false,
+	isAuthUser: false,
 	email: {
 		value: emailValue,
 		errorMessage: emailErrorMessage
@@ -36,18 +37,44 @@ const state = reactive({
 console.log(state.email.value, state.password.value)
 
 async function handleSubmit() {
+	try{
 		toast.clear()
 		state.isLoading = true
 
 		const {error} = await  auth.login({
 			email: state.email.value,
 			password: state.password.value
+		}, {
+			onResponseError({response}){
+				console.log(response.status)
+			}
 		})
 
-		console.log("ERROR: ",error)
+		if(auth.isLoggedIn){
+			state.isAuthUser = true
+			state.isLoading = false
+			modal.close()
+			navigateTo('/feedbacks')
+		}else{
+			state.isLoading = false
+			modal.close()
+			toast.error("Você precisa fazer login!")
+			navigateTo('/')
+		}
 
+//		state.isLoading = false
+//		modal.close()
+
+//		console.log("ERROR: ", error.value)
+		if(error.value){
+			toast.error(error.value)
+		}
+
+	} catch(e){
 		state.isLoading = false
-		modal.close()
+		state.hasErrors = !!e
+		console.log("CATCH: ", e.message)
+	}
 }
 </script>
 
