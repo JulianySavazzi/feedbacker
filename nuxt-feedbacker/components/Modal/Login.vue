@@ -41,34 +41,39 @@ async function handleSubmit() {
 		toast.clear()
 		state.isLoading = true
 
-		const {error} = await  auth.login({
+		const {error} = await auth.login({
 			email: state.email.value,
 			password: state.password.value
 		}, {
 			onResponseError({response}){
+				state.isLoading = false
+				modal.close()
 				console.log(response.status)
 			}
 		})
 
-		if(auth.isLoggedIn){
-			state.isAuthUser = true
-			state.isLoading = false
-			modal.close()
-			navigateTo('/feedbacks')
-		}else{
-			state.isLoading = false
-			modal.close()
-			toast.error("Você precisa fazer login!")
-			navigateTo('/')
-		}
-
-//		state.isLoading = false
-//		modal.close()
-
-//		console.log("ERROR: ", error.value)
 		if(error.value){
-			toast.error(error.value)
+			state.isLoading = false
+			modal.close()
+			console.log(error.value)
 		}
+		else {
+
+			if(auth.isLoggedIn){
+				state.isAuthUser = true
+				state.isLoading = false
+				modal.close()
+				navigateTo('/feedbacks')
+			}
+			else{
+				state.isLoading = false
+				modal.close()
+				console.log("Você precisa fazer login!")
+				navigateTo('/')
+			}
+
+		}
+
 
 	} catch(e){
 		state.isLoading = false
