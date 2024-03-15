@@ -37,6 +37,8 @@
 	- https://pinia.vuejs.org/
 	- https://pt.vuejs.org/api/reactivity-core.html
 	- https://pt.vuejs.org/guide/scaling-up/state-management.html
+	- https://prazdevs.github.io/pinia-plugin-persistedstate/frameworks/nuxt-3.html
+
 
 
 
