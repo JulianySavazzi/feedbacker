@@ -24,6 +24,7 @@ export const useAuthStore = defineStore('auth', () => {
 		user.value = data.value as User;
 
 		console.log(user.value, error)
+		return user.value
 	}
 
 	async function login(credentials: Credentials, options: Options) {

@@ -56,6 +56,7 @@ async function handleSubmit() {
 			state.isLoading = false
 			modal.close()
 			console.log(error.value)
+			toast.error("Erro ao fazer login: ", error.message)
 		}
 		else {
 

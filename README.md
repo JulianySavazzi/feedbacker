@@ -35,5 +35,9 @@
 	- https://mokkapps.de/blog/a-comprehensive-guide-to-data-fetching-in-nuxt-3
 	- https://codingoblin.com/post-request-in-nuxt-3/
 	- https://pinia.vuejs.org/
+	- https://pt.vuejs.org/api/reactivity-core.html
+	- https://pt.vuejs.org/guide/scaling-up/state-management.html
+
+
 
 

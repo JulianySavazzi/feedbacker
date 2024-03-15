@@ -14,19 +14,15 @@ const state = reactive({
 })
 
 console.log(state.isAuthUser)
-
-//if(state.isAuthUser !== null){
-//  console.log('User: ', state.isAuthUser.value )
-//} else {
-//  toast.error("Você precisa fazer login para acessar a página!")
-//  navigateTo('/')
-//}
-
 </script>
 
 <template>
   <main>
-    <h1>Feedbacks</h1> 
+    <h1>Feedbacks</h1>
+    <pre
+      class="mt-9 ml-9 mr-9 text-gray-800 bg-blue-300 rounded px-6 py-3">
+			{{ auth.user }}
+    </pre>
   </main>
 
 </template>
