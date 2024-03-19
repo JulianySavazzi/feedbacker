@@ -1,5 +1,4 @@
 import { defineStore } from "pinia"
-//import persisted from "pinia-plugin-persistedstate"
 
 type User = {
 	id: number,
@@ -12,11 +11,7 @@ type Credentials = {
 	password: string
 }
 
-type Options = {
-//	response: string
-}
-
-//const store = persisted()
+type Options = {}
 
 export const useAuthStore = defineStore('auth', () => {
 	const user = ref<User | null>(null)
