@@ -1,4 +1,5 @@
 import { defineStore } from "pinia"
+//import persisted from "pinia-plugin-persistedstate"
 
 type User = {
 	id: number,
@@ -11,7 +12,11 @@ type Credentials = {
 	password: string
 }
 
-type Options = {}
+type Options = {
+//	response: string
+}
+
+//const store = persisted()
 
 export const useAuthStore = defineStore('auth', () => {
 	const user = ref<User | null>(null)
@@ -22,6 +27,7 @@ export const useAuthStore = defineStore('auth', () => {
 		//usuario logado
 		const { data, error } = await useApiFetch("/api/user")
 		user.value = data.value as User;
+//		$persist()
 
 		console.log(user.value, error)
 		return user.value
@@ -42,4 +48,4 @@ export const useAuthStore = defineStore('auth', () => {
 	}
 
 	return { user, login, isLoggedIn, fetchUser }
-})
+}, {persist: true})
