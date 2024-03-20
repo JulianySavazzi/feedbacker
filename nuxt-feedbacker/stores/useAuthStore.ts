@@ -22,7 +22,6 @@ export const useAuthStore = defineStore('auth', () => {
 		//usuario logado
 		const { data, error } = await useApiFetch("/api/user")
 		user.value = data.value as User;
-//		$persist()
 
 		console.log(user.value, error)
 		return user.value
@@ -34,7 +33,8 @@ export const useAuthStore = defineStore('auth', () => {
 
 		const login = await useApiFetch('/login', {
 			method: "POST",
-			body: credentials
+			body: credentials,
+			...options
 		})
 
 		await fetchUser()
