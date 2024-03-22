@@ -8,7 +8,8 @@ module.exports = {
 		info: '#55ACEE',
 		graydark: '#C0BCB0',
 		warning: '#E4B52E',
-		danger: '#F88676'
+		danger: '#F88676',
+		darkgray: '#444444'
 	},
 	mediumslateblue: {
 		50: '#f6f9fd',

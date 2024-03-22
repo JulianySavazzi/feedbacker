@@ -7,11 +7,10 @@
 </template>
 
 <script>
-
-	import Loading from './Loading.vue'
+	import {IconsLoading, IconsCopy} from '#components'
 
 	export default{
-		components: {Loading},
+		components: {IconsLoading, IconsCopy},
 		props: {
 			name: {	type: String, required: true}
 		}
