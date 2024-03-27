@@ -13,26 +13,27 @@
 	- TailwindCSS
 
 ### Executar aplicação:
-	desativar o prevent tracking no navegador;
-	servidor backend na pasta laravel-feedbacker pelo terminal:
+desativar o prevent tracking no navegador;
+
+servidor backend na pasta laravel-feedbacker pelo terminal:
 ```bash
 #laravel
 php artisan serve
 ```
-	servidor web via node na pasta nuxt-feedbacker pelo terminal:
+
+servidor web via node na pasta nuxt-feedbacker pelo terminal:
 ```bash
 #npm
 npm run dev
 ```
-	se aparecer um erro de pacotes do pinia ao executar o servidor nuxt verificar se o pinia foi instalado e fazer o seguinte comando na pasta nuxt-feedbacker:
+se aparecer um erro de pacotes do pinia ao executar o servidor nuxt verificar se o pinia foi instalado e fazer o seguinte comando na pasta nuxt-feedbacker:
 ```bash
 #npm
 npm i pinia -f
 ```
 
-
 ## Links uteis e documentações utilizadas:
-	- [Treinamento gratuito Vue Brasil](https://igorhalfeld.teachable.com/p/treinamento-completo-e-gratuito-de-vue-js-3-do-iniciante-ao-avancado)
+- [Treinamento gratuito Vue Brasil](https://igorhalfeld.teachable.com/p/treinamento-completo-e-gratuito-de-vue-js-3-do-iniciante-ao-avancado)
 	- [Tailwind CSS](https://tailwindcss.com/docs/guides/vite#vue)
 	- [Vue JS Quick Start](https://pt.vuejs.org/guide/quick-start.html)
 	- [Laravel 10](https://laravel.com/docs/10.x#why-laravel)
