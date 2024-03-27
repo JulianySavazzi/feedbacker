@@ -24,7 +24,15 @@ const auth = useAuthStore()
 				<p class="mt-10 text-lg text-gray-800 font-regular">
 					Este aqui é a sua chave de api:
 				</p>
-				<div class="flex py-3 px-5 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll justify-between">
+				<!--content loader-->
+				<!--<ContentLoader-->
+				<!--	v-if="auth.isLoggedIn"-->
+				<!--	class="rounded"-->
+				<!--	width="600px"-->
+				<!--	height="50px"-->
+				<!--	/>-->
+				<div
+					class="flex py-3 px-5 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll justify-between">
 					<span class="text-brand-graydark">{{ auth.user.id }}</span>
 					<div class="flex ml-20">
 						<Icons
@@ -44,7 +52,15 @@ const auth = useAuthStore()
 				<p class="mt-10 text-lg text-gray-800 font-regular">
 					Coloque o script abaixo no seu site para começar a receber feedbacks:
 				</p>
-				<div class=" py-3 px-5 pr-20 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll">
+				<!--content loader-->
+				<!--<ContentLoader-->
+				<!--	v-if="auth.isLoggedIn"-->
+				<!--	class="rounded"-->
+				<!--	width="600px"-->
+				<!--	height="50px"-->
+				<!--	/>-->
+				<div
+					class=" py-3 px-5 pr-20 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll">
 				<pre class=" text-brand-darkgray">&lt;script src="http://JulianySavazzi-feedbacker-widget.netlify.app?api_key={{ auth.user.id }}"&gt;&lt;/script&gt;
         		</pre>
 				</div>
