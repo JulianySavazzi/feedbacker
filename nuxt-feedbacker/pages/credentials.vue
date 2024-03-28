@@ -25,12 +25,12 @@ const auth = useAuthStore()
 					Este aqui é a sua chave de api:
 				</p>
 				<!--content loader-->
-				<!--<ContentLoader-->
-				<!--	v-if="auth.isLoggedIn"-->
-				<!--	class="rounded"-->
-				<!--	width="600px"-->
-				<!--	height="50px"-->
-				<!--	/>-->
+				<ContentLoader
+					v-if="auth.isLoggedIn"
+					class="rounded"
+					width="600px"
+					height="50px"
+					/>
 				<div
 					class="flex py-3 px-5 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll justify-between">
 					<span class="text-brand-graydark">{{ auth.user.id }}</span>
