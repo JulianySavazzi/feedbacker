@@ -38,6 +38,7 @@ npm i pinia -f
 	- [Tailwind CSS](https://tailwindcss.com/docs/guides/vite#vue)
 	- [Vue JS Quick Start](https://pt.vuejs.org/guide/quick-start.html)
 	- [Laravel 10](https://laravel.com/docs/10.x#why-laravel)
+	- [Laravel Migrations](https://laravel.com/docs/10.x/migrations#main-content)
 	- [Animate Css](https://animate.style/)
 	- [Vue Toastification](https://github.com/Maronato/vue-toastification)
 	- [Vee Validate](https://github.com/logaretm/vee-validate)
