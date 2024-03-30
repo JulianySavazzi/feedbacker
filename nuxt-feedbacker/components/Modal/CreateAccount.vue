@@ -173,7 +173,7 @@ async function handleSubmit() {
 				}"
 				class="px-8 py-3 mt-10 text-2xl font-bold text-white rounded-full bg-brand-main focus:outline:none transition-all duration-150"
 			>
-				<Icon name="Loading" v-if="state.isLoading"
+				<Icon name="IconsLoading" v-if="state.isLoading"
 					  class="animate-spin"></Icon>
 				<span v-if="!state.isLoading">Criar conta</span>
 			</button>

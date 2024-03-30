@@ -3,7 +3,8 @@ import { defineStore } from "pinia"
 type User = {
 	id: number,
 	name: string,
-	email: string
+	email: string,
+	apiKey: string
 }
 
 type Credentials = {
