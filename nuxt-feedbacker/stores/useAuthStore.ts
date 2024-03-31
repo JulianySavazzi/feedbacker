@@ -4,7 +4,7 @@ type User = {
 	id: number,
 	name: string,
 	email: string,
-	apiKey: string
+	api_token: string
 }
 
 type Credentials = {

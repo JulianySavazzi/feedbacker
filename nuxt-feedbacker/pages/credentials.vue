@@ -46,7 +46,7 @@ async function handleGenerateApiKey(){
 				<!--	/>-->
 				<div
 					class="flex py-3 px-5 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll justify-between">
-					<span class="text-brand-graydark">{{ auth.user.apiKey }}</span>
+					<span class="text-brand-graydark">{{ auth.user.api_token }}</span>
 					<div class="flex ml-20">
 						<Icons
 							name="IconsCopy"
@@ -75,7 +75,7 @@ async function handleGenerateApiKey(){
 				<!--	/>-->
 				<div
 					class=" py-3 px-5 pr-20 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll">
-					<pre class=" text-brand-darkgray">&lt;script src="http://JulianySavazzi-feedbacker-widget.netlify.app?api_key={{ auth.user.apiKey }}"&gt;&lt;/script&gt;
+					<pre class=" text-brand-darkgray">&lt;script src="http://JulianySavazzi-feedbacker-widget.netlify.app?api_key={{ auth.user.api_token}}"&gt;&lt;/script&gt;
         		</pre>
 				</div>
 			</div>
