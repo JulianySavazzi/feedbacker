@@ -8,6 +8,19 @@ definePageMeta({
 const auth = useAuthStore()
 //let colors = pallet.brand
 
+async function handleGenerateApiKey(){
+	try {
+		const {error} = await useApiFetch('/api/user/generate', {
+			method: "POST",
+			onResponseError({response}){
+				console.log(response.status)
+			}
+		})
+	} catch (e) {
+
+	}
+}
+
 </script>
 
 <template>
@@ -46,6 +59,7 @@ const auth = useAuthStore()
 							color="#C0BCB0"
 							size="24"
 							class="cursor-pointer"
+							@click="handleGenerateApiKey"
 							/>
 					</div>
 				</div>

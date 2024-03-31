@@ -20,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 * devem ser autenticadas por meio de tokens e não terão acesso ao estado da sessão.
 */
 
-//retornar usuario logado
-Route::middleware('auth:sanctum')->get('/user', function (Request $request){
-    return $request->user();
+Route::group(['middleware' => ['auth:sanctum']], function(){
+    //retornar usuario logado
+    Route::get('/user', function (Request $request){
+        return $request->user();
+    });
+
+    Route::post('user/generate', [\App\Http\Controllers\UserKeyController::class, 'generate'])->name('user.generate');
 });
