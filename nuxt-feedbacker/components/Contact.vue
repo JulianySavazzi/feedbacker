@@ -13,8 +13,10 @@ const auth = useAuthStore()
 			</p>
 			<pre
 				v-if="auth.user != null"
-				class="mt-9 text-gray-800 bg-blue-300 rounded px-6 py-3">
-			{{ auth.user }}
+				class="flex mt-9 w-4/5 text-gray-800 bg-blue-300 rounded px-6 py-3 w-full lg:w-2/3 overflow-x-scroll justify-between">
+			{{ auth.user.name }}
+			{{ auth.user.email }}
+			{{ auth.user.api_token }}
 			</pre>
 			<button class="mt-10">
 				<a href="mailto:"
