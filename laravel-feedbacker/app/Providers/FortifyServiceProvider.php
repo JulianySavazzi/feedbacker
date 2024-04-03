@@ -14,6 +14,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\LogoutResponse;
+use App\Models\User;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,9 @@ class FortifyServiceProvider extends ServiceProvider
                 $request->session()->invalidate();
 
                 $request->session()->regenerateToken();
+
+                // Revoke the token that was used to authenticate the current request...
+                $request->user()->currentAccessToken()->delete();
 
                 return redirect('/');
             }

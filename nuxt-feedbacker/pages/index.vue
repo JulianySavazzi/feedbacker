@@ -7,11 +7,13 @@ import {useToast} from 'vue-toastification'
 
 //constants
 const toast = useToast()
+const auth = useAuthStore()
 
    
 onMounted(() => {
-  toast.success("bem vindo")
-
+  if(!auth.isLoggedIn){
+    toast.success("bem vindo")
+  }
 })
 </script>
 

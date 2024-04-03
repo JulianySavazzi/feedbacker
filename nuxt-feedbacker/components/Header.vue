@@ -1,21 +1,30 @@
 <script setup>
+import {useToast} from "vue-toastification"
 //import Credentials from "~/pages/credentials.vue";
 const auth = useAuthStore()
+const toast = useToast()
+
+async function fetchLogout(){
+	window.localStorage.clear()
+	window.sessionStorage.clear();
+	navigateTo('/')
+	const {error} = await auth.logout({}, {
+		onResponseError({response}){
+			console.log(response.status)
+		}
+	})
+	console.log(auth.isLoggedIn)
+	console.log(error.value)
+}
 
 async function handleLogout(){
+	toast("saindo...")
 	try{
-		const {error} = await auth.logout({}, {
-			onResponseError({response}){
-				console.log(response.status)
-			}
-		})
-		console.log(error.value)
-		window.localStorage.clear()
-		window.sessionStorage.clear();
+		fetchLogout()
 		navigateTo('/')
-		console.log(auth.isLoggedIn)
 	} catch(e){
 		console.log("CATCH: ", e.message)
+		fetchLogout()
 	}
 }
 

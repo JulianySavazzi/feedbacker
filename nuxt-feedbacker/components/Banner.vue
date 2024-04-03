@@ -1,3 +1,7 @@
+<script setup>
+const auth = useAuthStore()
+</script>
+
 <template>
 <div class="banner">
 	<div class="banner-bg">
@@ -15,7 +19,9 @@
 				<br class="hidden lg-inline-block">
 				simples widget na página.
 			</p>
-			<button class="px-6 py-2 font-bold bg-white rounded-full text-brand-main mt-10 focus:outline:none max-w-fit">
+			<button
+				v-if="!auth.isLoggedIn"
+				class="px-6 py-2 font-bold bg-white rounded-full text-brand-main mt-10 focus:outline:none max-w-fit">
 				Crie uma conta grátis
 			</button>
 		</div>
