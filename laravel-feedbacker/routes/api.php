@@ -27,4 +27,5 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     });
 
     Route::post('user/generate', [\App\Http\Controllers\UserKeyController::class, 'generate'])->name('user.generate');
+
 });

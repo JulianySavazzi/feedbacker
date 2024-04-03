@@ -1,4 +1,5 @@
 <script setup>
+import {useToast} from "vue-toastification"
 //import pallet from "../assets/js/palette.js"
 
 definePageMeta({
@@ -6,7 +7,7 @@ definePageMeta({
 })
 
 const auth = useAuthStore()
-//let colors = pallet.brand
+const toast = useToast()
 
 async function handleGenerateApiKey(){
 	try {
@@ -16,8 +17,10 @@ async function handleGenerateApiKey(){
 				console.log(response.status)
 			}
 		})
+		await auth.refreshUser()
 	} catch (e) {
-
+		toast.error("Erro ao gerar nova api key! ", e.message)
+		console.log(e.message)
 	}
 }
 

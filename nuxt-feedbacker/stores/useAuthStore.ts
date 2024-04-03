@@ -43,5 +43,24 @@ export const useAuthStore = defineStore('auth', () => {
 		return login
 	}
 
-	return { user, login, isLoggedIn, fetchUser }
+	async function logout(){
+
+		await useApiFetch('/logout', {
+			method: "POST",
+		})
+
+		await fetchUser()
+
+		if(!isLoggedIn){
+			navigateTo('/')
+			console.log("logout sucess!")
+		}
+
+	}
+
+	async function refreshUser(){
+		await fetchUser()
+	}
+
+	return { user, login, isLoggedIn, fetchUser, logout, refreshUser}
 }, {persist: true})

@@ -1,6 +1,24 @@
 <script setup>
 //import Credentials from "~/pages/credentials.vue";
 const auth = useAuthStore()
+
+async function handleLogout(){
+	try{
+		const {error} = await auth.logout({}, {
+			onResponseError({response}){
+				console.log(response.status)
+			}
+		})
+		console.log(error.value)
+		window.localStorage.clear()
+		window.sessionStorage.clear();
+		navigateTo('/')
+		console.log(auth.isLoggedIn)
+	} catch(e){
+		console.log("CATCH: ", e.message)
+	}
+}
+
 </script>
 
 <template>
@@ -15,14 +33,6 @@ const auth = useAuthStore()
 					</NuxtLink>
 				</div>
 				<div class="flex">
-					<!--<button-->
-					<!--	class="px-6 py-2 font-bold rounded-full text-white focus:outline:none">-->
-					<!--	Feedbacks-->
-					<!--</button>-->
-					<!--<button-->
-					<!--	class="px-6 py-2 font-bold rounded-full text-white focus:outline:none">-->
-					<!--	Credenciais-->
-					<!--</button>-->
 
 					<div class="flex ">
 						<ul class="flex list-none">
@@ -34,6 +44,7 @@ const auth = useAuthStore()
 							</li>
 							<li>
 								<button
+									@click="handleLogout"
 									class="px-6 py-2 font-bold bg-white rounded-full text-brand-main focus:outline:none">
 									{{ auth.user.name }} ( SAIR )
 								</button>
