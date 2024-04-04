@@ -69,13 +69,15 @@ const DEFAULT_WIDTH = 'w-3/4 lg:w-1/3'
 </template>
 
 <script>
-import { ModalLogin, ModalCreateAccount } from '#components'
+import { ModalLogin, ModalCreateAccount, ModalSuccessAccount, ModalGlobalLoading } from '#components'
 	
 	export default {
 		//exportando os componentes para serem usados
 		components: {
 			ModalLogin,
-			ModalCreateAccount
+			ModalCreateAccount,
+			ModalSuccessAccount,
+			ModalGlobalLoading
 		}
 	}
 </script>

@@ -18,6 +18,18 @@ const auth = useAuthStore()
 	   })
    }
 
+	function handleSuccessAccount(){
+		modal.open({
+			component: 'ModalSuccessAccount'
+		})
+	}
+
+	function handleGlobalLoading(){
+		modal.open({
+			component: 'ModalGlobalLoading'
+		})
+	}
+
 </script>
 
 <template>
@@ -27,6 +39,8 @@ const auth = useAuthStore()
 		v-if="auth.user === null"
 		@create-account="handleAccountCreate"
 		@login="handleLogin"
+		@success-account="handleSuccessAccount"
+		@global-loading="handleGlobalLoading"
 	/>
 	<Header	v-else/>
 	<slot/>

@@ -70,30 +70,8 @@ async function handleSubmit() {
 			password: state.password.value
 		}
 
-		await useAsyncData('register', () => $fetch(`http://127.0.0.1:8000/sanctum/csrf-cookie`, {
-			method: "GET",
-			credentials: 'include',
-			}).then(response => {
-			// register...
-				const token = useCookie('XSRF-TOKEN')
-			console.log('criando conta... ', accountData)
-			const {data, status, error} = $fetch(`http://127.0.0.1:8000/register`, {
-				method: 'POST',
-				credentials: 'include',
-				body: {
-					"name": accountData.name,
-					"email": accountData.email,
-					"password": accountData.password
-				},
-				headers: {
-					'X-XSRF-TOKEN': token.value
-				}
-			})
-			console.log('response: ', response)
-			console.log('error: ', error)
-			console.log('status: ', status)
-			console.log('data: ', data)
-		}))
+		//fetch
+
 		state.isLoading = false
 		modal.close()
 
