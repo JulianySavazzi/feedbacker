@@ -16,6 +16,19 @@ const {
 	value: passValue,
 	errorMessage: passErrorMessage
 } = useField('password', validateEmptyAndLength)
+//vee-validade re password
+const {
+	value: rePassValue,
+	errorMessage: rePassErrorMessage,
+} = useField('repassword', validate => {
+	if(!state.repassword.value){
+		return '* Este campo é obrigatório!'
+	}
+	if(state.password.value != state.repassword.value){
+		return '* As senhas precisam ser iguais!'
+	}
+	return true
+})
 //vee-validade name
 const {
 	value: nameValue,
@@ -35,6 +48,10 @@ const state = reactive({
 	password: {
 		value: passValue,
 		errorMessage: passErrorMessage
+	},
+	repassword:{
+		value: rePassValue,
+		errorMessage: rePassErrorMessage
 	},
 	name: {
 		value: nameValue,
@@ -90,6 +107,7 @@ async function handleSubmit() {
 		toast.error('Erro ao criar conta, tente novamente mais tarde!')
 	}
 }
+
 </script>
 
 <template>
@@ -164,6 +182,25 @@ async function handleSubmit() {
 					{{ state.password.errorMessage }}
 				</span>
 			</label>
+			<!--re password-->
+			<label for="" class="block mt-9">
+				<span class="text-lg font-medium text-gray-800">
+					Digite a senha novamente
+				</span>
+				<input
+					v-model="state.repassword.value"
+					type="password"
+					:class="{
+						'border-brand-danger': !!state.repassword.errorMessage
+					}"
+					class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 borber-2 border-transparent rounded text-black"
+					>
+				<span
+					v-if="!!state.repassword.errorMessage"
+					class="block font-medium text-brand-danger">
+					{{ state.repassword.errorMessage }}
+				</span>
+			</label>
 			<!--botao de entrar-->
 			<button
 				:disabled="state.isLoading"
@@ -182,5 +219,6 @@ async function handleSubmit() {
 </template>
 
 <script>
-export default {}
+export default {
+}
 </script>
