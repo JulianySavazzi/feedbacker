@@ -53,6 +53,9 @@ npm i pinia -f
 	- [Vue State Management](https://pt.vuejs.org/guide/scaling-up/state-management.html)
 	- [Pinia Plugin Persisted State](https://prazdevs.github.io/pinia-plugin-persistedstate/frameworks/nuxt-3.html)
 	- [Vue Use Global State](https://vueuse.org/shared/createGlobalState/)
+	- [Fortify Logout] (https://laravel.com/docs/11.x/fortify#customizing-authentication-redirects)
+	- [Logging Out Laravel] (https://laravel.com/docs/10.x/authentication#invalidating-sessions-on-other-devices)
+	- [Session Laravel] (https://laravel.com/docs/10.x/session#implementing-the-driver)
 
 
 
