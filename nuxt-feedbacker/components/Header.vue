@@ -53,8 +53,8 @@ async function handleLogout(){
 							</li>
 							<li>
 								<button
-									class="px-6 py-2 font-bold bg-white rounded-full text-brand-main focus:outline:none">
-									{{ auth.user.name }} <span @click="handleLogout" ><Nuxtlink to="/">( SAIR )</Nuxtlink></span>
+									class="px-6 py-2 font-bold bg-white rounded-full text-brand-main ">
+									{{ auth.user.name }} <span @click="handleLogout" class="focus:outline:none bg-brand-main rounded-full text-white" ><Nuxtlink to="/">  ( SAIR )  </Nuxtlink></span>
 								</button>
 							</li>
 
