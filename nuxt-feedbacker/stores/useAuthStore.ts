@@ -49,14 +49,8 @@ export const useAuthStore = defineStore('auth', () => {
 			method: "POST",
 		})
 
-		await fetchUser()
-
 		//setar current user para null com o pinia
-
-		if(!isLoggedIn){
-			navigateTo('/')
-			console.log("logout sucess!")
-		}
+		user.value = null
 
 	}
 
