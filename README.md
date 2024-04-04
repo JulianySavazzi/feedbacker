@@ -42,7 +42,7 @@ npm i pinia -f
 	- [Animate Css](https://animate.style/)
 	- [Vue Toastification](https://github.com/Maronato/vue-toastification)
 	- [Vee Validate](https://github.com/logaretm/vee-validate)
-	- [uNxt Geting Started](https://nuxt.com/docs/getting-started/installation)
+	- [Nuxt Geting Started](https://nuxt.com/docs/getting-started/installation)
 	- [Tyni Emitter](https://www.npmjs.com/package/tiny-emitter)
 	- [Nuxt Auth Sanctum](https://nuxt.com/modules/nuxt-auth-sanctum)
 	- [Laravel Fortify](https://laravel.com/docs/10.x/fortify)
@@ -56,6 +56,7 @@ npm i pinia -f
 	- [Fortify Logout](https://laravel.com/docs/11.x/fortify#customizing-authentication-redirects)
 	- [Logging Out Laravel](https://laravel.com/docs/10.x/authentication#invalidating-sessions-on-other-devices)
 	- [Session Laravel](https://laravel.com/docs/10.x/session#implementing-the-driver)
+	- [Sanctum token expiration](https://laravel.com/docs/10.x/sanctum#token-expiration)
 
 
 
