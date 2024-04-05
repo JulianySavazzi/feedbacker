@@ -36,7 +36,7 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'api_token' => Str::random(80),
+            'api_token' => Str::random(60),
         ]);
     }
 }
