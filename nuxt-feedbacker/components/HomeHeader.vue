@@ -8,20 +8,17 @@
 				<img src="../assets/images/logo_white.png" alt="logo" class="w-full animate__animated animate__swing">
 			</div>
 			<div class="flex">
+				<!--create account-->
 				<button
 				@click="$emit('create-account')"
 				class="px-6 py-2 font-bold rounded-full text-white focus:outline:none">
 					Crie uma conta
 				</button>
+				<!--login-->
 				<button
 				@click="$emit('login')"
 				class="px-6 py-2 font-bold bg-white rounded-full text-brand-main focus:outline:none">
 					Entrar
-				</button>
-				<button
-					@click="$emit('global-loading')"
-					class="px-6 py-2 font-bold bg-black rounded-full text-brand-main focus:outline:none">
-					Sucesso
 				</button>
 			</div>
 		</div>

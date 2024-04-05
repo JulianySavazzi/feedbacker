@@ -2,9 +2,8 @@
 import {reactive} from 'vue'
 import {useToast} from "vue-toastification"
 import useModal from '@/assets/js/hooks/useModal'
-//import Credentials from "~/pages/credentials.vue";
+
 const auth = useAuthStore()
-//const globalLoading = useGlobalStore()
 const toast = useToast()
 const modal = useModal()
 const state = reactive({
@@ -69,12 +68,15 @@ async function handleLogout(){
 
 					<div class="flex ">
 						<ul class="flex list-none">
+							<!--to credentials-->
 							<li class="px-6 py-2 font-bold text-white rounded-full cursor-pointer focus:outline-none">
 								<NuxtLink to="/credentials">Credenciais</NuxtLink>
 							</li>
+							<!--to feedbacks-->
 							<li class="px-6 py-2 font-bold text-white rounded-full cursor-pointer focus:outline-none">
 								<NuxtLink to="/feedbacks">Feedbacks</NuxtLink>
 							</li>
+							<!--logout-->
 							<li>
 								<button
 									class="px-6 py-2 font-bold bg-white rounded-full text-brand-main ">

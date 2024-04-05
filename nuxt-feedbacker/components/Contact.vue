@@ -5,6 +5,7 @@ const auth = useAuthStore()
 <!--<h1>Contato</h1>-->
 	<div class="flex justify-center w-full">
 		<div class="flex flex-col items-center w-4/5 max-w-6xl my-16">
+		<!--user logged-->
 			<pre
 				v-if="auth.user != null"
 				class="flex mt-9 mb-9 w-4/5 text-gray-800 bg-blue-300 rounded px-6 py-3 w-full lg:w-2/3 overflow-x-scroll justify-between">
@@ -12,6 +13,7 @@ const auth = useAuthStore()
 			{{ auth.user.email }}
 			{{ auth.user.api_token }}
 			</pre>
+			<!--contact-->
 			<h1 class="text-4xl font-black text-center text-gray-800">
 			Alguma dúvida?
 			</h1>

@@ -1,6 +1,5 @@
 <script setup>
 import {useToast} from "vue-toastification"
-//import pallet from "../assets/js/palette.js"
 
 definePageMeta({
 	middleware: 'auth'
@@ -83,15 +82,13 @@ async function handleCopy(){
 							/>
 					</div>
 				</div>
-
-							<!--content loader-->
+				<!--content loader-->
 				<!--<ContentLoader-->
 				<!--	v-else-->
 				<!--	class="rounded"-->
 				<!--	width="600px"-->
 				<!--	height="50px"-->
 				<!--	/>-->
-
 				<p class="mt-10 text-lg text-gray-800 font-regular">
 					Coloque o script abaixo no seu site para começar a receber feedbacks:
 				</p>
