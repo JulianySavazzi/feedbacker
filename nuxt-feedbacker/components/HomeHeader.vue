@@ -22,7 +22,7 @@
 				<!--	@click="$emit('global-loading')"-->
 				<!--	class="px-6 py-2 font-bold bg-black rounded-full text-brand-main focus:outline:none">-->
 				<!--	Sucesso-->
-				<!--</button-->
+				<!--</button>-->
 			</div>
 		</div>
 	</div>

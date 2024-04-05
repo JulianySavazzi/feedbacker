@@ -8,9 +8,14 @@ definePageMeta({
 
 const auth = useAuthStore()
 const toast = useToast()
+const state = reactive({
+	hasErrors: false,
+	isLoading: false
+})
 
 async function handleGenerateApiKey(){
 	try {
+		state.isLoading = true
 		const {error} = await useApiFetch('/api/user/generate', {
 			method: "POST",
 			onResponseError({response}){
@@ -19,9 +24,12 @@ async function handleGenerateApiKey(){
 		})
 		await auth.refreshUser()
 	} catch (e) {
+		state.hasErrors = true
+		state.isLoading = false
 		toast.error("Erro ao gerar nova api key! ", e.message)
 		console.log(e.message)
 	}
+	state.isLoading = false
 }
 
 </script>
@@ -40,16 +48,11 @@ async function handleGenerateApiKey(){
 				<p class="mt-10 text-lg text-gray-800 font-regular">
 					Este aqui é a sua chave de api:
 				</p>
-				<!--content loader-->
-				<!--<ContentLoader-->
-				<!--	v-if="auth.isLoggedIn"-->
-				<!--	class="rounded"-->
-				<!--	width="600px"-->
-				<!--	height="50px"-->
-				<!--	/>-->
+
 				<div
 					class="flex py-3 px-5 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll justify-between">
-					<span class="text-brand-graydark">{{ auth.user.api_token }}</span>
+					<span v-if="!state.isLoading && auth.isLoggedIn" class="text-brand-graydark">{{ auth.user.api_token }}</span>
+					<span v-else class="text-brand-pink"> aguarde, estamos gerando sua chave de api... </span>
 					<div class="flex ml-20">
 						<Icons
 							name="IconsCopy"
@@ -66,26 +69,32 @@ async function handleGenerateApiKey(){
 							/>
 					</div>
 				</div>
+
+							<!--content loader-->
+				<!--<ContentLoader-->
+				<!--	v-else-->
+				<!--	class="rounded"-->
+				<!--	width="600px"-->
+				<!--	height="50px"-->
+				<!--	/>-->
+
 				<p class="mt-10 text-lg text-gray-800 font-regular">
 					Coloque o script abaixo no seu site para começar a receber feedbacks:
 				</p>
 				<!--content loader-->
 				<!--<ContentLoader-->
-				<!--	v-if="auth.isLoggedIn"-->
+				<!--	v-else-->
 				<!--	class="rounded"-->
 				<!--	width="600px"-->
 				<!--	height="50px"-->
 				<!--	/>-->
 				<div
 					class=" py-3 px-5 pr-20 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll">
-					<pre class=" text-brand-darkgray">&lt;script src="http://JulianySavazzi-feedbacker-widget.netlify.app?api_key={{ auth.user.api_token}}"&gt;&lt;/script&gt;
-        		</pre>
+					<pre v-if="!state.isLoading && auth.isLoggedIn" class=" text-brand-darkgray">&lt;script src="http://JulianySavazzi-feedbacker-widget.netlify.app?api_key={{ auth.user.api_token}}"&gt;&lt;/script&gt;
+        			</pre>
+					<span v-else class="text-brand-pink"> aguarde, estamos gerando sua chave de api... </span>
 				</div>
 			</div>
 		</div>
-		<!--<pre-->
-		<!--	class="mt-9 ml-9 mr-9 text-gray-800 bg-blue-300 rounded px-6 py-3">-->
-		<!--	{{ auth.user }}-->
-    	<!--</pre>-->
 	</main>
 </template>

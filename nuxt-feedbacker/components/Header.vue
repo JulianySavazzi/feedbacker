@@ -1,10 +1,17 @@
 <script setup>
+import {reactive} from 'vue'
 import {useToast} from "vue-toastification"
 //import Credentials from "~/pages/credentials.vue";
 const auth = useAuthStore()
+//const globalLoading = useGlobalStore()
 const toast = useToast()
+const state = reactive({
+	hasErrors: false,
+	isLoading: false
+})
 
 async function fetchLogout(){
+	state.isLoading = true
 	window.localStorage.clear()
 	window.sessionStorage.clear();
 	navigateTo('/')
@@ -18,7 +25,9 @@ async function fetchLogout(){
 }
 
 async function handleLogout(){
+	state.isLoading = true
 	toast("saindo...")
+	$emit('global-loading')
 	try{
 		fetchLogout()
 		navigateTo('/')
@@ -26,6 +35,7 @@ async function handleLogout(){
 		console.log("CATCH: ", e.message)
 		fetchLogout()
 	}
+	state.isLoading = false
 }
 
 </script>
@@ -54,7 +64,7 @@ async function handleLogout(){
 							<li>
 								<button
 									class="px-6 py-2 font-bold bg-white rounded-full text-brand-main ">
-									{{ auth.user.name }} <span @click="handleLogout" class="focus:outline:none bg-brand-main rounded-full text-white" ><Nuxtlink to="/">  ( SAIR )  </Nuxtlink></span>
+									{{ auth.user.name }} <span @click="handleLogout" class="focus:outline:none bg-brand-main rounded-full text-white" >( SAIR )</span>
 								</button>
 							</li>
 

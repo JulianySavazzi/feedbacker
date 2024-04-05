@@ -44,6 +44,7 @@ export const useAuthStore = defineStore('auth', () => {
 	}
 
 	async function logout(){
+//		globalLoading.setGlobalLoading(true)
 
 		await useApiFetch('/logout', {
 			method: "POST",
@@ -52,6 +53,7 @@ export const useAuthStore = defineStore('auth', () => {
 		//setar current user para null com o pinia
 		user.value = null
 
+//		globalLoading.setGlobalLoading(false)
 	}
 
 	async function refreshUser(){
