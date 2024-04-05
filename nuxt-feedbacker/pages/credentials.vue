@@ -61,7 +61,7 @@ async function handleCopy(){
 				<p class="mt-10 text-lg text-gray-800 font-regular">
 					Este aqui é a sua chave de api:
 				</p>
-
+				<span v-if="auth.user.api_token == null" class="text-brand-pink"> clique no ícone para gerar sua chave de api! </span>
 				<div
 					class="flex py-3 px-5 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll justify-between">
 					<span v-if="!state.isLoading && auth.isLoggedIn" class="text-brand-graydark">{{ auth.user.api_token }}</span>
@@ -104,7 +104,8 @@ async function handleCopy(){
 				<!--	/>-->
 				<div
 					class=" py-3 px-5 pr-20 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll">
-					<pre v-if="!state.isLoading && auth.isLoggedIn" class=" text-brand-darkgray">&lt;script src="http://JulianySavazzi-feedbacker-widget.netlify.app?api_key={{ auth.user.api_token}}"&gt;&lt;/script&gt;
+					<span v-if="auth.user.api_token == null && !state.isLoading" class="text-brand-pink"> </span>
+					<pre v-if="!state.isLoading && auth.isLoggedIn && auth.user.api_token != null" class=" text-brand-darkgray">&lt;script src="http://JulianySavazzi-feedbacker-widget.netlify.app?api_key={{ auth.user.api_token}}"&gt;&lt;/script&gt;
         			</pre>
 					<span v-else class="text-brand-pink"> aguarde, estamos gerando sua chave de api... </span>
 				</div>
