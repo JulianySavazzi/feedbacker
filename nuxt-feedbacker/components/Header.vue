@@ -1,10 +1,12 @@
 <script setup>
 import {reactive} from 'vue'
 import {useToast} from "vue-toastification"
+import useModal from '@/assets/js/hooks/useModal'
 //import Credentials from "~/pages/credentials.vue";
 const auth = useAuthStore()
 //const globalLoading = useGlobalStore()
 const toast = useToast()
+const modal = useModal()
 const state = reactive({
 	hasErrors: false,
 	isLoading: false
@@ -27,7 +29,10 @@ async function fetchLogout(){
 async function handleLogout(){
 	state.isLoading = true
 	toast("saindo...")
-	$emit('global-loading')
+//	$emit('global-loading')
+//	modal.open({
+//		component: 'ModalGlobalLoading'
+//	})
 	try{
 		fetchLogout()
 		navigateTo('/')
@@ -35,6 +40,9 @@ async function handleLogout(){
 		console.log("CATCH: ", e.message)
 		fetchLogout()
 	}
+//	modal.close({
+//		component: 'ModalGlobalLoading'
+//	})
 	state.isLoading = false
 }
 

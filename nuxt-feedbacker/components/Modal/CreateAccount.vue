@@ -37,6 +37,7 @@ const {
 
 const modal = useModal()
 const toast = useToast()
+const auth = useAuthStore()
 
 const state = reactive({
 	hasErrors: false,
@@ -64,24 +65,39 @@ async function handleSubmit() {
 		toast.clear()
 		state.isLoading = true
 
-		const accountData = {
+		//fetch
+		const {error} = await auth.register({
 			name: state.name.value,
 			email: state.email.value,
-			password: state.password.value
-		}
+			password: state.password.value,
+			pass_confirmation: state.repassword.value
+		}, {
+			onResponseError({response}){
+				state.isLoading = false
+				modal.close()
+				console.log(response.status)
+			}
+		})
 
-		//fetch
-
+	if(error.value){
 		state.isLoading = false
+		let faill = error.value
+		console.log(error.value, faill)
+		toast.error("Erro ao fazer login! \n" + faill + " ")
 		modal.close()
-
-		//error handling if(errors.status ==== ?)
+	} else {
+		state.isLoading = false
+		modal.open({
+			component: 'ModalSuccessAccount'
+		})
+		toast.success("Conta criada com sucesso! Faça login!")
+	}
 
 	} catch (error) {
 		state.isLoading = false
 		state.hasErrors = !!error
 		//falha na requisição
-		console.log('Oooops: ', error)
+		console.log('Oooops: catch  ', error)
 		toast.error('Erro ao criar conta, tente novamente mais tarde!')
 	}
 }

@@ -3,8 +3,8 @@ export function validateEmptyAndLength(value){
 	if(!value){
 		return '* Este campo é obrigatório!'
 	}
-	if(value.length < 6){
-		return '* Este campo precisa de pelo menos 6 digitos!'
+	if(value.length < 8){
+		return '* Este campo precisa de pelo menos 8 digitos!'
 	}
 	return true
 }
