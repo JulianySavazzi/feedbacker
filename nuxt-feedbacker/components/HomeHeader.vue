@@ -18,11 +18,11 @@
 				class="px-6 py-2 font-bold bg-white rounded-full text-brand-main focus:outline:none">
 					Entrar
 				</button>
-				<!--<button-->
-				<!--	@click="$emit('global-loading')"-->
-				<!--	class="px-6 py-2 font-bold bg-black rounded-full text-brand-main focus:outline:none">-->
-				<!--	Sucesso-->
-				<!--</button>-->
+				<button
+					@click="$emit('global-loading')"
+					class="px-6 py-2 font-bold bg-black rounded-full text-brand-main focus:outline:none">
+					Sucesso
+				</button>
 			</div>
 		</div>
 	</div>
