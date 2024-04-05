@@ -16,7 +16,7 @@ type RegistrationInfo = {
 	name: string,
 	email: string,
 	password: string,
-	pass_confirmation: string
+	password_confirmation: string
 }
 
 type Options = {}

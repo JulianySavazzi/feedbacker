@@ -70,7 +70,7 @@ async function handleSubmit() {
 			name: state.name.value,
 			email: state.email.value,
 			password: state.password.value,
-			pass_confirmation: state.repassword.value
+			password_confirmation: state.repassword.value
 		}, {
 			onResponseError({response}){
 				state.isLoading = false
