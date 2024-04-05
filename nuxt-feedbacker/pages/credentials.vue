@@ -32,6 +32,19 @@ async function handleGenerateApiKey(){
 	state.isLoading = false
 }
 
+async function handleCopy(){
+	toast.clear()
+	try{
+		state.isLoading = true
+		await navigator.clipboard.writeText(auth.user.api_token)
+		toast.success('Copiado!')
+		state.isLoading = false
+	}catch(error){
+		state.isLoading = false
+		toast.error("Erro ao copiar api key! ", error.message)
+	}
+}
+
 </script>
 
 <template>
@@ -59,6 +72,7 @@ async function handleGenerateApiKey(){
 							color="#C0BCB0"
 							size="24"
 							class="cursor-pointer"
+							@click="handleCopy"
 						/>
 						<Icons
 							name="IconsLoading"
