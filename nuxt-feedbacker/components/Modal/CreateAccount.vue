@@ -83,7 +83,7 @@ async function handleSubmit() {
 		state.isLoading = false
 		let faill = error.value
 		console.log(error.value, faill)
-		toast.error("Erro ao fazer login! \n" + faill + " ")
+		toast.error("Erro ao criar conta! Verifique seus dados e tente novamente.\n" + faill + " ")
 		modal.close()
 	} else {
 		state.isLoading = false

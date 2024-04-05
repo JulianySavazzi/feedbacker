@@ -14,6 +14,9 @@ const state = reactive({
 
 async function fetchLogout(){
 	state.isLoading = true
+	modal.open({
+		component: 'ModalGlobalLoading'
+	})
 	window.localStorage.clear()
 	window.sessionStorage.clear();
 	navigateTo('/')
@@ -23,27 +26,30 @@ async function fetchLogout(){
 		}
 	})
 	console.log(auth.isLoggedIn)
-	console.log(error.value)
+	console.log("TENTANDO LOGOUT: " +  error.value)
+	state.isLoading = false
+	if(auth.isLoggedIn == null || state.isLoading == false){
+		modal.close({
+			component: 'ModalGlobalLoading'
+		})
+	}
 }
 
 async function handleLogout(){
 	state.isLoading = true
-	toast("saindo...")
-//	$emit('global-loading')
-//	modal.open({
-//		component: 'ModalGlobalLoading'
-//	})
+	modal.open({
+		component: 'ModalGlobalLoading'
+	})
 	try{
+		toast("saindo...")
 		fetchLogout()
 		navigateTo('/')
+		state.isLoading = false
 	} catch(e){
 		console.log("CATCH: ", e.message)
 		fetchLogout()
+		state.isLoading = false
 	}
-//	modal.close({
-//		component: 'ModalGlobalLoading'
-//	})
-	state.isLoading = false
 }
 
 </script>
