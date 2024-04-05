@@ -57,6 +57,7 @@ npm i pinia -f
 	- [Logging Out Laravel](https://laravel.com/docs/10.x/authentication#invalidating-sessions-on-other-devices)
 	- [Session Laravel](https://laravel.com/docs/10.x/session#implementing-the-driver)
 	- [Sanctum token expiration](https://laravel.com/docs/10.x/sanctum#token-expiration)
+	- [Fortify Registration](https://laravel.com/docs/11.x/fortify#registration)
 
 
 
