@@ -3,6 +3,7 @@ import {reactive} from 'vue'
 import useModal from '/assets/js/hooks/useModal.js'
 import {useField} from 'vee-validate'
 import {validateEmptyAndLength, validadeEmptyAndEmail} from "/assets/js/utils/validators.js"
+import {removeCookie} from "/assets/js/utils/removeCookies.js"
 import {useToast} from "vue-toastification"
 import Icon from '/components/Icons/Index.vue'
 
@@ -60,6 +61,11 @@ const state = reactive({
 	}
 })
 
+async function refresh(){
+	await auth.logout()
+	navigateTo('/')
+}
+
 async function handleSubmit() {
 	try {
 		toast.clear()
@@ -79,22 +85,26 @@ async function handleSubmit() {
 			}
 		})
 
-	if(error.value){
-		state.isLoading = false
-		let faill = error.value
-		console.log(error.value, faill)
-		toast.error("Erro ao criar conta! Verifique seus dados e tente novamente.\n" + faill + " ")
-		modal.close()
-	} else {
-		state.isLoading = false
-		modal.open({
-			component: 'ModalSuccessAccount'
-		})
-		toast.success("Conta criada com sucesso! Faça login!")
-	}
+		if(error.value){
+			state.isLoading = false
+			let faill = error.value
+			console.log(error.value, faill)
+			toast.error("Erro ao criar conta! Verifique seus dados e tente novamente.\n" + faill + " ")
+			refresh()
+			modal.close()
+		} else {
+			state.isLoading = false
+			modal.open({
+				component: 'ModalSuccessAccount'
+			})
+			refresh()
+			toast.success("Conta criada com sucesso! Faça login!")
+		}
 
 	} catch (error) {
 		state.isLoading = false
+		removeCookie(tabs)
+		refresh()
 		state.hasErrors = !!error
 		//falha na requisição
 		console.log('Oooops: catch  ', error)

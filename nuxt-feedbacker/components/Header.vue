@@ -1,6 +1,7 @@
 <script setup>
 import {reactive} from 'vue'
 import {useToast} from "vue-toastification"
+import {removeCookie} from "/assets/js/utils/removeCookies.js"
 import useModal from '@/assets/js/hooks/useModal'
 
 const auth = useAuthStore()
@@ -16,6 +17,7 @@ async function fetchLogout(){
 	modal.open({
 		component: 'ModalGlobalLoading'
 	})
+//	removeCookie(tabs)
 	window.localStorage.clear()
 	window.sessionStorage.clear();
 	navigateTo('/')
@@ -47,6 +49,7 @@ async function handleLogout(){
 	} catch(e){
 		console.log("CATCH: ", e.message)
 		fetchLogout()
+		navigateTo('/')
 		state.isLoading = false
 	}
 }

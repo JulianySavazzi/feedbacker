@@ -72,7 +72,6 @@ export const useAuthStore = defineStore('auth', () => {
 		//setar current user para null com o pinia
 		user.value = null
 
-//		globalLoading.setGlobalLoading(false)
 	}
 
 	async function refreshUser(){
