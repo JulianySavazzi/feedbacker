@@ -15,8 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  * correspondente de cada modelo possui uma coluna
  * de chave primária chamada id.
  * 
- * Por padrão, o Eloquent espera created_atque updated_atexistam
- * colunas na tabela de banco de dados correspondente do seu modelo.
+ * Por padrão, o Eloquent espera que colunas created_at updated_at existam
+ * na tabela de banco de dados correspondente do seu modelo.
  * O Eloquent definirá automaticamente os valores dessas colunas
  * quando os modelos forem criados ou atualizados.
  * 

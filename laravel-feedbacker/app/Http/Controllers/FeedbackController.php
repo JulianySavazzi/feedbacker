@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Feedback;
 
 class FeedbackController extends Controller
 {
@@ -22,7 +23,11 @@ class FeedbackController extends Controller
     
     public function all()
     { //get all feedbacks
+        $feedbacks = Feedback::all();
         
+        return response()->json([
+            'feedbacks' => $feedbacks
+        ], Response::HTTP_OK);
     }
     
     public function sumary()
