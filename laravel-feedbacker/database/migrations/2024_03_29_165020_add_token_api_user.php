@@ -14,11 +14,11 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //add user apiKey
-            $table->string('api_token', 60)
-                ->after('password')
-                ->unique()
-                ->nullable()
-                ->default(null);
+//            $table->string('api_token', 60)
+//                ->after('password')
+//                ->unique()
+//                ->nullable()
+//                ->default(null);
         });
     }
 

@@ -28,11 +28,10 @@ return new class extends Migration
             $table->string('text');
             $table->string('fingerprint');
             $table->string('api_key');
-//            $table->Str::upper(string('type'));
             $table->enum('type', ['ISSUE', 'IDEA', 'OTHER']);
             $table->string('device');
             $table->string('page');
-            $table->timestamps('created_at');
+            $table->timestamps();
             //add foreign api_key
             $table->foreign('api_key')->references('api_token')->on('users')->onDelete('cascade');
         });
