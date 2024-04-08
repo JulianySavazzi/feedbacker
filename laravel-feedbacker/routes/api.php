@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 * O api.php arquivo contém rotas que são RouteServiceProvider colocadas no api grupo de middleware.
 * Essas rotas devem ser sem estado, portanto, as solicitações que entram no aplicativo por meio dessas rotas
 * devem ser autenticadas por meio de tokens e não terão acesso ao estado da sessão.
+* Criar controller -> php artisan make:controller NameController
 */
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
@@ -27,5 +28,9 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     });
 
     Route::post('user/generate', [\App\Http\Controllers\UserKeyController::class, 'generate'])->name('user.generate');
+
+    Route::get('/feedbacks', [\App\Http\Controllers\FeedbackController::class, 'all'])->name('feedbacks.all');
+
+    Route::get('/feedbacks/sumary', [\App\Http\Controllers\FeedbackController::class, 'sumary'])->name('feedbacks.sumary');
 
 });

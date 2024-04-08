@@ -18,7 +18,7 @@ async function handleGenerateApiKey(){
 		const {error} = await useApiFetch('/api/user/generate', {
 			method: "POST",
 			onResponseError({response}){
-				console.log(response.status)
+				console.log(response.status, error)
 			}
 		})
 		await auth.refreshUser()

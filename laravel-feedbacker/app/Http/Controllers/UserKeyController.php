@@ -10,9 +10,10 @@ use App\Models\User;
 
 class UserKeyController extends Controller
 {
-    //get user api  key and get generate user api key
+
     public function generate()
-    {
+    { //get user api key and generate user api key
+
         $userLogged = Auth::user();
         $apiKey = Str::random(60);
 
