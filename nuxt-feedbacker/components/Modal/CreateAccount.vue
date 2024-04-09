@@ -119,7 +119,6 @@ async function handleSubmit() {
 		<h1 class="text-black text-4xl font-black">
 			Criar conta
 		</h1>
-		<
 		<button
 			@click="modal.close()"
 			class="text-4xl text-gray-600 focus:outline-none">

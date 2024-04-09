@@ -32,6 +32,7 @@ export const useFeedbackStore = defineStore('feedbacks', () => {
 		}
 		
 		const { data, error } = await useApiFetch("/api/feedbacks", { params: query})
+		feedback.value = data.value;
 			
 		console.log(feedback.value, error)
 		return feedback.value
@@ -39,7 +40,7 @@ export const useFeedbackStore = defineStore('feedbacks', () => {
 
 	async function getSumary() {
 		const { data, error } = await useApiFetch("/api/feedbacks/sumary")
-		feedback.value = data.value as Feedback;
+		feedback.value = data.value;
 
 		console.log(feedback.value, error)
 		return feedback.value

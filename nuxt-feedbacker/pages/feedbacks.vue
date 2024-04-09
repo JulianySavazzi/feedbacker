@@ -35,7 +35,7 @@ async function getAll(){
          <Suspense>
           <!-- componente com dependências assíncronas encaixada -->
            <template #default>
-             <Filters/>
+             <FeedbackFilters/>
            </template>
           <!-- estado de carregamento através da ranhura #fallback -->
            <template #fallback>
@@ -53,7 +53,15 @@ async function getAll(){
           v-if="!state.myFeedbacks.lenght && !state.isLoading"
           class="text-lg text-center font-regular text-brand-pink ">Nenhum feedback por enquanto...</p>
       <!--cards    -->
-          
+          <FeedbackCardLoading
+            v-if="state.isLoading"/>
+          <FeedbackCard
+            v-else
+            v-for="(feedback, index) in state.myFeedbacks"
+            :key="myFeedbacks.id"
+            :is-opended="index === 0"
+            :myFeedbacks="myFeedbacks"
+            class="mb-8"/>
       </div>
     </div>
   </main>

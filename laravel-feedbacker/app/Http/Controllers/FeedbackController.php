@@ -39,8 +39,36 @@ class FeedbackController extends Controller
      * "other": 0
      * }
      */
+
     public function sumary()
     { //get feedback index 
+
+        $userLogged = Auth::user()->api_token;
+//        $type = $feedbacks->type;
         
+//        $feedbacks = Feedback::all();
+
+//        $feedbacks = Feedback::where(
+//            function ($query) use ($userLogged, $type){
+//                $query->where([
+//                    'api_key' => $userLogged,
+//                    'type' => $type
+//                    ]);
+//            })->orderBy('type', 'ASC')->get();
+
+//        $feedbacks = [
+//            "all" => 6,
+//            "issue" => 2,
+//            "idea" => 2,
+//            "other" => 2
+//        ];
+
+//        return response()->json([
+//            'feedbacks' => $feedbacks
+//         ], Response::HTTP_OK);
+
+        return response()->json([
+            Feedback::where('api_key', $userLogged)->get()
+        ], Response::HTTP_OK);
     }
 }

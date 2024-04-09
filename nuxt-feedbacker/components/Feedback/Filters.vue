@@ -6,45 +6,6 @@ const emit = defineEmits(['select'])
 const auth = useAuthStore()
 const feedbacks = useFeedbackStore()
 
-const LABELS = {
-	all: 'Todos',
-	issue: 'Problemas',
-	idea: 'Ideias',
-	other: 'Outros'
-}
-
-const COLORS = {
-	all: { text: 'text-brand-info', bg: 'bg-brand-info' },
-	issue: { text: 'text-brand-danger', bg: 'bg-brand-danger' },
-	idea: { text: 'text-brand-warning', bg: 'bg-brand-warning' },
-	other: { text: 'text-brand-graydark', bg: 'bg-brand-graydark' }	
-}
-
-const state = reactive({
-	hasErrors: false,
-	isLoading: false,
-	filters: [
-		{label: null, amount: null}
-	]
-})
-
-function applyFiltersStructure(sumary){
-	return Object.keys(sumary).reduce((acc, cur) => {
-		const currentFilter = {
-			label: LABELS[cur],
-			color: COLORS[cur],
-			amount: sumary[cur]
-		}
-		
-		if(cur === 'all'){
-			currentFilter.active = true
-		} else {
-			currentFilter.active = cur
-		}
-		return [...acc, currentFilter]
-	}, [])
-}
-
 try{
 	//fetch sumary route
 	const {data} = await feedbacks.getSumary()
@@ -96,3 +57,45 @@ function handleSelected({ type }){
 	</ul>
 </div>
 </template>
+
+<script>
+const LABELS = {
+	all: 'Todos',
+	issue: 'Problemas',
+	idea: 'Ideias',
+	other: 'Outros'
+}
+
+const COLORS = {
+	all: { text: 'text-brand-info', bg: 'bg-brand-info' },
+	issue: { text: 'text-brand-danger', bg: 'bg-brand-danger' },
+	idea: { text: 'text-brand-warning', bg: 'bg-brand-warning' },
+	other: { text: 'text-brand-graydark', bg: 'bg-brand-graydark' }
+}
+
+const state = reactive({
+	hasErrors: false,
+	isLoading: false,
+	filters: [
+		{label: null, amount: null}
+	]
+})
+
+function applyFiltersStructure(sumary){
+	return Object.keys(sumary).reduce((acc, cur) => {
+		const currentFilter = {
+			label: LABELS[cur],
+			color: COLORS[cur],
+			amount: sumary[cur]
+		}
+
+		if(cur === 'all'){
+			currentFilter.active = true
+		} else {
+			currentFilter.active = cur
+		}
+		console.log(currentFilter.value)
+		return [...acc, currentFilter]
+	}, [])
+}
+</script>
