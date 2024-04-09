@@ -10,6 +10,7 @@ const auth = useAuthStore()
 const state = reactive({
   hasErrors: false,
   isLoading: false,
+  myFeedbacks: [],
 })
 
 console.log(auth.user.name)
@@ -43,8 +44,16 @@ async function getAll(){
          </Suspense>
        </div>
       </div>
-      <div class="px-10 pt-20 col-span-3">
+      <div class="px-10 pt-20 col-span-3 ">
       <!--feedbacks-->
+        <p
+          v-if="state.hasErrors"
+          class="text-lg text-center font-regular text-brand-pink ">Aconteceu um erro ao carregar os feedbacks...</p>
+        <p
+          v-if="!state.myFeedbacks.lenght && !state.isLoading"
+          class="text-lg text-center font-regular text-brand-pink ">Nenhum feedback por enquanto...</p>
+      <!--cards    -->
+          
       </div>
     </div>
   </main>
