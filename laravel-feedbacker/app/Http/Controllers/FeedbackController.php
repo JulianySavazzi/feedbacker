@@ -30,6 +30,15 @@ class FeedbackController extends Controller
         ], Response::HTTP_OK);
     }
     
+    /**
+     * retornar os feedbacks em json de acordo com o filtro:
+     * {
+     * "all": 0,
+     * "issue": 0,
+     * "idea": 0,
+     * "other": 0
+     * }
+     */
     public function sumary()
     { //get feedback index 
         
