@@ -7,7 +7,8 @@ type Feedback = {
 	api_key: string,
 	type: string,
 	device: string,
-	page: string
+	page: string,
+	created_at: string
 }
 
 type RegistrationFeedback = {

@@ -6,18 +6,42 @@ definePageMeta({
 })
 
 const auth = useAuthStore()
+const feedbacks = useFeedbackStore()
 
 const state = reactive({
   hasErrors: false,
   isLoading: false,
   myFeedbacks: [],
+  currentFeedbackType: '',
+  pagination: {
+    limit: 5,
+    offset: 0
+  }
+})
+
+onMounted(() => {
+  getAll()
 })
 
 console.log(auth.user.name)
 
 //get all feedbacks
 async function getAll(){
-  
+  try{
+    state.isLoading = true
+
+    const { data } = await feedbacks.getAll({
+      ...state.pagination,
+      type: state.currentFeedbackType
+    })
+
+    state.myFeedbacks = data.results
+    state.pagination = data.pagination
+    state.isLoading = false
+
+  } catch (e) {
+	  state.hasErrors = true
+  }
 }
 </script>
 
@@ -43,27 +67,26 @@ async function getAll(){
            </template>
          </Suspense>
        </div>
-      </div>
-      <div class="px-10 pt-20 col-span-3 ">
-      <!--feedbacks-->
-        <p
-          v-if="state.hasErrors"
-          class="text-lg text-center font-regular text-brand-pink ">Aconteceu um erro ao carregar os feedbacks...</p>
-        <p
-          v-if="!state.myFeedbacks.lenght && !state.isLoading"
-          class="text-lg text-center font-regular text-brand-pink ">Nenhum feedback por enquanto...</p>
+        <!--feedbacks-->
+        <div class="px-10 pt-20 col-span-3 ">
+          <p
+            v-if="state.hasErrors"
+            class="text-lg text-center font-regular text-brand-pink ">Aconteceu um erro ao carregar os feedbacks...</p>
+          <p
+            v-if="!state.myFeedbacks.lenght && !state.isLoading"
+            class="text-lg text-center font-regular text-brand-pink ">Nenhum feedback por enquanto...</p>
       <!--cards    -->
           <FeedbackCardLoading
             v-if="state.isLoading"/>
           <FeedbackCard
             v-else
             v-for="(feedback, index) in state.myFeedbacks"
-            :key="myFeedbacks.id"
+            :key="feedback.id"
             :is-opended="index === 0"
-            :myFeedbacks="myFeedbacks"
+            :myFeedbacks="feedback"
             class="mb-8"/>
+        </div>
       </div>
     </div>
   </main>
-
 </template>
