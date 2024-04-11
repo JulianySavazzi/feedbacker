@@ -28,7 +28,7 @@ function handleToggle(){
 		class="flex flex-col px-8 py-6 rouded cursor-pointer bg-brand-gray">
 		<div class="flex items-center justify-between w-full mb-8">
 				<!--badge-->
-			<Badge :type="myFeedback.type"/>
+			<FeedbackBadge :type="myFeedback.type"/>
 			<span class="font-regular text-brand-graydark">
 				{{myFeedback.created_at}}
 			</span>
@@ -38,15 +38,15 @@ function handleToggle(){
 		</div>
 		<div class="flex mt-8 animate__animated animate__fadeInUp animate__faster" v-if="state.isOpen">
 			<div class="flex flex-col w-1/2">
-				<div class="flex flex-col">
+				<div class="flex flex-col  pb-2">
 					<span class="font-bold text-gray-400 uppercase select-none">Página</span>
 					<span class="font-medium text-gray-700">{{myFeedback.page}}</span>
 				</div>
-				<div class="flex flex-col">
+				<div class="flex flex-col pb-2">
 					<span class="font-bold text-gray-400 uppercase select-none">Dispositivo</span>
 					<span class="font-medium text-gray-700">{{myFeedback.device}}</span>
 				</div>
-				<div class="flex flex-col">
+				<div class="flex flex-col  pb-2">
 					<span class="font-bold text-gray-400 uppercase select-none">Usuário</span>
 					<span class="font-medium text-gray-700">{{myFeedback.fingerprint}}</span>
 				</div>

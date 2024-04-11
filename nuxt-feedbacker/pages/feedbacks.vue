@@ -17,17 +17,17 @@ const state = reactive({
       text: 'feedback de test',
       fingerprint: 'fingerprint',
       api_key: auth.user.api_token,
-      type: 'issue',
+      type: 'ISSUE',
       device: 'macbook',
       page: 'page',
       created_at: '14:51'
     },
     {
       id: 2,
-      text: 'feedback de test',
+      text: 'testando feedback',
       fingerprint: 'fingerprint',
       api_key: auth.user.api_token,
-      type: 'issue',
+      type: 'IDEA',
       device: 'macbook',
       page: 'page',
       created_at: '15:30'

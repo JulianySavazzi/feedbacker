@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 
-defineProps({
+const props = defineProps({
 	type: {
 		type: String,
 		required: true
@@ -9,11 +9,11 @@ defineProps({
 })
 
 const label = computed(() => {
-	if(defineProps.type === 'ISSUE'){
+	if(props.type === 'ISSUE'){
 		return 'problema'
 	}
 	
-	if(defineProps.type === 'IDEA'){
+	if(props.type === 'IDEA'){
 		return 'ideia'
 	}
 	
@@ -21,20 +21,20 @@ const label = computed(() => {
 })
 
 const classColor = computed(() => {
-	if(defineProps.type === 'ISSUE'){
-		return 'brand-danger'
+	if(props.type === 'ISSUE'){
+		return 'bg-brand-danger'
 	}
 
-	if(defineProps.type === 'IDEA'){
-		return 'brand-warning'
+	if(props.type === 'IDEA'){
+		return 'bg-brand-warning'
 	}
 
-	return 'brand-graydark'
+	return 'bg-brand-graydark'
 })
 </script>
 
 <template>
-	<span :class="bg-`${classColor}`"
+	<span :class="`${classColor}`"
 		class="p-2 text-xs font-black text-white uppercase rounded-full">
 		{{label}}
 	</span>
