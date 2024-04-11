@@ -11,7 +11,28 @@ const feedbacks = useFeedbackStore()
 const state = reactive({
   hasErrors: false,
   isLoading: false,
-  myFeedbacks: [],
+  myFeedbacks: [
+    {
+      id: 1,
+      text: 'feedback de test',
+      fingerprint: 'fingerprint',
+      api_key: auth.user.api_token,
+      type: 'issue',
+      device: 'macbook',
+      page: 'page',
+      created_at: '14:51'
+    },
+    {
+      id: 2,
+      text: 'feedback de test',
+      fingerprint: 'fingerprint',
+      api_key: auth.user.api_token,
+      type: 'issue',
+      device: 'macbook',
+      page: 'page',
+      created_at: '15:30'
+    }
+  ],
   currentFeedbackType: '',
   pagination: {
     limit: 5,
@@ -40,7 +61,8 @@ async function getAll(){
     state.isLoading = false
 
   } catch (e) {
-	  state.hasErrors = true
+    state.hasErrors = true
+    state.isLoading = false
   }
 }
 </script>
@@ -83,7 +105,7 @@ async function getAll(){
             v-for="(feedback, index) in state.myFeedbacks"
             :key="feedback.id"
             :is-opended="index === 0"
-            :myFeedbacks="feedback"
+            :myFeedback="feedback"
             class="mb-8"/>
         </div>
       </div>

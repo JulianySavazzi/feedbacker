@@ -34,7 +34,7 @@ const classColor = computed(() => {
 </script>
 
 <template>
-	<span :class="`bg-${classColor}`"
+	<span :class="bg-`${classColor}`"
 		class="p-2 text-xs font-black text-white uppercase rounded-full">
 		{{label}}
 	</span>

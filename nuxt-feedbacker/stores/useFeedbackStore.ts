@@ -25,15 +25,15 @@ export const useFeedbackStore = defineStore('feedbacks', () => {
 
 	const auth = useAuthStore()
 
-	async function getAll({ type, limit = defaultPagination.limit, offset = defaultPagination.offset}) {
+	async function getAll({ type = '', limit = defaultPagination.limit, offset = defaultPagination.offset}) {
 		const query = { limit, offset }
 			
-		if (type) {
+		if (type != '') {
 			query.type = type
 		}
 		
 		const { data, error } = await useApiFetch("/api/feedbacks", { params: query})
-		feedback.value = data.value;
+		feedback.value = data.value as Feedback;
 			
 		console.log("FEDDBACK: " + feedback.value + "\nERRO: " + error.value)
 		return feedback.value
@@ -41,7 +41,7 @@ export const useFeedbackStore = defineStore('feedbacks', () => {
 
 	async function getSumary() {
 		const { data, error } = await useApiFetch("/api/feedbacks/sumary")
-		feedback.value = data.value;
+		feedback.value = data.value as Feedback;
 
 		console.log("FEDDBACK: " + feedback.value + "\nERRO: " + error.value)
 		return feedback.value
@@ -59,10 +59,5 @@ export const useFeedbackStore = defineStore('feedbacks', () => {
 		return register
 	}
 	
-	async function refreshFilters(type){
-		const {refreshFilters} = await getAll(type)
-		return refreshFilters
-	}
-	
-	return {feedback, getAll, getSumary, register, refreshFilters}
+	return {feedback, getAll, getSumary, register}
 }, {persist: true})
