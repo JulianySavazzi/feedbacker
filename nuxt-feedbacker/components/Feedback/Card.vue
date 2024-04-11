@@ -13,11 +13,10 @@ const state = reactive({
 })
 
 function handleToggle(){
-	state.isOpen = true
-	if(!state.isOpen){
-		state.isOpen
-	}else if(state.isOpen){
-		!state.isOpen
+	if(state.isOpen == false){
+		state.isOpen = true
+	} else if(state.isOpen == true){
+		state.isOpen = false
 	}
 	console.log("Open: ",state.isOpen)
 }
@@ -53,8 +52,9 @@ function handleToggle(){
 				</div>
 			</div>
 		</div>
-		<div class="flex justify-end mt-8 text-brand-graydark" v-if="!state.isOpen">
-			+
+		<div class="flex justify-end mt-8 text-brand-graydark" >
+			<span v-if="!state.isOpen">+</span>
+			<span v-if="state.isOpen">-</span>
 		</div>
 	</div>
 </template>

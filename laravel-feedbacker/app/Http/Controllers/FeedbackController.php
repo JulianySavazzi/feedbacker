@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Feedback;
+use Symfony\Component\HttpFoundation\Response;
 
 class FeedbackController extends Controller
 {
@@ -56,19 +57,19 @@ class FeedbackController extends Controller
 //                    ]);
 //            })->orderBy('type', 'ASC')->get();
 
-//        $feedbacks = [
-//            "all" => 6,
-//            "issue" => 2,
-//            "idea" => 2,
-//            "other" => 2
-//        ];
-
-//        return response()->json([
-//            'feedbacks' => $feedbacks
-//         ], Response::HTTP_OK);
+        $feedbacks = [
+            "all" => 6,
+            "issue" => 2,
+            "idea" => 2,
+            "other" => 2
+        ];
 
         return response()->json([
-            Feedback::where('api_key', $userLogged)->get()
-        ], Response::HTTP_OK);
+            'feedbacks' => $feedbacks
+         ], Response::HTTP_OK);
+
+//        return response()->json([
+//            Feedback::where('api_key', $userLogged)->get()
+//        ], Response::HTTP_OK);
     }
 }
