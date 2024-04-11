@@ -32,7 +32,6 @@ function handleSelected({ type }){
 	emit('select', type)
 	console.log("cliquei em ", type)
 }
-
 </script>
 
 <template>

@@ -35,7 +35,7 @@ export const useFeedbackStore = defineStore('feedbacks', () => {
 		const { data, error } = await useApiFetch("/api/feedbacks", { params: query})
 		feedback.value = data.value;
 			
-		console.log(feedback.value, error)
+		console.log("FEDDBACK: " + feedback.value + "\nERRO: " + error.value)
 		return feedback.value
 	}
 
@@ -43,7 +43,7 @@ export const useFeedbackStore = defineStore('feedbacks', () => {
 		const { data, error } = await useApiFetch("/api/feedbacks/sumary")
 		feedback.value = data.value;
 
-		console.log(feedback.value, error)
+		console.log("FEDDBACK: " + feedback.value + "\nERRO: " + error.value)
 		return feedback.value
 	}
 
