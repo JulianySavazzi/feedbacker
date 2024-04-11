@@ -35,6 +35,7 @@ npm i pinia -f
 ## Links uteis e documentações utilizadas:
 - [Treinamento gratuito Vue Brasil](https://igorhalfeld.teachable.com/p/treinamento-completo-e-gratuito-de-vue-js-3-do-iniciante-ao-avancado)
 - [Fluxograma Feedbacker](https://excalidraw.com/#json=bWN6rG6zKQvykHkgT11gQ,_MKf8w1q6Wzav2hVTuSWvA)
+- [Exemplo do widget de feedbacks](https://feedback.fish/get-started/)
 	- [Tailwind CSS](https://tailwindcss.com/docs/guides/vite#vue)
 	- [Vue JS Quick Start](https://pt.vuejs.org/guide/quick-start.html)
 	- [Laravel 10](https://laravel.com/docs/10.x#why-laravel)
