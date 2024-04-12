@@ -49,7 +49,7 @@ function handleSelected({label}){
 				<span :class="filter.color.bg"
 					class="inline-block w-2 h-2 m-1 rounded-full"/> {{filter.label}}
 			</div>
-			<span :class="filter.active ? filter.color.text : text-black" class="m-1 font-bold">{{filter.amount}}</span>
+			<span :class="filter.active ? filter.color.text : 'text-black'" class="m-1 font-bold">{{filter.amount}}</span>
 		</li>
 	</ul>
 </div>

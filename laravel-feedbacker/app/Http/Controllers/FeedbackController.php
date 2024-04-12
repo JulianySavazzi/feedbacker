@@ -60,8 +60,8 @@ class FeedbackController extends Controller
 //            })->orderBy('type', 'ASC')->get();
 
         $feedbacks = [
-            "all" => Feedback::all()->count(),
-            "issue" => Feedback::where('fingerprint', $userLogged)->where('type', 'ISSUE')->count(),
+            "all" => Feedbacks::all()->count(),
+            "issue" => Feedbacks::where('fingerprint', $userLogged)->where('type', 'ISSUE')->count(),
             "idea" => 2,
             "other" => 2
         ];
