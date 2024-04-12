@@ -31,6 +31,16 @@ const state = reactive({
       device: 'macbook',
       page: 'page',
       created_at: '15:30'
+    },
+    {
+      id: 3,
+      text: 'testando meus feedbacks',
+      fingerprint: 'fingerprint',
+      api_key: auth.user.api_token,
+      type: 'outro',
+      device: 'macbook',
+      page: 'page',
+      created_at: '15:30'
     }
   ],
   currentFeedbackType: '',
