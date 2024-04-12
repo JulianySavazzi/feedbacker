@@ -1,9 +1,7 @@
 <script setup>
-import {reactive} from 'vue'
-
 const emit = defineEmits(['select'])
 
-const auth = useAuthStore()
+//const auth = useAuthStore()
 const feedbacks = useFeedbackStore()
 
 try{
@@ -16,21 +14,21 @@ try{
 	state.filters = applyFiltersStructure({all: 0, issue: 0, idea: 0, other: 0})
 }
 
-function handleSelected({ type }){
+function handleSelected({label}){
 	//checar loading global -> pagina credentials -> api_key
-	if(status.isLoading){
+	if(state.isLoading){
 		return
 	}
 	
 	state.filters = state.filters.map((filter) => {
-		if(filter.type === type){
+		if(filter.label === label){
 			return {...filter, active: true}
 		}
 		return {...filter, active: false}
 	})
 	
-	emit('select', type)
-	console.log("cliquei em ", type)
+	emit('select', label)
+	console.log("cliquei em ", label)
 }
 </script>
 
@@ -51,13 +49,15 @@ function handleSelected({ type }){
 				<span :class="filter.color.bg"
 					class="inline-block w-2 h-2 m-1 rounded-full"/> {{filter.label}}
 			</div>
-			<span :class="filter.active ? filter.color.text : text-brand-darkgray" class="m-1 font-bold">{{filter.amount}}</span>
+			<span :class="filter.active ? filter.color.text : text-black" class="m-1 font-bold">{{filter.amount}}</span>
 		</li>
 	</ul>
 </div>
 </template>
 
 <script>
+import {reactive} from 'vue'
+
 const LABELS = {
 	all: 'Todos',
 	issue: 'Problemas',

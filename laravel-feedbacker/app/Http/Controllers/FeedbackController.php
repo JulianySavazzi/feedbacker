@@ -44,7 +44,9 @@ class FeedbackController extends Controller
     public function sumary()
     { //get feedback index 
 
-        $userLogged = Auth::user()->api_token;
+//        $userLogged = Auth::user();
+         $userLogged = 1;
+
 //        $type = $feedbacks->type;
         
 //        $feedbacks = Feedback::all();
@@ -58,8 +60,8 @@ class FeedbackController extends Controller
 //            })->orderBy('type', 'ASC')->get();
 
         $feedbacks = [
-            "all" => 6,
-            "issue" => 2,
+            "all" => Feedback::all()->count(),
+            "issue" => Feedback::where('fingerprint', $userLogged)->where('type', 'ISSUE')->count(),
             "idea" => 2,
             "other" => 2
         ];

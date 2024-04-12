@@ -59,6 +59,7 @@ npm i pinia -f
 	- [Session Laravel](https://laravel.com/docs/10.x/session#implementing-the-driver)
 	- [Sanctum token expiration](https://laravel.com/docs/10.x/sanctum#token-expiration)
 	- [Fortify Registration](https://laravel.com/docs/11.x/fortify#registration)
+	- [Migrations comandos artisan](https://laravel.com/docs/10.x/migrations#roll-back-migrate-using-a-single-command)
 
 
 
