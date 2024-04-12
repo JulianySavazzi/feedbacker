@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Feedback;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class FeedbackController extends Controller
@@ -12,16 +13,15 @@ class FeedbackController extends Controller
      * 
      * feedbacks table -> columns
      * text √
-     * fingerprint √
+     * fingerprint -> user id (foreign) √
      * id: uuidv4() √
-     * api_key -> user apiKey (foreign) √
+     * api_key -> user apiKey √
      * type: String(type).toUpperCase() √
      * device √
      * page √
      * created_at: new Date().getTime() √
      *
      */
-    
     public function all()
     { //get all feedbacks
         $feedbacks = Feedback::all();
@@ -40,12 +40,11 @@ class FeedbackController extends Controller
      * "other": 0
      * }
      */
-
     public function sumary()
     { //get feedback index 
 
-//        $userLogged = Auth::user();
-         $userLogged = 1;
+        $userLogged = Auth::user();
+//         $userLogged = 1;
 
 //        $type = $feedbacks->type;
         
@@ -60,18 +59,14 @@ class FeedbackController extends Controller
 //            })->orderBy('type', 'ASC')->get();
 
         $feedbacks = [
-            "all" => Feedbacks::all()->count(),
-            "issue" => Feedbacks::where('fingerprint', $userLogged)->where('type', 'ISSUE')->count(),
-            "idea" => 2,
-            "other" => 2
+            "all" => Feedback::all()->count(),
+            "issue" => Feedback::where('fingerprint', $userLogged)->where('type', 'ISSUE')->count(),
+            "idea" => Feedback::where('fingerprint', $userLogged)->where('type', 'IDEA')->count(),
+            "other" => Feedback::where('fingerprint', $userLogged)->where('type', 'OTHER')->count()
         ];
 
         return response()->json([
             'feedbacks' => $feedbacks
          ], Response::HTTP_OK);
-
-//        return response()->json([
-//            Feedback::where('api_key', $userLogged)->get()
-//        ], Response::HTTP_OK);
     }
 }

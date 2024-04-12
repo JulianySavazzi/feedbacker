@@ -31,8 +31,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 
     Route::get('/feedbacks', [\App\Http\Controllers\FeedbackController::class, 'all'])->name('feedbacks.all');
 
-//    Route::get('feedbacks/sumary', [\App\Http\Controllers\FeedbackController::class, 'sumary'])->name('feedbacks.sumary');
-
+    Route::get('feedbacks/sumary', [\App\Http\Controllers\FeedbackController::class, 'sumary'])->name('feedbacks.sumary');
 });
 
-Route::get('feedbacks/sumary', [\App\Http\Controllers\FeedbacksController::class, 'sumary'])->name('feedbacks.sumary');
+//Route::get('feedbacks/sumary', [\App\Http\Controllers\FeedbacksController::class, 'sumary'])->name('feedbacks.sumary');
