@@ -6,8 +6,10 @@ const feedbacks = useFeedbackStore()
 
 try{
 	//fetch sumary route
-	const {data} = await feedbacks.getSumary()
-	state.filters = applyFiltersStructure(data)
+//	const {data} = await feedbacks.getSummary()
+	const {data} = await useApiFetch("/api/feedbacks/summary")
+	console.log(data.value)
+	state.filters = applyFiltersStructure(data.value)
 }catch(e){
 	state.hasErrors = true
 	console.log(e.message)
@@ -80,19 +82,21 @@ const state = reactive({
 	]
 })
 
-function applyFiltersStructure(sumary){
-	return Object.keys(sumary).reduce((acc, cur) => {
+function applyFiltersStructure(summary){
+	return Object.keys(summary).reduce((acc, cur) => {
 		const currentFilter = {
 			label: LABELS[cur],
 			color: COLORS[cur],
-			amount: sumary[cur]
+			amount: summary[cur]
 		}
 
 		if(cur === 'all'){
 			currentFilter.active = true
 		} else {
-			currentFilter.active = cur
+//			currentFilter.active = cur
+			currentFilter.label= cur
 		}
+
 		console.log(currentFilter.value)
 		return [...acc, currentFilter]
 	}, [])

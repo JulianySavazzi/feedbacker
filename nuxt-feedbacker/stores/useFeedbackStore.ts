@@ -11,6 +11,13 @@ type Feedback = {
 	created_at: string
 }
 
+type Sumary = {
+	all: string,
+	issue: string,
+	idea: string,
+	other: string
+}
+
 type RegistrationFeedback = {
 	
 }
@@ -26,9 +33,10 @@ export const useFeedbackStore = defineStore('feedbacks', () => {
 	const auth = useAuthStore()
 
 	async function getAll({ type = '', limit = defaultPagination.limit, offset = defaultPagination.offset}) {
-		const query = { limit, offset }
+		let query = { type, limit, offset }
 			
 		if (type != '') {
+
 			query.type = type
 		}
 		
@@ -39,12 +47,12 @@ export const useFeedbackStore = defineStore('feedbacks', () => {
 		return feedback.value
 	}
 
-	async function getSumary() {
-		const { data, error } = await useApiFetch("/api/feedbacks/sumary")
-		feedback.value = data.value as Feedback;
+	async function getSummary() {
+		const { data, error } = await useApiFetch("/api/feedbacks/summary")
+//		let response = data.value as Sumary;
 
-		console.log("FEDDBACK: " + feedback.value + "\nERRO: " + error.value)
-		return feedback.value
+		console.log("FEDDBACK: " + data.value + "\nERRO: " + error.value)
+		return data.value
 	}
 
 	async function register(infos: RegistrationFeedback) {
