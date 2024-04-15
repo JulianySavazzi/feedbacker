@@ -25,7 +25,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     //retornar usuario logado
     Route::get('/user', function (Request $request){
         return $request->user();
-    });
+    })->name('user');
 
     Route::post('/user/generate', [\App\Http\Controllers\UserKeyController::class, 'generate'])->name('user.generate');
 

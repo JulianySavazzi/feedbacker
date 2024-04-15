@@ -40,23 +40,10 @@ class FeedbackController extends Controller
      * "other": 0
      * }
      */
-    public function sumary()
+    public function summary()
     { //get feedback index 
 
-        $userLogged = Auth::user();
-//         $userLogged = 1;
-
-//        $type = $feedbacks->type;
-        
-//        $feedbacks = Feedback::all();
-
-//        $feedbacks = Feedback::where(
-//            function ($query) use ($userLogged, $type){
-//                $query->where([
-//                    'api_key' => $userLogged,
-//                    'type' => $type
-//                    ]);
-//            })->orderBy('type', 'ASC')->get();
+        $userLogged = Auth::user()->id;
 
         $feedbacks = [
             "all" => Feedback::all()->count(),

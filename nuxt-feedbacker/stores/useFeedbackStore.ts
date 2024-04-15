@@ -67,5 +67,5 @@ export const useFeedbackStore = defineStore('feedbacks', () => {
 		return register
 	}
 	
-	return {feedback, getAll, getSumary, register}
+	return {feedback, getAll, getSummary, register}
 }, {persist: true})

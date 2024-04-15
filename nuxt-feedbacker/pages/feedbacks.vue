@@ -12,36 +12,36 @@ const state = reactive({
   hasErrors: false,
   isLoading: false,
   myFeedbacks: [
-    {
-      id: 1,
-      text: 'feedback de test',
-      fingerprint: 'fingerprint',
-      api_key: auth.user.api_token,
-      type: 'ISSUE',
-      device: 'macbook',
-      page: 'page',
-      created_at: '14:51'
-    },
-    {
-      id: 2,
-      text: 'testando feedback',
-      fingerprint: 'fingerprint',
-      api_key: auth.user.api_token,
-      type: 'IDEA',
-      device: 'macbook',
-      page: 'page',
-      created_at: '15:30'
-    },
-    {
-      id: 3,
-      text: 'testando meus feedbacks',
-      fingerprint: 'fingerprint',
-      api_key: auth.user.api_token,
-      type: 'outro',
-      device: 'macbook',
-      page: 'page',
-      created_at: '15:30'
-    }
+//    {
+//      id: 1,
+//      text: 'feedback de test',
+//      fingerprint: 'fingerprint',
+//      api_key: auth.user.api_token,
+//      type: 'ISSUE',
+//      device: 'macbook',
+//      page: 'page',
+//      created_at: '14:51'
+//    },
+//    {
+//      id: 2,
+//      text: 'testando feedback',
+//      fingerprint: 'fingerprint',
+//      api_key: auth.user.api_token,
+//      type: 'IDEA',
+//      device: 'macbook',
+//      page: 'page',
+//      created_at: '15:30'
+//    },
+//    {
+//      id: 3,
+//      text: 'testando meus feedbacks',
+//      fingerprint: 'fingerprint',
+//      api_key: auth.user.api_token,
+//      type: 'outro',
+//      device: 'macbook',
+//      page: 'page',
+//      created_at: '15:30'
+//    }
   ],
   currentFeedbackType: '',
   pagination: {
@@ -52,6 +52,7 @@ const state = reactive({
 
 onMounted(() => {
   getAll()
+  console.log(state.myFeedbacks.value)
 })
 
 console.log(auth.user.name)
@@ -61,14 +62,17 @@ async function getAll(){
   try{
     state.isLoading = true
 
-    const { data } = await feedbacks.getAll({
-      ...state.pagination,
-      type: state.currentFeedbackType
-    })
+//    const { data } = await feedbacks.getAll({
+//      ...state.pagination,
+//      type: state.currentFeedbackType
+//    })
 
-    state.myFeedbacks = data.results
+    const { data } = await useApiFetch("/api/feedbacks", { params: state.pagination })
+
+    state.myFeedbacks = data.value
     state.pagination = data.pagination
     state.isLoading = false
+    console.log(data.value)
 
   } catch (e) {
     state.hasErrors = true
@@ -105,7 +109,7 @@ async function getAll(){
             v-if="state.hasErrors"
             class="text-lg text-center font-regular text-brand-pink ">Aconteceu um erro ao carregar os feedbacks...</p>
           <p
-            v-if="!state.myFeedbacks.lenght && !state.isLoading"
+            v-if="state.myFeedbacks.lenght<=0 && !state.isLoading"
             class="text-lg text-center font-regular text-brand-pink ">Nenhum feedback por enquanto...</p>
       <!--cards    -->
           <FeedbackCardLoading
