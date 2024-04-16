@@ -23,12 +23,11 @@ class FeedbackController extends Controller
      *
      */
     public function all()
-    { //get all feedbacks
-        $feedbacks = Feedback::all();
+    { //get all feedbacks for logged user
         
-        return response()->json([
-            'feedbacks' => $feedbacks
-        ], Response::HTTP_OK);
+        $feedbacks = Feedback::all()->where('fingerprint', Auth::user()->id);
+
+        return response()->json($feedbacks, Response::HTTP_OK);
     }
     
     /**
@@ -46,14 +45,12 @@ class FeedbackController extends Controller
         $userLogged = Auth::user()->id;
 
         $feedbacks = [
-            "all" => Feedback::all()->count(),
+            "all" => Feedback::all()->where('fingerprint', $userLogged)->count(),
             "issue" => Feedback::where('fingerprint', $userLogged)->where('type', 'ISSUE')->count(),
             "idea" => Feedback::where('fingerprint', $userLogged)->where('type', 'IDEA')->count(),
             "other" => Feedback::where('fingerprint', $userLogged)->where('type', 'OTHER')->count()
         ];
 
-        return response()->json([
-            'feedbacks' => $feedbacks
-         ], Response::HTTP_OK);
+        return response()->json($feedbacks, Response::HTTP_OK);
     }
 }

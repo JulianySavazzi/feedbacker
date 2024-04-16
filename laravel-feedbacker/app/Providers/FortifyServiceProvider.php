@@ -28,12 +28,12 @@ class FortifyServiceProvider extends ServiceProvider
             {
                 Auth::logout();
 
+                // Revoke the token that was used to authenticate the current request...
+                $request->user()->currentAccessToken()->delete();
+
                 $request->session()->invalidate();
 
                 $request->session()->regenerateToken();
-
-                // Revoke the token that was used to authenticate the current request...
-                $request->user()->currentAccessToken()->delete();
 
                 return redirect('/');
             }

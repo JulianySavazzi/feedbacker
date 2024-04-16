@@ -1,11 +1,8 @@
 <script setup>
-import {reactive} from 'vue'
 
 definePageMeta({
   middleware: 'auth'
 })
-
-const auth = useAuthStore()
 
 const defaultPagination = {
   limit: 5,
@@ -23,12 +20,10 @@ const state = reactive({
   }
 })
 
-onMounted(() => {
-  getAll()
+onMounted(async() => {
+  await getAll()
   console.log(state.feedbacks.value)
 })
-
-console.log(auth.user.name)
 
 //get all feedbacks
 async function getAll(){
@@ -40,17 +35,17 @@ async function getAll(){
 //      type: state.currentFeedbackType
 //    })
 
-    const { data } = await useApiFetch("/api/feedbacks", { params: state.pagination })
+    const { data } = await useApiFetch("/api/feedbacks", { params: state.pagination, params: state.currentFeedbackType })
 
 //    const { data } = await useApiFetch("/api/feedbacks")
 
     state.feedbacks = data.value
-    state.pagination = data.pagination
+    state.pagination = data.value.pagination
     state.isLoading = false
     console.log(data.value)
 
   } catch (e) {
-//    state.hasErrors = !!e
+    state.hasErrors = !!e
     state.isLoading = false
   }
 }
@@ -99,7 +94,7 @@ async function getFeedbacks({type, limit = defaultPagination.limit, offset = def
             v-if="state.hasErrors"
             class="text-lg text-center font-regular text-brand-pink ">Aconteceu um erro ao carregar os feedbacks... 🥺</p>
           <p
-            v-if="!!state.feedbacks.lenght && !state.isLoading"
+            v-if="state.feedbacks.lenght>0 && !state.isLoading"
             class="text-lg text-center font-regular text-brand-pink ">Nenhum feedback por enquanto... 😋</p>
       <!--cards    -->
           <FeedbackCardLoading
