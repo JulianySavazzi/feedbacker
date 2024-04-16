@@ -2,18 +2,18 @@
 import { computed } from 'vue'
 
 const props = defineProps({
-	type: {
+	feedbackType: {
 		type: String,
 		required: true
 	}
 })
 
 const label = computed(() => {
-	if(props.type === 'ISSUE'){
+	if(props.feedbackType === 'ISSUE'){
 		return 'problema'
 	}
 	
-	if(props.type === 'IDEA'){
+	if(props.feedbackType === 'IDEA'){
 		return 'ideia'
 	}
 	
@@ -21,11 +21,11 @@ const label = computed(() => {
 })
 
 const classColor = computed(() => {
-	if(props.type === 'ISSUE'){
+	if(props.feedbackType === 'ISSUE'){
 		return 'bg-brand-danger'
 	}
 
-	if(props.type === 'IDEA'){
+	if(props.feedbackType === 'IDEA'){
 		return 'bg-brand-warning'
 	}
 

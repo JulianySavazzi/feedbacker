@@ -6,43 +6,16 @@ definePageMeta({
 })
 
 const auth = useAuthStore()
-const feedbacks = useFeedbackStore()
+
+const defaultPagination = {
+  limit: 5,
+  offset: 0
+}
 
 const state = reactive({
   hasErrors: false,
   isLoading: false,
-  myFeedbacks: [
-//    {
-//      id: 1,
-//      text: 'feedback de test',
-//      fingerprint: 'fingerprint',
-//      api_key: auth.user.api_token,
-//      type: 'ISSUE',
-//      device: 'macbook',
-//      page: 'page',
-//      created_at: '14:51'
-//    },
-//    {
-//      id: 2,
-//      text: 'testando feedback',
-//      fingerprint: 'fingerprint',
-//      api_key: auth.user.api_token,
-//      type: 'IDEA',
-//      device: 'macbook',
-//      page: 'page',
-//      created_at: '15:30'
-//    },
-//    {
-//      id: 3,
-//      text: 'testando meus feedbacks',
-//      fingerprint: 'fingerprint',
-//      api_key: auth.user.api_token,
-//      type: 'outro',
-//      device: 'macbook',
-//      page: 'page',
-//      created_at: '15:30'
-//    }
-  ],
+  feedbacks: [],
   currentFeedbackType: '',
   pagination: {
     limit: 5,
@@ -52,7 +25,7 @@ const state = reactive({
 
 onMounted(() => {
   getAll()
-  console.log(state.myFeedbacks.value)
+  console.log(state.feedbacks.value)
 })
 
 console.log(auth.user.name)
@@ -62,22 +35,39 @@ async function getAll(){
   try{
     state.isLoading = true
 
-//    const { data } = await feedbacks.getAll({
+//    const { data } = await getFeedbacks({
 //      ...state.pagination,
 //      type: state.currentFeedbackType
 //    })
 
     const { data } = await useApiFetch("/api/feedbacks", { params: state.pagination })
 
-    state.myFeedbacks = data.value
+//    const { data } = await useApiFetch("/api/feedbacks")
+
+    state.feedbacks = data.value
     state.pagination = data.pagination
     state.isLoading = false
     console.log(data.value)
 
   } catch (e) {
-    state.hasErrors = true
+//    state.hasErrors = !!e
     state.isLoading = false
   }
+}
+
+async function getFeedbacks({type, limit = defaultPagination.limit, offset = defaultPagination.offset}) {
+
+
+  let query = { limit, offset }
+
+  if (type) {
+    query.type = type
+  }
+
+  const { data, error } = await useApiFetch("/api/feedbacks", { params: query})
+
+  console.log("FEDDBACK: " + data.value + "\nERRO: " + error.value)
+  return data.value
 }
 </script>
 
@@ -107,19 +97,19 @@ async function getAll(){
         <div class="px-10 pt-20 col-span-3 ">
           <p
             v-if="state.hasErrors"
-            class="text-lg text-center font-regular text-brand-pink ">Aconteceu um erro ao carregar os feedbacks...</p>
+            class="text-lg text-center font-regular text-brand-pink ">Aconteceu um erro ao carregar os feedbacks... 🥺</p>
           <p
-            v-if="state.myFeedbacks.lenght<=0 && !state.isLoading"
-            class="text-lg text-center font-regular text-brand-pink ">Nenhum feedback por enquanto...</p>
+            v-if="!!state.feedbacks.lenght && !state.isLoading"
+            class="text-lg text-center font-regular text-brand-pink ">Nenhum feedback por enquanto... 😋</p>
       <!--cards    -->
           <FeedbackCardLoading
             v-if="state.isLoading"/>
           <FeedbackCard
             v-else
-            v-for="(feedback, index) in state.myFeedbacks"
+            v-for="(feedback, index) in state.feedbacks"
             :key="feedback.id"
-            :is-opended="index === 0"
-            :myFeedback="feedback"
+            :is-opened="index === 0"
+            :feedbacks="feedback"
             class="mb-8"/>
         </div>
       </div>
