@@ -1,5 +1,5 @@
 <script setup>
-import {reactive} from 'vue'
+import { getDiffTimeBetweenCurrentDate } from '../assets/js/utils/getDiffTimeBetweenCurrentDate.js'
 
 defineProps({
 	feedbacks: {
@@ -30,7 +30,7 @@ function handleToggle(){
 				<!--badge-->
 			<FeedbackBadge :feedbackType="feedbacks.type"/>
 			<span class="font-regular text-brand-graydark">
-				{{feedbacks.created_at}}
+				{{getDiffTimeBetweenCurrentDate(feedbacks.created_at)}}
 			</span>
 		</div>
 		<div class="text-lg font-medium text-gray-800">
