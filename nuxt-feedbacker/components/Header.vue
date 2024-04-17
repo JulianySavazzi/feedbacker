@@ -1,5 +1,4 @@
 <script setup>
-import {reactive} from 'vue'
 import {useToast} from "vue-toastification"
 import {removeCookie} from "/assets/js/utils/removeCookies.js"
 import useModal from '@/assets/js/hooks/useModal'
@@ -17,7 +16,6 @@ async function fetchLogout(){
 	modal.open({
 		component: 'ModalGlobalLoading'
 	})
-//	removeCookie(tabs)
 	window.localStorage.clear()
 	window.sessionStorage.clear();
 	navigateTo('/')
@@ -26,6 +24,10 @@ async function fetchLogout(){
 			console.log(response.status)
 		}
 	})
+	//try remove cookies
+//	removeCookie(tabs, "auth")
+//	removeCookie(tabs, "laravel_session")
+//	removeCookie(tabs, "XSRF-TOKEN")
 	console.log(auth.isLoggedIn)
 	console.log("TENTANDO LOGOUT: " +  error.value)
 	state.isLoading = false

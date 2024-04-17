@@ -103,8 +103,8 @@ async function handleSubmit() {
 
 	} catch (error) {
 		state.isLoading = false
-		removeCookie(tabs)
 		refresh()
+//		removeCookie(tabs, "auth")
 		state.hasErrors = !!error
 		//falha na requisição
 		console.log('Oooops: catch  ', error)

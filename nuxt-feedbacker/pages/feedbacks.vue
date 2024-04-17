@@ -25,6 +25,14 @@ onMounted(async() => {
   console.log(state.feedbacks.value)
 })
 
+//error handling by vue components -> suspense
+onErrorCaptured((error) => {
+  if(error){
+    state.hasErrors = !!e
+    state.isLoading = false
+  }
+})
+
 //get all feedbacks
 async function getAll(){
   try{
@@ -38,6 +46,11 @@ async function getAll(){
     const { data } = await useApiFetch("/api/feedbacks", { params: state.pagination, params: state.currentFeedbackType })
 
 //    const { data } = await useApiFetch("/api/feedbacks")
+
+    if(data.value === null){
+      state.hasErrors = !!error
+      console.log(data.value, state.hasErrors)
+    }
 
     state.feedbacks = data.value
     state.pagination = data.value.pagination
@@ -91,14 +104,14 @@ async function getFeedbacks({type, limit = defaultPagination.limit, offset = def
         <!--feedbacks-->
         <div class="px-10 pt-20 col-span-3 ">
           <p
-            v-if="state.hasErrors"
+            v-if="state.hasErrors && !state.isLoading"
             class="text-lg text-center font-regular text-brand-pink ">Aconteceu um erro ao carregar os feedbacks... 🥺</p>
           <p
-            v-if="state.feedbacks.lenght>0 && !state.isLoading"
+            v-if="state.feedbacks.lenght<1 && !state.isLoading"
             class="text-lg text-center font-regular text-brand-pink ">Nenhum feedback por enquanto... 😋</p>
       <!--cards    -->
           <FeedbackCardLoading
-            v-if="state.isLoading"/>
+            v-if="state.isLoading "/>
           <FeedbackCard
             v-else
             v-for="(feedback, index) in state.feedbacks"
