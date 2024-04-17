@@ -22,10 +22,16 @@ class FeedbackController extends Controller
      * created_at: new Date().getTime() √
      *
      */
-    public function all()
-    { //get all feedbacks for logged user
-        
-        $feedbacks = Feedback::all()->where('fingerprint', Auth::user()->id);
+    public function all(Request $request)
+    { //get all feedbacks for logged user or get feedbacks by type
+
+        $filter = Feedback::all()->where('fingerprint', Auth::id());
+        $type = strtoupper(filter_var($request->query("type"), FILTER_DEFAULT));
+        if(!$type || $type == 'ALL' || $type == 'TODOS'){
+            $feedbacks = $filter;
+        } else {
+            $feedbacks = $filter->where('type', $type);
+        }
 
         return response()->json($feedbacks, Response::HTTP_OK);
     }
@@ -42,7 +48,7 @@ class FeedbackController extends Controller
     public function summary()
     { //get feedback index 
 
-        $userLogged = Auth::user()->id;
+        $userLogged = Auth::id();
 
         $feedbacks = [
             "all" => Feedback::all()->where('fingerprint', $userLogged)->count(),
