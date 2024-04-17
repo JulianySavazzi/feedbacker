@@ -4,14 +4,10 @@ definePageMeta({
   middleware: 'auth'
 })
 
-const defaultPagination = {
-  limit: 5,
-  offset: 0
-}
-
 const state = reactive({
   hasErrors: false,
   isLoading: false,
+  isLoadingFeedback: false,
   feedbacks: [],
   currentFeedbackType: '',
   pagination: {
@@ -28,7 +24,7 @@ onMounted(async() => {
 //error handling by vue components -> suspense
 onErrorCaptured((error) => {
   if(error){
-    state.hasErrors = !!e
+    state.hasErrors = !!error
     state.isLoading = false
   }
 })
@@ -38,14 +34,7 @@ async function getAll(){
   try{
     state.isLoading = true
 
-//    const { data } = await getFeedbacks({
-//      ...state.pagination,
-//      type: state.currentFeedbackType
-//    })
-
-    const { data } = await useApiFetch("/api/feedbacks", { params: state.pagination, params: state.currentFeedbackType })
-
-//    const { data } = await useApiFetch("/api/feedbacks")
+    const { data } = await useApiFetch("/api/feedbacks")
 
     if(data.value === null){
       state.hasErrors = !!error
@@ -63,19 +52,22 @@ async function getAll(){
   }
 }
 
-async function getFeedbacks({type, limit = defaultPagination.limit, offset = defaultPagination.offset}) {
-
-
-  let query = { limit, offset }
-
-  if (type) {
-    query.type = type
+async function changeFeedbacksType(type){
+  try{
+    state.isLoadingFeedback = true
+      //pagination
+    state.currentFeedbackType = type
+      //request type when filters is clicked
+    const { data } = await useApiFetch('/api/feedbacks', {
+      query: {type: type}
+    })
+    state.feedbacks = data.value
+    state.pagination = data.value.pagination
+    state.isLoadingFeedback = false
+  } catch (e) {
+    state.hasErrors = !!e
+    state.isLoadingFeedback = false
   }
-
-  const { data, error } = await useApiFetch("/api/feedbacks", { params: query})
-
-  console.log("FEDDBACK: " + data.value + "\nERRO: " + error.value)
-  return data.value
 }
 </script>
 
@@ -93,7 +85,7 @@ async function getFeedbacks({type, limit = defaultPagination.limit, offset = def
          <Suspense>
           <!-- componente com dependências assíncronas encaixada -->
            <template #default>
-             <FeedbackFilters/>
+             <FeedbackFilters @select="changeFeedbacksType"/>
            </template>
           <!-- estado de carregamento através da ranhura #fallback -->
            <template #fallback>
@@ -107,11 +99,11 @@ async function getFeedbacks({type, limit = defaultPagination.limit, offset = def
             v-if="state.hasErrors && !state.isLoading"
             class="text-lg text-center font-regular text-brand-pink ">Aconteceu um erro ao carregar os feedbacks... 🥺</p>
           <p
-            v-if="state.feedbacks.lenght<1 && !state.isLoading"
+            v-if="state.feedbacks.length<1 && !state.isLoading"
             class="text-lg text-center font-regular text-brand-pink ">Nenhum feedback por enquanto... 😋</p>
       <!--cards    -->
           <FeedbackCardLoading
-            v-if="state.isLoading "/>
+            v-if="state.isLoading || state.isLoadingFeedback"/>
           <FeedbackCard
             v-else
             v-for="(feedback, index) in state.feedbacks"

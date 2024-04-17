@@ -35,7 +35,7 @@ function applyFiltersStructure(summary){
 		if(cur === 'all'){
 			currentFilter.active = true
 		} else {
-			currentFilter.label= cur
+			currentFilter.label = cur
 		}
 
 		console.log(currentFilter.value)
