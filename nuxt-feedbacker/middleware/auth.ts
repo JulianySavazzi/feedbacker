@@ -4,7 +4,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
 	
 	console.log(auth.isLoggedIn)
 	
-	if (!auth.isLoggedIn || auth.user === null) {
+	if (!auth.isLoggedIn && auth.user === null) {
 		return navigateTo('/')
 	}
 

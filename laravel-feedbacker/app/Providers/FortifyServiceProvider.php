@@ -23,21 +23,18 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
-            public function toResponse($request)
-            {
-                Auth::logout();
-
-                // Revoke the token that was used to authenticate the current request...
-                $request->user()->currentAccessToken()->delete();
-
-                $request->session()->invalidate();
-
-                $request->session()->regenerateToken();
-
-                return redirect('/');
-            }
-        });
+//        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
+//            public function toResponse($request)
+//            {
+//                // Revoke the token that was used to authenticate the current request...
+//                $request->user()->currentAccessToken()->delete();
+//                Auth::logout();
+//                $request->session()->invalidate();
+//                $request->session()->regenerateToken();
+//
+//                return redirect('/');
+//            }
+//        });
     }
 
     /**

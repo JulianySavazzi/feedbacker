@@ -16,22 +16,16 @@ async function fetchLogout(){
 	modal.open({
 		component: 'ModalGlobalLoading'
 	})
+	await auth.logout()
 	window.localStorage.clear()
 	window.sessionStorage.clear();
-	navigateTo('/')
-	const {error} = await auth.logout({}, {
-		onResponseError({response}){
-			console.log(response.status)
-		}
-	})
 	//try remove cookies
-//	removeCookie(tabs, "auth")
-//	removeCookie(tabs, "laravel_session")
-//	removeCookie(tabs, "XSRF-TOKEN")
+//	removeCookie(window, "auth")
+//	removeCookie(window, "laravel_session")
+	navigateTo('/')
 	console.log(auth.isLoggedIn)
-	console.log("TENTANDO LOGOUT: " +  error.value)
 	state.isLoading = false
-	if(auth.isLoggedIn == null || state.isLoading == false){
+	if(auth.isLoggedIn === false && state.isLoading === false){
 		modal.close({
 			component: 'ModalGlobalLoading'
 		})
@@ -40,17 +34,13 @@ async function fetchLogout(){
 
 async function handleLogout(){
 	state.isLoading = true
-	modal.open({
-		component: 'ModalGlobalLoading'
-	})
 	try{
 		toast("saindo...")
-		fetchLogout()
-		navigateTo('/')
+		await fetchLogout()
 		state.isLoading = false
 	} catch(e){
 		console.log("CATCH: ", e.message)
-		fetchLogout()
+		await fetchLogout()
 		navigateTo('/')
 		state.isLoading = false
 	}

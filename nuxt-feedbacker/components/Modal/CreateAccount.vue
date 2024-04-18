@@ -5,6 +5,7 @@ import {useField} from 'vee-validate'
 import {validateEmptyAndLength, validadeEmptyAndEmail} from "/assets/js/utils/validators.js"
 import {removeCookie} from "/assets/js/utils/removeCookies.js"
 import {useToast} from "vue-toastification"
+import {resetAllStores} from '/stores/useAuthStore.ts'
 import Icon from '/components/Icons/Index.vue'
 
 //vee-validade email
@@ -105,6 +106,7 @@ async function handleSubmit() {
 		state.isLoading = false
 		refresh()
 //		removeCookie(tabs, "auth")
+		resetAllStores()
 		state.hasErrors = !!error
 		//falha na requisição
 		console.log('Oooops: catch  ', error)

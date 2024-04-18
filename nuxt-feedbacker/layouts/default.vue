@@ -35,14 +35,14 @@ const auth = useAuthStore()
 <template>
 	<!--<p>Some default layout content shared across all pages</p>-->
 	<!--<slot /> -> indica que deve carregar a pagina-->
+	<Header	v-if="auth.user !== null && auth.isLoggedIn"/>
 	<HomeHeader
-		v-if="auth.user === null"
+		v-else
 		@create-account="handleAccountCreate"
 		@login="handleLogin"
 		@success-account="handleSuccessAccount"
 		@global-loading="handleGlobalLoading"
 	/>
-	<Header	v-else/>
 	<slot/>
 	<Footer/>
 </template>
