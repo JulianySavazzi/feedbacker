@@ -8,17 +8,23 @@ const state = reactive({
   hasErrors: false,
   isLoading: false,
   isLoadingFeedback: false,
+  isLoadingMoreFeedbacks: false,
   feedbacks: [],
   currentFeedbackType: '',
   pagination: {
     limit: 5,
-    offset: 0
+    offset: 0,
+    total: 0
   }
 })
 
 onMounted(async() => {
+  window.addEventListener('scroll', handleScroll, false)
   await getAll()
-  console.log(state.feedbacks.value)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll, false)
 })
 
 //error handling by vue components -> suspense
@@ -28,6 +34,37 @@ onErrorCaptured((error) => {
     state.isLoading = false
   }
 })
+
+async function  handleScroll(){
+  //saber a rolagem da pagina
+  const isBottomOfWindow = Math.ceil(document.documentElement.scrollTop + window.innerHeight) >= document.documentElement.scrollHeight
+
+  //verificar se precisa fazer a paginacao
+  if(state.isLoading || state.isLoadingMoreFeedbacks) return
+  if(isBottomOfWindow) return
+  if(state.feedbacks.length >= state.pagination.total) return
+
+  //preparar a paginacao
+  try{
+    state.isLoadingMoreFeedback = true
+
+    const { data } = await  useApiFetch('/api/feedbacks', {
+      ...state.pagination,
+      type: state.currentFeedbackType,
+      offset: (state.pagination.offset + 5)
+    })
+
+    if(data.value.length){
+      state.feedbacks.push(...data.value)
+    }
+
+    state.isLoadingMoreFeedback = false
+    state.pagination = data.pagination
+  } catch (e) {
+    state.hasErrors = !!e
+    state.isLoadingMoreFeedback = false
+  }
+}
 
 //get all feedbacks
 async function getAll(){
@@ -56,10 +93,12 @@ async function changeFeedbacksType(type){
   try{
     state.isLoadingFeedback = true
       //pagination
+//    state.pagination.offset = 0
+//    state.pagination.limit = 5
     state.currentFeedbackType = type
       //request type when filters is clicked
     const { data } = await useApiFetch('/api/feedbacks', {
-      query: {type: type}
+      query: {type: type, pagination: state.pagination}
     })
     state.feedbacks = data.value
     state.pagination = data.value.pagination
@@ -99,7 +138,7 @@ async function changeFeedbacksType(type){
             v-if="state.hasErrors && !state.isLoading"
             class="text-lg text-center font-regular text-brand-pink ">Aconteceu um erro ao carregar os feedbacks... 🥺</p>
           <p
-            v-if="state.feedbacks.length<1 && !state.isLoading"
+            v-if="state.feedbacks.length<1 && !state.isLoading && !state.isLoadingMoreFeedbacks && !state.hasErrors"
             class="text-lg text-center font-regular text-brand-pink ">Nenhum feedback por enquanto... 😋</p>
       <!--cards    -->
           <FeedbackCardLoading
@@ -111,6 +150,8 @@ async function changeFeedbacksType(type){
             :is-opened="index === 0"
             :feedbacks="feedback"
             class="mb-8"/>
+          <FeedbackCardLoading
+          v-if="state.isLoadingMoreFeedbacks"/>
         </div>
       </div>
     </div>
