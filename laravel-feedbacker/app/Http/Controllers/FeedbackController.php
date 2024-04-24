@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Feedback;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Pagination\CursorPaginator;
 
 class FeedbackController extends Controller
 {
@@ -24,16 +25,33 @@ class FeedbackController extends Controller
      */
     public function all(Request $request)
     { //get all feedbacks for logged user or get feedbacks by type
+        //get url params by query string
+        $type = strtoupper(filter_var($request->query("type"), FILTER_SANITIZE_ENCODED));
+        $limit = (int)filter_var($request->query("limit"), FILTER_SANITIZE_NUMBER_INT);
+        $offset = (int)filter_var($request->query("offset"), FILTER_SANITIZE_NUMBER_INT);
+        //select by filter for type
+        $filter = Feedback::where('fingerprint', Auth::id());
+        //feedbacks count total by type
+        $total = $filter->where('type', $type)->count();
 
-        $filter = Feedback::all()->where('fingerprint', Auth::id());
-        $type = strtoupper(filter_var($request->query("type"), FILTER_DEFAULT));
-        if(!$type || $type == 'ALL' || $type == 'TODOS'){
-            $feedbacks = $filter;
+        if(!$type || $type === 'ALL' || $type === 'TODOS' || $type === ''){
+            $feedbacks = Feedback::all()->where('fingerprint', Auth::id());
+//            $feedbacks = $filter->orderByDesc('created_at')->limit($limit)->offset($offset)->get();
         } else {
-            $feedbacks = $filter->where('type', $type);
+            $feedbacks = $filter->where('type', $type)->orderByDesc('created_at')->limit($limit)->offset($offset)->get();
         }
 
-        return response()->json($feedbacks, Response::HTTP_OK);
+        $response = [
+            "results" => $feedbacks,
+            "pagination" => [
+                "offset" => $offset,
+                "limit" => $limit,
+                "total" => $total,
+            ]
+        ];
+
+//        return response()->json($feedbacks, Response::HTTP_OK);
+        return response()->json($response, Response::HTTP_OK);
     }
     
     /**

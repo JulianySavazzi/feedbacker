@@ -1,8 +1,11 @@
 <script setup>
+import {useToast} from "vue-toastification"
 
 definePageMeta({
   middleware: 'auth'
 })
+
+const toast = useToast()
 
 const state = reactive({
   hasErrors: false,
@@ -12,7 +15,7 @@ const state = reactive({
   feedbacks: [],
   currentFeedbackType: '',
   pagination: {
-    limit: 5,
+    limit: 1,
     offset: 0,
     total: 0
   }
@@ -35,31 +38,48 @@ onErrorCaptured((error) => {
   }
 })
 
-async function  handleScroll(){
-  //saber a rolagem da pagina
+async function handleScroll(){
+  //saber a rolagem da pagina -> se rolou ate o final
   const isBottomOfWindow = Math.ceil(document.documentElement.scrollTop + window.innerHeight) >= document.documentElement.scrollHeight
 
   //verificar se precisa fazer a paginacao
   if(state.isLoading || state.isLoadingMoreFeedbacks) return
-  if(isBottomOfWindow) return
-  if(state.feedbacks.length >= state.pagination.total) return
+  if(!isBottomOfWindow) return
+  //comparar se o numero de feedbacks carregados é menor do que a quantidade salva no bd
+  if(state.feedbacks.length >= state.pagination.total){
+    toast.warning("já carregamos todos os feedbacks!")
+    return
+  }
+  console.log("scroll pagination")
 
   //preparar a paginacao
   try{
+    toast.clear()
     state.isLoadingMoreFeedback = true
+    console.log("chegou aqui try pagination")
 
-    const { data } = await  useApiFetch('/api/feedbacks', {
-      ...state.pagination,
-      type: state.currentFeedbackType,
-      offset: (state.pagination.offset + 5)
-    })
+    //    const { data } = await  useApiFetch('/api/feedbacks', {
+    //      query: {
+    //      ...state.pagination,
+    //      type: state.currentFeedbackType,
+    //      offset: (state.pagination.offset + 1),
+    //      limit: state.pagination.limit
+    //    }
+    //    })
 
-    if(data.value.length){
-      state.feedbacks.push(...data.value)
+
+    if(state.pagination.total >= state.feedbacks.length){
+      console.log("if pagination chegou aqui")
+      //atualizar o offset
+      state.pagination.offset += 1
+      const { data } = await getAll()
+
+      console.log(data.value.results.length)
     }
 
     state.isLoadingMoreFeedback = false
-    state.pagination = data.pagination
+//    state.pagination = data.value.pagination
+    console.log("PAGINATION TOTAL: " + state.pagination.total + ". ARRAY LENGTH: " + state.feedbacks.length)
   } catch (e) {
     state.hasErrors = !!e
     state.isLoadingMoreFeedback = false
@@ -71,18 +91,27 @@ async function getAll(){
   try{
     state.isLoading = true
 
-    const { data } = await useApiFetch("/api/feedbacks")
+    const { data } = await useApiFetch('/api/feedbacks', {
+      query: {
+        type: state.currentFeedbackType,
+        ...state.pagination
+      }
+    })
 
-    if(data.value === null){
+    if(data.value.results === null){
       state.hasErrors = !!error
-      console.log(data.value, state.hasErrors)
+      console.log("ERRO AO CARREGAR FEEDBACKS: " + state.hasErrors)
     }
 
-    state.feedbacks = data.value
-    state.pagination = data.value.pagination
-    state.isLoading = false
-    console.log(data.value)
+//    state.feedbacks = data.value.results
+    if(data.value.results.length){
+      state.feedbacks.push(...data.value.results)
+    }
+//    state.pagination = data.value.pagination
+    if(data.value.pagination) state.pagination = data.value.pagination;
 
+    state.isLoading = false
+    console.log(data.value.results, data.value.pagination)
   } catch (e) {
     state.hasErrors = !!e
     state.isLoading = false
@@ -92,16 +121,17 @@ async function getAll(){
 async function changeFeedbacksType(type){
   try{
     state.isLoadingFeedback = true
-      //pagination
-//    state.pagination.offset = 0
-//    state.pagination.limit = 5
     state.currentFeedbackType = type
+    state.feedbacks = []
+    state.pagination.limit = 1
+    state.pagination.offset = 0
       //request type when filters is clicked
-    const { data } = await useApiFetch('/api/feedbacks', {
-      query: {type: type, pagination: state.pagination}
-    })
-    state.feedbacks = data.value
-    state.pagination = data.value.pagination
+//    const { data } = await useApiFetch('/api/feedbacks', {
+//      query: {type: type, pagination: state.pagination}
+//    })
+//    state.feedbacks = data.value.results
+    await getAll()
+
     state.isLoadingFeedback = false
   } catch (e) {
     state.hasErrors = !!e
@@ -135,7 +165,7 @@ async function changeFeedbacksType(type){
         <!--feedbacks-->
         <div class="px-10 pt-20 col-span-3 ">
           <p
-            v-if="state.hasErrors && !state.isLoading"
+            v-if="state.hasErrors && !state.isLoading && !state.isLoadingMoreFeedbacks"
             class="text-lg text-center font-regular text-brand-pink ">Aconteceu um erro ao carregar os feedbacks... 🥺</p>
           <p
             v-if="state.feedbacks.length<1 && !state.isLoading && !state.isLoadingMoreFeedbacks && !state.hasErrors"
