@@ -62,7 +62,6 @@ async function handleScroll(){
     if(state.pagination.total >= state.feedbacks.length){
       console.log("if pagination chegou aqui")
       //atualizar o offset
-//      if(state.pagination.total >= state.pagination.offset) state.pagination.offset += 1
       state.pagination.offset += 1
       await getAll()
 
@@ -97,13 +96,15 @@ async function getAll(){
       console.log("ERRO AO CARREGAR FEEDBACKS: " + state.hasErrors)
     }
 
-    if(state.currentFeedbackType == 'all' || state.currentFeedbackType == 'Todos' || state.currentFeedbackType == '') state.feedbacks = data.value.results
-    else {
+    if(state.currentFeedbackType == 'all' || state.currentFeedbackType == 'Todos' || state.currentFeedbackType == ''){
+      state.feedbacks = data.value.results
+      toast("carregando todos os feedbacks...")
+    } else {
       if(data.value.results.length > 0){
         state.feedbacks.push(...data.value.results)
       }
     }
-//    state.pagination = data.value.pagination
+
     if(data.value.pagination) state.pagination = data.value.pagination;
 
     state.isLoading = false
