@@ -38,6 +38,7 @@ onErrorCaptured((error) => {
   }
 })
 
+//pagination
 async function handleScroll(){
   //saber a rolagem da pagina -> se rolou ate o final
   const isBottomOfWindow = Math.ceil(document.documentElement.scrollTop + window.innerHeight) >= document.documentElement.scrollHeight
@@ -58,36 +59,29 @@ async function handleScroll(){
     state.isLoadingMoreFeedback = true
     console.log("chegou aqui try pagination")
 
-    //    const { data } = await  useApiFetch('/api/feedbacks', {
-    //      query: {
-    //      ...state.pagination,
-    //      type: state.currentFeedbackType,
-    //      offset: (state.pagination.offset + 1),
-    //      limit: state.pagination.limit
-    //    }
-    //    })
-
-
     if(state.pagination.total >= state.feedbacks.length){
       console.log("if pagination chegou aqui")
       //atualizar o offset
+//      if(state.pagination.total >= state.pagination.offset) state.pagination.offset += 1
       state.pagination.offset += 1
-      const { data } = await getAll()
+      await getAll()
 
-      console.log(data.value.results.length)
     }
 
     state.isLoadingMoreFeedback = false
 //    state.pagination = data.value.pagination
     console.log("PAGINATION TOTAL: " + state.pagination.total + ". ARRAY LENGTH: " + state.feedbacks.length)
   } catch (e) {
+    toast.clear()
     state.hasErrors = !!e
+    toast.error("ERRO: "+e.message)
     state.isLoadingMoreFeedback = false
   }
 }
 
 //get all feedbacks
 async function getAll(){
+  toast.clear()
   try{
     state.isLoading = true
 
@@ -103,9 +97,11 @@ async function getAll(){
       console.log("ERRO AO CARREGAR FEEDBACKS: " + state.hasErrors)
     }
 
-//    state.feedbacks = data.value.results
-    if(data.value.results.length){
-      state.feedbacks.push(...data.value.results)
+    if(state.currentFeedbackType == 'all' || state.currentFeedbackType == 'Todos' || state.currentFeedbackType == '') state.feedbacks = data.value.results
+    else {
+      if(data.value.results.length > 0){
+        state.feedbacks.push(...data.value.results)
+      }
     }
 //    state.pagination = data.value.pagination
     if(data.value.pagination) state.pagination = data.value.pagination;
@@ -113,28 +109,30 @@ async function getAll(){
     state.isLoading = false
     console.log(data.value.results, data.value.pagination)
   } catch (e) {
+    toast.clear()
     state.hasErrors = !!e
+    toast.error("ERRO: "+e.message)
     state.isLoading = false
   }
 }
 
+//get feedbacks by type
 async function changeFeedbacksType(type){
+  toast.clear()
   try{
     state.isLoadingFeedback = true
+    //request type when filters is clicked
     state.currentFeedbackType = type
-    state.feedbacks = []
+    if(type != 'all' || type != 'Todos' || state.currentFeedbackType == '') state.feedbacks = []
     state.pagination.limit = 1
     state.pagination.offset = 0
-      //request type when filters is clicked
-//    const { data } = await useApiFetch('/api/feedbacks', {
-//      query: {type: type, pagination: state.pagination}
-//    })
-//    state.feedbacks = data.value.results
+
     await getAll()
 
     state.isLoadingFeedback = false
   } catch (e) {
     state.hasErrors = !!e
+    toast.error("ERRO: "+e.message)
     state.isLoadingFeedback = false
   }
 }

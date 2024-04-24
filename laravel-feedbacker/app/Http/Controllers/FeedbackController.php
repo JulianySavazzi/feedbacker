@@ -37,6 +37,7 @@ class FeedbackController extends Controller
         if(!$type || $type === 'ALL' || $type === 'TODOS' || $type === ''){
             $feedbacks = Feedback::all()->where('fingerprint', Auth::id());
 //            $feedbacks = $filter->orderByDesc('created_at')->limit($limit)->offset($offset)->get();
+            $total = $feedbacks->count();
         } else {
             $feedbacks = $filter->where('type', $type)->orderByDesc('created_at')->limit($limit)->offset($offset)->get();
         }
