@@ -21,9 +21,14 @@
     "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
+    "@nuxt/test-utils": "^3.12.1",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
+    "@vue/test-utils": "^2.4.5",
     "autoprefixer": "^10.4.17",
+    "happy-dom": "^14.7.1",
+    "playwright-core": "^1.43.1",
     "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "vitest": "^1.5.1"
   }
 }

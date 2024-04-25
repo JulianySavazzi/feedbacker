@@ -15,7 +15,7 @@ const state = reactive({
   feedbacks: [],
   currentFeedbackType: '',
   pagination: {
-    limit: 1,
+    limit: 2,
     offset: 0,
     total: 0
   }
@@ -44,37 +44,36 @@ async function handleScroll(){
   const isBottomOfWindow = Math.ceil(document.documentElement.scrollTop + window.innerHeight) >= document.documentElement.scrollHeight
 
   //verificar se precisa fazer a paginacao
-  if(state.isLoading || state.isLoadingMoreFeedbacks) return
+  if(state.isLoadingMoreFeedbacks || state.isLoading) return
   if(!isBottomOfWindow) return
   //comparar se o numero de feedbacks carregados é menor do que a quantidade salva no bd
-  if(state.feedbacks.length >= state.pagination.total){
-    toast.warning("já carregamos todos os feedbacks!")
-    return
-  }
-  console.log("scroll pagination")
+    if(state.feedbacks.length >= state.pagination.total){
+      toast.warning("já carregamos todos os feedbacks!")
+      return
+    }
 
   //preparar a paginacao
   try{
     toast.clear()
-    state.isLoadingMoreFeedback = true
+    state.isLoadingMoreFeedbacks = true
     console.log("chegou aqui try pagination")
 
     if(state.pagination.total >= state.feedbacks.length){
       console.log("if pagination chegou aqui")
       //atualizar o offset
-      state.pagination.offset += 1
+      state.pagination.offset += 2
       await getAll()
-
     }
 
-    state.isLoadingMoreFeedback = false
+    console.log("scroll pagination")
 //    state.pagination = data.value.pagination
     console.log("PAGINATION TOTAL: " + state.pagination.total + ". ARRAY LENGTH: " + state.feedbacks.length)
   } catch (e) {
-    toast.clear()
     state.hasErrors = !!e
     toast.error("ERRO: "+e.message)
-    state.isLoadingMoreFeedback = false
+  } finally {
+    state.isLoadingMoreFeedbacks = false
+    toast.clear()
   }
 }
 
@@ -96,24 +95,19 @@ async function getAll(){
       console.log("ERRO AO CARREGAR FEEDBACKS: " + state.hasErrors)
     }
 
-    if(state.currentFeedbackType == 'all' || state.currentFeedbackType == 'Todos' || state.currentFeedbackType == ''){
-      state.feedbacks = data.value.results
-      toast("carregando todos os feedbacks...")
-    } else {
-      if(data.value.results.length > 0){
-        state.feedbacks.push(...data.value.results)
-      }
+    if(data.value.results.length > 0){
+      state.feedbacks.push(...data.value.results)
     }
 
-    if(data.value.pagination) state.pagination = data.value.pagination;
+    state.pagination = data.value.pagination;
 
-    state.isLoading = false
     console.log(data.value.results, data.value.pagination)
   } catch (e) {
-    toast.clear()
     state.hasErrors = !!e
     toast.error("ERRO: "+e.message)
+  } finally {
     state.isLoading = false
+    toast.clear()
   }
 }
 
@@ -124,17 +118,18 @@ async function changeFeedbacksType(type){
     state.isLoadingFeedback = true
     //request type when filters is clicked
     state.currentFeedbackType = type
-    if(type != 'all' || type != 'Todos' || state.currentFeedbackType == '') state.feedbacks = []
-    state.pagination.limit = 1
+    state.feedbacks = []
+    state.pagination.limit = 2
     state.pagination.offset = 0
 
     await getAll()
 
-    state.isLoadingFeedback = false
   } catch (e) {
     state.hasErrors = !!e
     toast.error("ERRO: "+e.message)
+  } finally {
     state.isLoadingFeedback = false
+    toast.clear()
   }
 }
 </script>
@@ -163,15 +158,14 @@ async function changeFeedbacksType(type){
        </div>
         <!--feedbacks-->
         <div class="px-10 pt-20 col-span-3 ">
-          <p
-            v-if="state.hasErrors && !state.isLoading && !state.isLoadingMoreFeedbacks"
+          <!--errors-->
+          <p v-if="state.hasErrors && !state.isLoading && !state.isLoadingMoreFeedbacks && !state.isLoadingFeedback"
             class="text-lg text-center font-regular text-brand-pink ">Aconteceu um erro ao carregar os feedbacks... 🥺</p>
-          <p
-            v-if="state.feedbacks.length<1 && !state.isLoading && !state.isLoadingMoreFeedbacks && !state.hasErrors"
+            <!--nao tem feedbacks-->
+          <p v-if="state.feedbacks.length<1 && !state.isLoading && !state.isLoadingMoreFeedbacks && !state.isLoadingFeedback && !state.hasErrors"
             class="text-lg text-center font-regular text-brand-pink ">Nenhum feedback por enquanto... 😋</p>
       <!--cards    -->
-          <FeedbackCardLoading
-            v-if="state.isLoading || state.isLoadingFeedback"/>
+          <FeedbackCardLoading v-if="!state.isLoadingMoreFeedbacks && state.isLoading"/>
           <FeedbackCard
             v-else
             v-for="(feedback, index) in state.feedbacks"
@@ -179,8 +173,7 @@ async function changeFeedbacksType(type){
             :is-opened="index === 0"
             :feedbacks="feedback"
             class="mb-8"/>
-          <FeedbackCardLoading
-          v-if="state.isLoadingMoreFeedbacks"/>
+          <FeedbackCardLoading v-if="state.isLoadingMoreFeedbacks"/>
         </div>
       </div>
     </div>

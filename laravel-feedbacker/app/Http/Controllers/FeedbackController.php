@@ -23,23 +23,28 @@ class FeedbackController extends Controller
      * created_at: new Date().getTime() √
      *
      */
+
+    /**
+    * get all feedbacks for logged user
+    * or get feedbacks by type
+    **/
     public function all(Request $request)
-    { //get all feedbacks for logged user or get feedbacks by type
+    {
         //get url params by query string
         $type = strtoupper(filter_var($request->query("type"), FILTER_SANITIZE_ENCODED));
         $limit = (int)filter_var($request->query("limit"), FILTER_SANITIZE_NUMBER_INT);
         $offset = (int)filter_var($request->query("offset"), FILTER_SANITIZE_NUMBER_INT);
-        //select by filter for type
-        $filter = Feedback::where('fingerprint', Auth::id());
-        //feedbacks count total by type
-        $total = $filter->where('type', $type)->count();
+        //select by user logged
+        $filter = Feedback::where('fingerprint', Auth::id())->orderByDesc('created_at');
 
         if(!$type || $type === 'ALL' || $type === 'TODOS' || $type === ''){
-            $feedbacks = Feedback::all()->where('fingerprint', Auth::id());
-//            $feedbacks = $filter->orderByDesc('created_at')->limit($limit)->offset($offset)->get();
-            $total = $feedbacks->count();
+            $feedbacks = $filter->limit($limit)->offset($offset)->get();
+            //feedbacks count total
+            $total = Feedback::all()->where('fingerprint', Auth::id())->count();
         } else {
-            $feedbacks = $filter->where('type', $type)->orderByDesc('created_at')->limit($limit)->offset($offset)->get();
+            $feedbacks = $filter->where('type', $type)->limit($limit)->offset($offset)->get();
+            //feedbacks count total by type
+            $total = $filter->where('type', $type)->count();
         }
 
         $response = [
@@ -51,7 +56,6 @@ class FeedbackController extends Controller
             ]
         ];
 
-//        return response()->json($feedbacks, Response::HTTP_OK);
         return response()->json($response, Response::HTTP_OK);
     }
     
@@ -65,8 +69,7 @@ class FeedbackController extends Controller
      * }
      */
     public function summary()
-    { //get feedback index 
-
+    { /** get feedback index **/
         $userLogged = Auth::id();
 
         $feedbacks = [
