@@ -26,10 +26,22 @@ servidor web via node na pasta nuxt-feedbacker pelo terminal:
 #npm
 npm run dev
 ```
-se aparecer um erro de pacotes do pinia ao executar o servidor nuxt verificar se o pinia foi instalado e fazer o seguinte comando na pasta nuxt-feedbacker:
+se aparecer um erro de pacotes do pinia ao executar o servidor nuxt, verificar se o pinia foi instalado e fazer o seguinte comando na pasta nuxt-feedbacker:
 ```bash
 #npm
 npm i pinia -f
+```
+
+## Executar testes:
+### Testes unitários usando jest:
+- instalar jest no nuxt:
+```bash
+npm i --save-dev @nuxt/test-utils jest @vue/test-utils happy-dom playwright-core
+npm i ts-node
+```
+- no package.json -> scripts -> tests: "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+```bash
+npm run test
 ```
 
 ## Links uteis e documentações utilizadas:
@@ -60,6 +72,9 @@ npm i pinia -f
 	- [Sanctum token expiration](https://laravel.com/docs/10.x/sanctum#token-expiration)
 	- [Fortify Registration](https://laravel.com/docs/11.x/fortify#registration)
 	- [Migrations comandos artisan](https://laravel.com/docs/10.x/migrations#roll-back-migrate-using-a-single-command)
+	- [Nuxt Tests Config](https://nuxt.com/docs/getting-started/testing)
+	- [Jest Getting Start](https://jestjs.io/docs/getting-started#using-typescript)
+	- [Jest ECMAScript](https://jestjs.io/pt-BR/docs/ecmascript-modules)
 
 
 
