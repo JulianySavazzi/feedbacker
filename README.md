@@ -37,7 +37,10 @@ npm i pinia -f
 - instalar jest no nuxt:
 ```bash
 npm i --save-dev @nuxt/test-utils jest @vue/test-utils happy-dom playwright-core
+npm install --save-dev @jest/globals
+npm install --save-dev ts-jest
 npm i ts-node
+npm init jest@latest
 ```
 - no package.json -> scripts -> tests: "node --experimental-vm-modules node_modules/jest/bin/jest.js"
 ```bash
