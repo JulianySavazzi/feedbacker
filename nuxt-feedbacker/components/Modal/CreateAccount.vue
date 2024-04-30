@@ -117,7 +117,7 @@ async function handleSubmit() {
 </script>
 
 <template>
-	<div class="flex justify-between">
+	<div id="modal-create-account" class="flex justify-between">
 		<h1 class="text-black text-4xl font-black">
 			Criar conta
 		</h1>
@@ -142,10 +142,12 @@ async function handleSubmit() {
 						'border-brand-danger': !!state.name.errorMessage
 					}"
 					class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 borber-2 border-transparent rounded text-black"
+					id="name-field"
 					placeholder="Seu Nome">
 				<span
 					v-if="!!state.name.errorMessage"
-					class="block font-medium text-brand-danger">
+					class="block font-medium text-brand-danger"
+					id="error-name-create">
 					{{ state.name.errorMessage }}
 				</span>
 			</label>
@@ -161,10 +163,12 @@ async function handleSubmit() {
 						'border-brand-danger': !!state.email.errorMessage
 					}"
 					class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 borber-2 border-transparent rounded text-black"
+					id="email-field-create"
 					placeholder="seuemail@email.com">
 				<span
 					v-if="!!state.email.errorMessage"
-					class="block font-medium text-brand-danger">
+					class="block font-medium text-brand-danger"
+					id="error-email-create">
 					{{ state.email.errorMessage }}
 				</span>
 			</label>
@@ -180,10 +184,12 @@ async function handleSubmit() {
 						'border-brand-danger': !!state.password.errorMessage
 					}"
 					class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 borber-2 border-transparent rounded text-black"
+					id="password-field-create"
 				>
 				<span
 					v-if="!!state.password.errorMessage"
-					class="block font-medium text-brand-danger">
+					class="block font-medium text-brand-danger"
+					id="error-password-create">
 					{{ state.password.errorMessage }}
 				</span>
 			</label>
@@ -199,10 +205,11 @@ async function handleSubmit() {
 						'border-brand-danger': !!state.repassword.errorMessage
 					}"
 					class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 borber-2 border-transparent rounded text-black"
-					>
+					id="repassword-field-create">
 				<span
 					v-if="!!state.repassword.errorMessage"
-					class="block font-medium text-brand-danger">
+					class="block font-medium text-brand-danger"
+					id="error-repassword-create">>
 					{{ state.repassword.errorMessage }}
 				</span>
 			</label>
@@ -214,6 +221,7 @@ async function handleSubmit() {
 					'opacity-50': state.isLoading
 				}"
 				class="px-8 py-3 mt-10 text-2xl font-bold text-white rounded-full bg-brand-main focus:outline:none transition-all duration-150"
+				id="submit-register"
 			>
 				<Icon name="IconsLoading" v-if="state.isLoading"
 					  class="animate-spin"></Icon>

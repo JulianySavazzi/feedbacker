@@ -11,7 +11,7 @@ const state = reactive({
 	isLoading: false
 })
 
-async function fetchLogout(){
+async function fetchLogout() {
 	state.isLoading = true
 	modal.open({
 		component: 'ModalGlobalLoading'
@@ -25,20 +25,20 @@ async function fetchLogout(){
 	navigateTo('/')
 	console.log(auth.isLoggedIn)
 	state.isLoading = false
-	if(auth.isLoggedIn === false && state.isLoading === false){
+	if (auth.isLoggedIn === false && state.isLoading === false) {
 		modal.close({
 			component: 'ModalGlobalLoading'
 		})
 	}
 }
 
-async function handleLogout(){
+async function handleLogout() {
 	state.isLoading = true
-	try{
+	try {
 		toast("saindo...")
 		await fetchLogout()
 		state.isLoading = false
-	} catch(e){
+	} catch (e) {
 		console.log("CATCH: ", e.message)
 		await fetchLogout()
 		navigateTo('/')
@@ -75,7 +75,8 @@ async function handleLogout(){
 							<li>
 								<button
 									class="px-6 py-2 font-bold bg-white rounded-full text-brand-main ">
-									{{ auth.user.name }} <span @click="handleLogout" class="focus:outline:none bg-brand-main rounded-full text-white" >( SAIR )</span>
+									{{ auth.user.name }} <span @click="handleLogout" id="logout-button"
+															   class="focus:outline:none bg-brand-main rounded-full text-white">( SAIR )</span>
 								</button>
 							</li>
 

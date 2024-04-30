@@ -37,7 +37,7 @@ const state = reactive({
 console.log(state.email.value, state.password.value)
 
 async function handleSubmit() {
-	try{
+	try {
 		toast.clear()
 		state.isLoading = true
 
@@ -45,29 +45,27 @@ async function handleSubmit() {
 			email: state.email.value,
 			password: state.password.value
 		}, {
-			onResponseError({response}){
+			onResponseError({response}) {
 				state.isLoading = false
 				modal.close()
 				console.log(response.status)
 			}
 		})
 
-		if(error.value){
+		if (error.value) {
 			state.isLoading = false
 			modal.close()
 			let faill = error.value
 			console.log(error.value, faill)
 			toast.error("Erro ao fazer login! \n" + faill + " ")
-		}
-		else {
+		} else {
 
-			if(auth.isLoggedIn){
+			if (auth.isLoggedIn) {
 				state.isAuthUser = true
 				state.isLoading = false
 				modal.close()
 				navigateTo('/feedbacks')
-			}
-			else{
+			} else {
 				state.isLoading = false
 				modal.close()
 				console.log("Você precisa fazer login!")
@@ -77,7 +75,7 @@ async function handleSubmit() {
 		}
 
 
-	} catch(e){
+	} catch (e) {
 		state.isLoading = false
 		state.hasErrors = !!e
 		console.log("CATCH: ", e.message)
@@ -86,7 +84,7 @@ async function handleSubmit() {
 </script>
 
 <template>
-	<div class="flex justify-between">
+	<div id="modal-login" class="flex justify-between">
 		<h1 class="text-black text-4xl font-black">
 			Entrar
 		</h1>
@@ -110,10 +108,12 @@ async function handleSubmit() {
 					:class="{
 					'border-brand-danger': !!state.email.errorMessage
 				}"
+					id="email-field"
 					class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 borber-2 border-transparent rounded text-black"
 					placeholder="seuemail@email.com">
 				<span
 					v-if="!!state.email.errorMessage"
+					id="email-error"
 					class="block font-medium text-brand-danger">
 					{{ state.email.errorMessage }}
 				</span>
@@ -129,10 +129,12 @@ async function handleSubmit() {
 					:class="{
 					'border-brand-danger': !!state.password.errorMessage
 				}"
+					id="password-field"
 					class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 borber-2 border-transparent rounded text-black"
 				>
 				<span
 					v-if="!!state.password.errorMessage"
+					id="password-error"
 					class="block font-medium text-brand-danger">
 					{{ state.password.errorMessage }}
 				</span>
@@ -144,10 +146,11 @@ async function handleSubmit() {
 				:class="{
 				'opacity-50': state.isLoading
 			}"
+				id="submit-button"
 				class="px-8 py-3 mt-10 text-2xl font-bold text-white rounded-full bg-brand-main focus:outline:none transition-all duration-150"
 			>
 				<Icons name="IconsLoading" v-if="state.isLoading"
-					class="animate-spin"></Icons>
+					   class="animate-spin"></Icons>
 				<span v-if="!state.isLoading">Entrar</span>
 
 			</button>

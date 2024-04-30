@@ -7,7 +7,7 @@ const modal = useModal()
 </script>
 
 <template>
-	<div class="flex justify-between">
+	<div id="modal-success-account" class="flex justify-between">
 		<div class="w-full text-6xl mt-10 ">
 			<h1 class="text-brand-main font-black animate__animated  animate__backInDown animate__shakeX">Mandou bem!</h1>
 			<p class="text-black text-2xl pt-6 animate__animated animate__backInUp animate__pulse">

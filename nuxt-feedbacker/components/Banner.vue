@@ -1,5 +1,6 @@
 <script setup>
 const auth = useAuthStore()
+if(!auth.isLoggedIn) console.log('auth: ', auth.isLoggedIn)
 </script>
 
 <template>
@@ -21,7 +22,9 @@ const auth = useAuthStore()
 			</p>
 			<button
 				v-if="!auth.isLoggedIn"
-				class="px-6 py-2 font-bold bg-white rounded-full text-brand-main mt-10 focus:outline:none max-w-fit">
+				@click="$emit('create-account')"
+				class="px-6 py-2 font-bold bg-white rounded-full text-brand-main mt-10 focus:outline:none max-w-fit"
+				id="cta-create-account-button">
 				Crie uma conta grátis
 			</button>
 		</div>

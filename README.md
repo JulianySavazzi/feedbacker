@@ -46,6 +46,16 @@ npm init jest@latest
 ```bash
 npm run test
 ```
+### Testes end 2 end usando cypress:
+- Instalar e abrir cypress no nuxt:
+```bash
+npm install cypress --save-dev
+#npx cypress open
+npm run cy:open
+```
+- para o ultimo comdando funcionar no package.json -> scripts -> "cy:open": "cypress open", se não precisa executar pelo comando npx
+
+- para executar o cypress em segundo plano salvado os outputs dos testes em uma pasta:
 
 ## Links uteis e documentações utilizadas:
 - [Treinamento gratuito Vue Brasil](https://igorhalfeld.teachable.com/p/treinamento-completo-e-gratuito-de-vue-js-3-do-iniciante-ao-avancado)
@@ -78,6 +88,11 @@ npm run test
 	- [Nuxt Tests Config](https://nuxt.com/docs/getting-started/testing)
 	- [Jest Getting Start](https://jestjs.io/docs/getting-started#using-typescript)
 	- [Jest ECMAScript](https://jestjs.io/pt-BR/docs/ecmascript-modules)
+	- [Jest Mock Fetch](https://jestjs.io/pt-BR/docs/next/bypassing-module-mocks)
+	- [Jext Expect](https://jestjs.io/docs/expect)
+	- [Pinia Testing](https://pinia-docs-pt.netlify.app/cookbook/testing.html)
+	- [Unit Test with Pinia](https://fadamakis.com/unit-testing-a-pinia-component-37d045582aed)
+	- [Cypress](https://docs.cypress.io/guides/overview/why-cypress#Setting-up-tests)
 
 
 

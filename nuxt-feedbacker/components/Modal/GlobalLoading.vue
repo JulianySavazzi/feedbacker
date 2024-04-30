@@ -3,7 +3,7 @@
 
 <template>
 
-	<div class="flex w-full justify-center m-4">
+	<div id="modal-loading" class="flex w-full justify-center m-4">
 		<h1 class="text-brand-main mb-0 text-4xl font-black animate__animated animate__flash">
 			Aguarde...
 		</h1>
