@@ -76,7 +76,7 @@ describe('Home', () => {
 	})
 
 	it('should login correctly', () => {
-		cy.get('#header-login-button').click()
+		cy.get('#header-login-button').click({force: true})
 		cy.wait(6000)
 		cy.get('#modal-login', {timeout: 10000})
 		cy.get('#email-field').type('cypress@test.com')

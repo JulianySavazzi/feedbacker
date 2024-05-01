@@ -55,7 +55,7 @@ npm run cy:open
 ```
 - para o ultimo comdando funcionar no package.json -> scripts -> "cy:open": "cypress open", se não precisa executar pelo comando npx
 
-- para executar o cypress em segundo plano salvado os outputs dos testes em uma pasta:
+- para executar o cypress em segundo plano salvando os outputs dos testes em uma pasta:
 
 ## Links uteis e documentações utilizadas:
 - [Treinamento gratuito Vue Brasil](https://igorhalfeld.teachable.com/p/treinamento-completo-e-gratuito-de-vue-js-3-do-iniciante-ao-avancado)

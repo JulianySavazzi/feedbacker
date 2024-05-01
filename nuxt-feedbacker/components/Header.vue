@@ -53,7 +53,7 @@ async function handleLogout() {
 		<div class="header-group">
 			<div class="flex items-center justify-between py-10">
 				<!--header items-->
-				<div class="w-28 lg:w-36">
+				<div id="header-home" class="w-28 lg:w-36">
 					<NuxtLink to="/">
 						<img src="../assets/images/logo_white.png" alt="logo"
 							 class="w-full animate__animated animate__swing">
@@ -64,11 +64,11 @@ async function handleLogout() {
 					<div class="flex ">
 						<ul class="flex list-none">
 							<!--to credentials-->
-							<li class="px-6 py-2 font-bold text-white rounded-full cursor-pointer focus:outline-none">
+							<li id="header-credentials" class="px-6 py-2 font-bold text-white rounded-full cursor-pointer focus:outline-none">
 								<NuxtLink to="/credentials">Credenciais</NuxtLink>
 							</li>
 							<!--to feedbacks-->
-							<li class="px-6 py-2 font-bold text-white rounded-full cursor-pointer focus:outline-none">
+							<li id="header-feedbacks" class="px-6 py-2 font-bold text-white rounded-full cursor-pointer focus:outline-none">
 								<NuxtLink to="/feedbacks">Feedbacks</NuxtLink>
 							</li>
 							<!--logout-->

@@ -84,7 +84,7 @@ function handleSelected({label}){
 			}"
 			@click="() => handleSelected(filter)"
 			class="flex items-center justify-between px-2 py-1 rounded cursor-pointer"
-			>
+			id="feedback-filter-label">
 			<div class="flex items-center text-brand-darkgray">
 				<span :class="filter.color.bg"
 					class="inline-block w-2 h-2 m-1 rounded-full"/>{{filter.label}}

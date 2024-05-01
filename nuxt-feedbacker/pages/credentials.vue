@@ -63,7 +63,7 @@ async function handleCopy(){
 				<span v-if="auth.user.api_token == null" class="text-brand-pink"> clique no ícone para gerar sua chave de api! </span>
 				<div
 					class="flex py-3 px-5 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll justify-between">
-					<span v-if="!state.isLoading && auth.isLoggedIn" class="text-brand-graydark">{{ auth.user.api_token }}</span>
+					<span v-if="!state.isLoading && auth.isLoggedIn" id="api-key" class="text-brand-graydark">{{ auth.user.api_token }}</span>
 					<span v-else class="text-brand-pink"> aguarde, estamos gerando sua chave de api... </span>
 					<div class="flex ml-20">
 						<Icons
@@ -78,6 +78,7 @@ async function handleCopy(){
 							color="#C0BCB0"
 							size="24"
 							class="cursor-pointer"
+							id="generate-api-key"
 							@click="handleGenerateApiKey"
 							/>
 					</div>

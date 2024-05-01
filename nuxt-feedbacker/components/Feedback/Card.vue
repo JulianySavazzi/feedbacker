@@ -25,6 +25,7 @@ function handleToggle(){
 <template>
 	<div
 		@click="handleToggle"
+		id="feedback-card"
 		class="flex flex-col px-8 py-6 rouded cursor-pointer bg-brand-gray">
 		<div class="flex items-center justify-between w-full mb-8">
 				<!--badge-->
@@ -58,8 +59,8 @@ function handleToggle(){
 			</div>
 		</div>
 		<div class="flex justify-end mt-8 text-brand-graydark" >
-			<span v-if="!state.isOpen">+</span>
-			<span v-if="state.isOpen">-</span>
+			<span v-if="!state.isOpen" id="feedback-show-more">+</span>
+			<span v-if="state.isOpen" id="feedback-show-less">-</span>
 		</div>
 	</div>
 </template>
