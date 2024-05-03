@@ -1,47 +1,21 @@
 <script setup>
-//imports funcoes e consts
-import useModal from '@/assets/js/hooks/useModal'
+import handleModalFactory from '@/assets/js/hooks/handleModalFactory.js'
 
-//constants
-const modal = useModal()
 const auth = useAuthStore()
-
-    function handleLogin(){
-		modal.open({
-			component: 'ModalLogin'
-		})
-	}
-
-   function handleAccountCreate() {
-	   modal.open({
-		   component: 'ModalCreateAccount'
-	   })
-   }
-
-	function handleSuccessAccount(){
-		modal.open({
-			component: 'ModalSuccessAccount'
-		})
-	}
-
-	function handleGlobalLoading(){
-		modal.open({
-			component: 'ModalGlobalLoading'
-		})
-	}
+const modal = handleModalFactory()
 
 </script>
 
 <template>
 	<!--<p>Some default layout content shared across all pages</p>-->
 	<!--<slot /> -> indica que deve carregar a pagina-->
-	<Header	v-if="auth.user !== null && auth.isLoggedIn"/>
+	<Header v-if="auth.user !== null && auth.isLoggedIn"/>
 	<HomeHeader
 		v-else
-		@create-account="handleAccountCreate"
-		@login="handleLogin"
-		@success-account="handleSuccessAccount"
-		@global-loading="handleGlobalLoading"
+		@create-account="modal.handleAccountCreate"
+		@login="modal.handleLogin"
+		@success-account="modal.handleSuccessAccount"
+		@global-loading="modal.handleGlobalLoading"
 	/>
 	<slot/>
 	<Footer/>

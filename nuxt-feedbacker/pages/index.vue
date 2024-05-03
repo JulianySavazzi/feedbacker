@@ -3,12 +3,13 @@
 //definir props e emits aqui dentro
 
 //imports funcoes e consts
+import handleModalFactory from '../assets/js/hooks/handleModalFactory.js'
 import {useToast} from 'vue-toastification'
 
 //constants
 const toast = useToast()
 const auth = useAuthStore()
-
+const modal = handleModalFactory()
    
 onMounted(() => {
   if(!auth.isLoggedIn){
@@ -20,7 +21,7 @@ onMounted(() => {
 <template>
 
   <main class="bg-white">
-    <Banner/>
+    <Banner @create-account="modal.handleAccountCreate"/>
     <Contact/>
   </main>
 
