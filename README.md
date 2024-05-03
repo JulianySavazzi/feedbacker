@@ -1,10 +1,20 @@
 # feedbacker
 
-- Dashboard com login e instalador do web component de envio e recebimento de feedbacks para sites;
+Aplicação web de dashboard com autenticação e instalador do web component de envio e recebimento de feedbacks para sites.
 
-- A pasta laravel-feedbacker, contém o projeto criado com o frameowork Laravel para o backend; a pasta nuxt-feedbacker vai conter o projeto nuxt usando vue3 para o front-end;
+- ### Sobre a aplicação:
+	- a pasta laravel-feedbacker, contém o projeto criado com o framework Laravel para o backend (API);
+	- a pasta nuxt-feedbacker contém o projeto nuxt usando vue3 para o front-end da dashboard;
+	- a pasta widget ;
 
-- A pasta feedbacker-dashboard contém um projeto Vue3 CLI criado no treinamento gratuido da Vue.js Brasil, ele será usado de base (componentes e regras de negócio) para o projeto com nuxt e laravel;
+	- o projeto conta com alguns testes unitários e testes de integração;
+
+	- o deploy da API será no Vercel, e do dashboard na Netlify;
+
+- ### Observações:
+	- a pasta feedbacker-dashboard contém um projeto Vue3 CLI criado no treinamento gratuido da Vue.js Brasil;
+	- ele foi criado para estudos e será usado de base (componentes e algumas regras de negócio) para os projetos com nuxt e laravel;
+	- ele não está com a dashboard completa, o front-end completo utilizado para o dashboard da aplicação foi feito em nuxt.
 
 ## Tecnologias utilizadas:
 	- Laravel Framework v10
@@ -93,6 +103,12 @@ npm run cy:open
 	- [Pinia Testing](https://pinia-docs-pt.netlify.app/cookbook/testing.html)
 	- [Unit Test with Pinia](https://fadamakis.com/unit-testing-a-pinia-component-37d045582aed)
 	- [Cypress](https://docs.cypress.io/guides/overview/why-cypress#Setting-up-tests)
+	- [Install Vercel CLI](https://vercel.com/docs/cli#installing-vercel-cli)
+	- [Vecel API REST](https://vercel.com/docs/rest-api)
+	- [Vercel Configuration](https://vercel.com/docs/projects/project-configuration)
+	- [Composer Laravel Vercel](https://packagist.org/packages/revolution/laravel-vercel-installer)
+	- [Deploy Laravel Project in Vercel](https://rzamandala.medium.com/how-to-deploy-laravel-project-to-vercel-7b3c2800e974)
+	- [PHP Runtime For Vercel](https://github.com/vercel-community/php)
 
 
 
