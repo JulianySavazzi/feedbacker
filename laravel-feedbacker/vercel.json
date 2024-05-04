@@ -2,11 +2,6 @@
     "regions": [
         "gru1"
     ],
-    "functions": {
-        "public/*.php": {
-            "runtime": "vercel-php@0.7.1"
-        }
-    },
     "builds": [
         {
             "src": "/public/index.php",
