@@ -32,7 +32,10 @@
     ],
     "env": {
         "APP_NAME": "Laravel Vercel",
+        "APP_ENV": "production",
         "APP_DEBUG": "false",
+        "APP_URL": "https://feedbacker-2iw4pvitq-julianysavazzis-projects.vercel.app",
+        "VERCEL_DEMO_MODE": "true",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
@@ -42,6 +45,7 @@
         "CACHE_STORE": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
-        "VIEW_COMPILED_PATH": "/tmp"
+        "VIEW_COMPILED_PATH": "/tmp",
+        "NODE_PATH": "node"
     }
 }
