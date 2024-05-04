@@ -3,18 +3,14 @@
         "gru1"
     ],
     "functions": {
-        "api/*.php": {
+        "public/*.php": {
             "runtime": "vercel-php@0.7.1"
         }
     },
     "builds": [
         {
-            "src": "/api/index.php",
+            "src": "/public/index.php",
             "use": "vercel-php@0.7.1"
-        },
-        {
-            "src": "/public/**",
-            "use": "@vercel/static"
         }
     ],
     "routes": [
