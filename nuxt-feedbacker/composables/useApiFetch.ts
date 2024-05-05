@@ -6,7 +6,7 @@ export function useApiFetch<T> (url: string, options: UseFetchOptions<T> = {}) {
 	let headers: any = {}
 	
 	const API_ENVS = {
-		production: "https://feedbacker-2iw4pvitq-julianysavazzis-projects.vercel.app",
+		production: "https://feedbacker-julianysavazzis-projects.vercel.app",
 		local: "http://127.0.0.1:8000"
 	}
 
