@@ -34,10 +34,33 @@
         {
             "source": "/(.*)",
             "headers": [
-                { "key": "Access-Control-Allow-Credentials", "value": "true" },
-                { "key": "Access-Control-Allow-Origin", "value": "*" },
-                { "key": "Access-Control-Allow-Methods", "value": "GET,POST" },
-                { "key": "Access-Control-Allow-Headers", "value": "*" }
+                {
+                    "key": "Access-Control-Allow-Credentials",
+                    "value": "true"
+                },
+                {
+                    "key": "Access-Control-Allow-Origin",
+                    "value": "*"
+                },
+                {
+                    "key": "Access-Control-Allow-Headers",
+                    "value": "*"
+                }
+            ]
+        },
+        {
+            "source": "/:path*",
+            "has": [
+                {
+                    "type": "query",
+                    "key": "authorized"
+                }
+            ],
+            "headers": [
+                {
+                    "key": "x-authorized",
+                    "value": "true"
+                }
             ]
         }
     ],
