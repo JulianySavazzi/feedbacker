@@ -40,10 +40,10 @@
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
         "APP_ROUTES_CACHE": "/tmp/routes.php",
         "APP_SERVICES_CACHE": "/tmp/services.php",
-        "CACHE_DRIVER": "array",
+        "CACHE_DRIVER": "file",
         "CACHE_STORE": "array",
         "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie",
+        "SESSION_DRIVER": "file",
         "VIEW_COMPILED_PATH": "/tmp",
         "NODE_PATH": "node"
     }
