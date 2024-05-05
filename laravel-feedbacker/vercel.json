@@ -30,7 +30,6 @@
             "dest": "/api/index.php"
         }
     ],
-    "headers": [],
     "env": {
         "APP_NAME": "Laravel Vercel",
         "APP_ENV": "production",
