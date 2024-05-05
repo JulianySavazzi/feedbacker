@@ -30,6 +30,36 @@
             "dest": "/api/index.php"
         }
     ],
+    "headers": [
+        {
+            "source": "/api/(.*)",
+            "headers": [
+                { "key": "Access-Control-Allow-Credentials", "value": "true" },
+                { "key": "Access-Control-Allow-Origin", "value": "http://127.0.0.1:3000, http://localhost:3000, https://feedbacker-crbbqoo3y-julianysavazzis-projects.vercel.app" },
+                { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
+                { "key": "Access-Control-Allow-Headers", "value": "*" }
+            ]
+        },
+        {
+            "source": "/(.*)",
+            "headers": [
+                { "key": "Access-Control-Allow-Credentials", "value": "true" },
+                { "key": "Access-Control-Allow-Origin", "value": "http://127.0.0.1:3000, http://localhost:3000, https://feedbacker-crbbqoo3y-julianysavazzis-projects.vercel.app" },
+                { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
+                { "key": "Access-Control-Allow-Headers", "value": "*" }
+            ]
+        },
+        {
+            "source": "/sanctum/csrf-cookie",
+            "headers": [
+                { "key": "Access-Control-Allow-Credentials", "value": "true" },
+                { "key": "Access-Control-Allow-Origin", "value": "http://127.0.0.1:3000, http://localhost:3000, https://feedbacker-crbbqoo3y-julianysavazzis-projects.vercel.app" },
+                { "key": "Access-Control-Allow-Methods", "value": "*" },
+                { "key": "Access-Control-Allow-Headers", "value": "*" }
+            ]
+        }
+
+    ],
     "env": {
         "APP_NAME": "Laravel Vercel",
         "APP_ENV": "production",
