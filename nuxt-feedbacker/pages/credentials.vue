@@ -103,7 +103,7 @@ async function handleCopy(){
 				<div
 					class=" py-3 px-5 pr-20 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll">
 					<span v-if="auth.user.api_token == null && !state.isLoading" class="text-brand-pink"> </span>
-					<pre v-if="!state.isLoading && auth.isLoggedIn && auth.user.api_token != null" class=" text-brand-darkgray">&lt;script src="http://JulianySavazzi-feedbacker-widget.netlify.app?api_key={{ auth.user.api_token}}"&gt;&lt;/script&gt;
+					<pre v-if="!state.isLoading && auth.isLoggedIn && auth.user.api_token != null" class=" text-brand-darkgray">&lt;script src="http://julianysavazzi-feedbacker-widget.netlify.app?api_key={{ auth.user.api_token}}"&gt;&lt;/script&gt;
         			</pre>
 					<span v-else class="text-brand-pink"> aguarde, estamos gerando sua chave de api... </span>
 				</div>
