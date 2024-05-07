@@ -11,16 +11,10 @@ const toast = useToast()
 const auth = useAuthStore()
 const modal = handleModalFactory()
 
-async function test() {
-	const {data} = await useApiFetch('/api/welcome')
-	console.log(data.value)
-}
-
 onMounted(() => {
 	if (!auth.isLoggedIn) {
 		toast.success("bem vindo")
 	}
-	test()
 })
 </script>
 

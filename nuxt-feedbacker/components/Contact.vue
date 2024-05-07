@@ -1,5 +1,11 @@
 <script setup>
 const auth = useAuthStore()
+
+async function test() {
+	const {data} = await useApiFetch('/api/welcome')
+	console.log(data.value)
+}
+
 </script>
 <template>
 <!--<h1>Contato</h1>-->
@@ -20,8 +26,8 @@ const auth = useAuthStore()
 			<p class="text-lg text-center text-gray-800 font-regular">
 			Quer saber melhor como funciona e quais são os preços?
 			</p>
-			<button class="mt-10">
-				<a href="mailto:"
+			<button class="mt-10" @click='test'>
+				<a href=""
 				class="px-6 py-2 mt-10 font-bold text-white rounded-full bg-brand-main facus:outline-none">
 				Mande um e-mail pra gente!
 				</a>
