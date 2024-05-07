@@ -1,5 +1,5 @@
 <script setup>
-const {data} = await useApiFetch('api/testing')
+const {data} = await useApiFetch('/api/testing')
 </script>
 <template>
 <h1>
