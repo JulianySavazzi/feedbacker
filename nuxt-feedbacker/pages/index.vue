@@ -11,23 +11,24 @@ const toast = useToast()
 const auth = useAuthStore()
 const modal = handleModalFactory()
 
-async function test(){
-  await useApiFetch('/api/welcome')
+async function test() {
+	const {data} = await useApiFetch('/api/welcome')
+	console.log(data.value)
 }
-   
+
 onMounted(() => {
-  if(!auth.isLoggedIn){
-    toast.success("bem vindo")
-  }
-  test()
+	if (!auth.isLoggedIn) {
+		toast.success("bem vindo")
+	}
+	test()
 })
 </script>
 
 <template>
 
-  <main class="bg-white">
-    <Banner @create-account="modal.handleAccountCreate"/>
-    <Contact/>
-  </main>
+	<main class="bg-white">
+		<Banner @create-account="modal.handleAccountCreate"/>
+		<Contact/>
+	</main>
 
 </template>
