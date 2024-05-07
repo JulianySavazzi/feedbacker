@@ -10,11 +10,16 @@ import {useToast} from 'vue-toastification'
 const toast = useToast()
 const auth = useAuthStore()
 const modal = handleModalFactory()
+
+async function test(){
+  await useApiFetch('/api/welcome')
+}
    
 onMounted(() => {
   if(!auth.isLoggedIn){
     toast.success("bem vindo")
   }
+  test()
 })
 </script>
 
