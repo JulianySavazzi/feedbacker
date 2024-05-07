@@ -24,3 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/oi', function(){
+    return response()->json('OI! Funcionou.', Response::HTTP_OK);
+})->name('oi');
+
