@@ -2,7 +2,7 @@
 const auth = useAuthStore()
 
 async function test() {
-	const {data} = await useApiFetch('/api/welcome')
+	const {data} = await useApiFetch('/api/testing')
 	console.log(data.value)
 }
 
@@ -26,11 +26,14 @@ async function test() {
 			<p class="text-lg text-center text-gray-800 font-regular">
 			Quer saber melhor como funciona e quais são os preços?
 			</p>
-			<button class="mt-10" @click='test'>
-				<a href=""
+			<button class="mt-10">
+				<a href="mailto:"
 				class="px-6 py-2 mt-10 font-bold text-white rounded-full bg-brand-main facus:outline-none">
 				Mande um e-mail pra gente!
 				</a>
+			</button>
+			<button class="mt-10 px-6 py-2 mt-10 font-bold text-white rounded-full bg-brand-main facus:outline-none" @click='test'>
+				TESTAR
 			</button>
 		</div>
 	</div>

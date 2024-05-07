@@ -34,4 +34,4 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/feedbacks/summary', [\App\Http\Controllers\FeedbackController::class, 'summary'])->name('feedbacks.summary');
 });
 
-Route::get('/welcome', function(){ return response()->json(timestamp(), Response::HTTP_OK); })->name('welcome');
+Route::get('/testing', function(){ return response()->json('TESTADO!', Response::HTTP_OK); })->name('testing');
