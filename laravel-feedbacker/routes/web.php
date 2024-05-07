@@ -1,5 +1,6 @@
 <?php
 
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
