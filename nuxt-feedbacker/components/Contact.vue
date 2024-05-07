@@ -4,6 +4,7 @@ const auth = useAuthStore()
 async function test() {
 	const {data} = await useApiFetch('/api/testing')
 	console.log(data.value)
+	navigateTo('/testing')
 }
 
 </script>
