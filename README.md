@@ -110,6 +110,7 @@ npm run cy:open
 	- [Deploy Laravel Project in Vercel](https://rzamandala.medium.com/how-to-deploy-laravel-project-to-vercel-7b3c2800e974)
 	- [PHP Runtime For Vercel](https://github.com/vercel-community/php)
 	- [PHP DEPLOY APP FOR VERCEL](https://php.vercel.app/)
+	- [CORS in Laravel](https://laravel-news.com/diving-into-cross-origin-resource-sharing)
 
 
 

@@ -16,7 +16,7 @@ return [
     */
 
     //update values for fix cors issues - headers
-    'paths' => ['api/*', 'sanctum/csrf-cookie', '/*'],
+    'paths' => ['/*', 'api/*', 'sanctum/csrf-cookie'],
 
     'allowed_methods' => ['*'],
 
@@ -24,9 +24,9 @@ return [
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*'],
+    'allowed_headers' => ['*', 'Content-Type', 'Origin', 'X-Requested-With', 'Authorization', 'Accept', 'Access-Control-Allow-Credentials', 'Access-Control-Allow-Origin', 'Set-Cookie'],
 
-    'exposed_headers' => [],
+    'exposed_headers' => ['XSRF-TOKEN'],
 
     'max_age' => 0,
 
