@@ -8,6 +8,9 @@ export default defineNuxtConfig({
     }
   },
   devtools: { enabled: true },
+  routeRules: {
+    '/feedbacker/**': { proxy: 'https://feedbacker-julianysavazzis-projects.vercel.app/api/**' },
+  },
   app:{
     head:{
       link: [
