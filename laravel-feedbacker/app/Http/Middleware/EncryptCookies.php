@@ -12,8 +12,8 @@ class EncryptCookies extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        'XSRF-TOKEN'
+//        'XSRF-TOKEN'
     ];
 
-//    protected static $serialize = true;
+    protected static $serialize = true;
 }

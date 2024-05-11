@@ -16,17 +16,17 @@ return [
     */
 
     //update values for fix cors issues - headers
-    'paths' => ['/*', 'api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie', '/*'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://127.0.0.1:3000', 'http://localhost:3000', 'https://julianysavazzi-feedbacker.netlify.app', 'main--julianysavazzi-feedbacker.netlify.app'],
+    'allowed_origins' => ['http://127.0.0.1:3000', 'http://localhost:3000', 'https://julianysavazzi-feedbacker.netlify.app', 'main--julianysavazzi-feedbacker.netlify.app', 'https://feedbacker-julianysavazzis-projects.vercel.app'],
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*', 'Content-Type', 'Origin', 'X-Requested-With', 'Authorization', 'Accept', 'Access-Control-Allow-Credentials', 'Access-Control-Allow-Origin', 'Set-Cookie'],
+    'allowed_headers' => ['*', 'Content-Type', 'Origin', 'X-Requested-With', 'Authorization', 'Accept', 'Access-Control-Allow-Credentials', 'Access-Control-Allow-Origin', 'Set-Cookie', 'Proxy-Authenticate', 'Proxy-Authorization'],
 
-    'exposed_headers' => ['XSRF-TOKEN'],
+    'exposed_headers' => [],
 
     'max_age' => 0,
 
