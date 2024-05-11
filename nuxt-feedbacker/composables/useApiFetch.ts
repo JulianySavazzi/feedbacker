@@ -16,7 +16,7 @@ export function useApiFetch<T>(url: string, options: UseFetchOptions<T> = {}) {
 
 	if (token) {
 		headers['X-XSRF-TOKEN'] = token as string
-		headers['Set-Cookie'] = token as string
+//		headers['Set-Cookie'] = token as string
 	}
 
 	//faz uma requisicao no servidor cada vez que recarrega a pagina?
