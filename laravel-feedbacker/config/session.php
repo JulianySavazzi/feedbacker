@@ -199,8 +199,8 @@ return [
     |
     */
 
-//    'same_site' => 'lax',
-    'same_site' => 'none',
+    'same_site' => 'lax',
+//    'same_site' => 'none',
 
     /*
     |--------------------------------------------------------------------------
@@ -213,6 +213,6 @@ return [
     |
     */
 
-//    'partitioned' => false,
-    'partitioned' => true,
+    'partitioned' => false,
+//    'partitioned' => true,
 ];

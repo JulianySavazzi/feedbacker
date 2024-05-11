@@ -15,5 +15,5 @@ class EncryptCookies extends Middleware
         'XSRF-TOKEN'
     ];
 
-    protected static $serialize = true;
+//    protected static $serialize = true;
 }
