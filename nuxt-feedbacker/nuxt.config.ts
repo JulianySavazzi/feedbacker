@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   routeRules: {
-    '/feedbacker/**': { proxy: 'https://feedbacker-julianysavazzis-projects.vercel.app/**' },
+    '/feedbacker/**': { proxy: 'https://feedbacker-julianysavazzis-projects.vercel.app/api/**' },
   },
   app:{
     head:{
@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@nuxt/test-utils/module',
+    '@nuxtjs/proxy'
     ],
 })
 
