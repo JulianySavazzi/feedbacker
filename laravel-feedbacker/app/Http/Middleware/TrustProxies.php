@@ -12,7 +12,7 @@ class TrustProxies extends Middleware
      *
      * @var array<int, string>|string|null
      */
-//    protected $proxies;
+//    protected $proxies = 'https://julianysavazzi-feedbacker.netlify.app/feedbacker/api';
 
     /**
     * The trusted proxies for this application.

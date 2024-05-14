@@ -20,7 +20,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://127.0.0.1:3000', 'http://localhost:3000', 'https://julianysavazzi-feedbacker.netlify.app', 'main--julianysavazzi-feedbacker.netlify.app', 'https://feedbacker-julianysavazzis-projects.vercel.app'],
+    'allowed_origins' => ['http://127.0.0.1:3000', 'http://localhost:3000', 'https://julianysavazzi-feedbacker.netlify.app', 'https://feedbacker-julianysavazzis-projects.vercel.app'],
 
     'allowed_origins_patterns' => [],
 
