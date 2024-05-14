@@ -10,7 +10,8 @@ export function useApiFetch<T> (url: string, options: UseFetchOptions<T> = {}) {
 		local: "http://127.0.0.1:8000"
 	}
 
-	let base = API_ENVS.production ?? API_ENVS.local
+//	let base = API_ENVS.production ?? API_ENVS.local
+	let base = API_ENVS.local
 
 	if(token) {
 		headers['X-XSRF-TOKEN'] = token as string
