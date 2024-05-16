@@ -24,6 +24,11 @@
         {
             "src": "/(.*)",
             "dest": "/public/index.php"
+        },
+        {
+            "src": "/login",
+            "status": 302,
+            "headers": { "Location": "https://julianysavazzi-feedbacker.netlify.app/feedbacks" }
         }
     ],
     "env": {
