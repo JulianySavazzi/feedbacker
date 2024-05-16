@@ -38,6 +38,16 @@
             "status": 419
         }
     ],
+    "redirects": [
+        {
+            "source": "/login",
+            "destination": "https://julianysavazzi-feedbacker.netlify.app/feedbacks"
+        },
+        {
+            "source": "/register",
+            "destination": "https://julianysavazzi-feedbacker.netlify.app"
+        }
+    ],
     "env": {
         "APP_NAME": "Laravel",
         "APP_ENV": "production",
