@@ -38,6 +38,11 @@
             "status": 419
         }
     ],
+    "rewrites": [
+        {
+            "source": "/(.*)", "destination": "/"
+        }
+    ],
     "env": {
         "APP_NAME": "Laravel",
         "APP_ENV": "production",
