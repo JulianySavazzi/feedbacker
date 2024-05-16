@@ -28,15 +28,13 @@
         {
             "src": "/login",
             "methods": ["POST"],
-            "dest": "/public/index.php",
-            "headers": { "X-Authorization": "true" },
+            "headers": { "X-Authorization": "true", "Cache-Control": "max-age=0" },
             "status": 419
         },
         {
             "src": "/register",
             "methods": ["POST"],
-            "dest": "/public/index.php",
-            "headers": { "X-Authorization": "true" },
+            "headers": { "X-Authorization": "true", "Cache-Control": "max-age=0" },
             "status": 419
         }
     ],
