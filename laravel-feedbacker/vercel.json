@@ -28,7 +28,7 @@
         {
             "src": "/login",
             "status": 302,
-            "headers": { "Location": "https://julianysavazzi-feedbacker.netlify.app/feedbacks" }
+            "headers": { "Location": "https://julianysavazzi-feedbacker.netlify.app/feedbacker/api/user" }
         }
     ],
     "env": {
