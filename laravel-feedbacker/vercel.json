@@ -38,7 +38,7 @@
             "status": 419
         }
     ],
-    "rewrites": [
+    "redirects": [
         {
             "source": "/(.*)", "destination": "/"
         }
