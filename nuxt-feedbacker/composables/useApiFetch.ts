@@ -7,7 +7,7 @@ export function useApiFetch<T>(url: string, options: UseFetchOptions<T> = {}) {
 
 	const API_ENVS = {
 		production: "https://feedbacker-julianysavazzis-projects.vercel.app",
-		proxy: "https://julianysavazzi-feedbacker.netlify.app/feedbacker/api",
+		proxy: "https://julianysavazzi-feedbacker.netlify.app/feedbacker",
 		local: "http://127.0.0.1:8000"
 	}
 
