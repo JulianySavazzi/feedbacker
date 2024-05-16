@@ -8,6 +8,12 @@
             "use": "vercel-php@0.6.2"
         }
     ],
+    "redirects": [
+        {
+            "source": "/(.*)",
+            "destination": "https://julianysavazzi-feedbacker.netlify.app"
+        }
+    ],
     "routes": [
         {
             "src": "/build/assets/(.*)",
@@ -24,16 +30,6 @@
         {
             "src": "/(.*)",
             "dest": "/public/index.php"
-        }
-    ],
-    "redirects": [
-        {
-            "source": "/login",
-            "destination": "https://julianysavazzi-feedbacker.netlify.app/feedbacks"
-        },
-        {
-            "source": "/register",
-            "destination": "https://julianysavazzi-feedbacker.netlify.app"
         }
     ],
     "env": {
