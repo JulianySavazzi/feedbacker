@@ -8,12 +8,6 @@
             "use": "vercel-php@0.6.2"
         }
     ],
-    "redirects": [
-        {
-            "source": "/(.*)",
-            "destination": "https://julianysavazzi-feedbacker.netlify.app"
-        }
-    ],
     "routes": [
         {
             "src": "/build/assets/(.*)",
