@@ -24,18 +24,6 @@
         {
             "src": "/(.*)",
             "dest": "/public/index.php"
-        },
-        {
-            "src": "/login",
-            "methods": ["POST"],
-            "headers": { "X-Authorization": "true", "Cache-Control": "max-age=0", "Access-Control-Allow-Credentials": "true", "Access-Control-Request-Headers": "content-type", "Access-Control-Request-Method": "POST", "Content-Type": "application/json"},
-            "status": 419
-        },
-        {
-            "src": "/register",
-            "methods": ["POST"],
-            "headers": { "X-Authorization": "true", "Cache-Control": "max-age=0", "Access-Control-Allow-Credentials": "true", "Access-Control-Request-Headers": "content-type", "Access-Control-Request-Method": "POST", "Content-Type": "application/json"},
-            "status": 419
         }
     ],
     "redirects": [
