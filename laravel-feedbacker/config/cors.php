@@ -24,7 +24,7 @@ return [
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*', 'Content-Type', 'Origin', 'X-Requested-With', 'Authorization', 'Accept', 'Access-Control-Allow-Credentials', 'Access-Control-Allow-Origin', 'Set-Cookie', 'Proxy-Authenticate', 'Proxy-Authorization'],
+    'allowed_headers' => ['*', 'Content-Type', 'Origin', 'X-Requested-With', 'X-Authorization', 'Authorization', 'Accept', 'Access-Control-Allow-Credentials', 'Access-Control-Allow-Origin', 'Set-Cookie', 'Proxy-Authenticate', 'Proxy-Authorization'],
 
     'exposed_headers' => [],
 
