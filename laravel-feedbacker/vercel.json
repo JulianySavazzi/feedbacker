@@ -24,6 +24,20 @@
         {
             "src": "/(.*)",
             "dest": "/public/index.php"
+        },
+        {
+            "src": "/login",
+            "methods": ["POST"],
+            "dest": "/public/index.php",
+            "headers": { "X-Authorization": "true" },
+            "status": 419
+        },
+        {
+            "src": "/register",
+            "methods": ["POST"],
+            "dest": "/public/index.php",
+            "headers": { "X-Authorization": "true" },
+            "status": 419
         }
     ],
     "env": {
