@@ -16,6 +16,10 @@ export function useApiFetch<T>(url: string, options: UseFetchOptions<T> = {}) {
 
 	if (token) {
 		headers['X-XSRF-TOKEN'] = token as string
+		headers['X-Authorization'] = true
+		headers['Access-Control-Allow-Credentials'] =  true
+		headers['Access-Control-Request-Headers'] = "content-type"
+		headers['Content-Type'] = "application/json"
 //		headers['Set-Cookie'] = token as string
 	}
 
