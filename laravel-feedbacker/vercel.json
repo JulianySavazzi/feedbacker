@@ -38,11 +38,6 @@
             "status": 419
         }
     ],
-    "redirects": [
-        {
-            "source": "/(.*)", "destination": "/"
-        }
-    ],
     "env": {
         "APP_NAME": "Laravel",
         "APP_ENV": "production",
