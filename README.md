@@ -65,7 +65,31 @@ npm run cy:open
 ```
 - para o ultimo comdando funcionar no package.json -> scripts -> "cy:open": "cypress open", se não precisa executar pelo comando npx
 
-- para executar o cypress em segundo plano salvando os outputs dos testes em uma pasta:
+## Desafios
+### Problemas com o Jest:
+- Como o nuxt por padrão utiliza o vitest, foi trabalhoso instalar o jest e faze-lo funcionar para os testes unitários.
+- Ainda não consegui fazer testes na store com o Jest, mesmo após pesquisar sobre testes unitarios em stores que usam o Pinia.
+- Talvez eu mude para o vitest para tentar refazer os testes unitários também na store e nos componentes.
+### Dificuldades com o cypress:
+- Ainda não consegui executar o cypress em segundo plano salvando os outputs dos testes em uma pasta.
+- Porém consegui fazer vários testes end2end, a documentação dele me ajudou bastante.
+### Implantação do projeto nuxt no netlify:
+- Fazer o deploy do projeto nuxt de front-end no netlify foi algo novo para mim, eu nunca tinha usado a plataforma e a documentação do nuxt deixou um pouco a desejar nessa parte, pois fiz o deploy seguindo as instruções de lá e o site simplesmente carregava uma página de status 404.
+- Estou usando o plano gratuíto. Após pesquisar em forums, e revisitar a documentação do nuxt e netlify, descobri que para funcionar corretamente, eu precisava adicionar uma variável ENV nas configurações da implantação no netlify chamada de SERVER_PRESET, habilitando as edge functions (isso não estava explícito, na documentação do nuxt dizia que era opicional, porém sem essa ENV, o site simplesmente não funcionava, qualquer página que você tentava acessar retornava 404).
+- Mas esse de longe foi o menor dos problemas que encontrei.
+### Implantação da API laravel no vercel:
+- Até agora meu maior desafio está sendo em tentar fazer meu backend funcionar corretamente depois de fazer o deploy no vercel.
+- Primeiramente, fui surpreendida pela documentação do vercel, quando oferecia apenas templates para frameworks de front-end e backend com NodeJs (e pelo que entendi e pesquisei, só garantem 100% de compatibilizade no plano gratuíto para essas plataformas mencionadas na doc).
+- Após pesquisar em muitos foruns e tutoriais, consegui fazer o deploy da API laravel, utilizando o pacote laravel-vercel para composer e o PHP Runtime for Vercel (deixei os links na seção de links úteis).
+- O primeiro grande problema que consegui contornar foi o problema de CORS, o qual me fez pesquisar muito sobre headers e allow origins. Como eu não tinha um único domínio, pois eu estou usando o dominio fornecido no meu deploy do netlify para o front-end e o do vercel para o backend, tive que implantar um proxy no projeto nuxt, o que deu um pouco de trabalho mas funcionou corretamente, após eu fazer todas as configurações ENV no backend implantado no vercel (SESSION_DOMAIN, APP_URL, SANCTUM_STATEFUL_DOMAIN etc).
+- Sofri muito testando várias configurações do vercel.json, até que consegui deixar o arquivo clean (apenas com o necessário para funcionar), já que a maioria dos guias da documentação que eu tentava seguir quando implementados me davam alguns problemas (simplesmente não conseguia fazer o build da aplicação impedindo e deploy e dando um erro nada específico que falava que o meu vercel.json tinha conflitos, o que me fazia voltar a estaca zero). Porém ainda estou com um grande problema.
+- As rotas da API funcionam como esperado quando faço requisições usando o ThunderClient: status 200 para rotas sem autenticação, 204 para a rota get sanctum/crsf-token (utilizado para autenticação do SPA), e para as rotas do tipo POST que eu preciso do cookie XSRF-TOKEN respondem 419 (pois no thunderclient, não passo o cookie na hora de testar a requisição).
+- No meu servidor local, a autenticação utilizando Sanctum e as rotas de login e registro de uruário usando Fortify funcionam perfeitamente.
+- Porém no meu deploy estou tendo o seguinte problema: todas as rotas que utilizam o midleware do sanctum (rotas que precisam da autenticação) retornam um status 302 (não estão conseguindo ser redirecionadas corretamente).
+- A requisição sanctum/crsf-token funciona, os cookies são salvos e passados corretamente nos cabeçalhos de request e response, a rota register salva os usuarios novos no banco de dados, porém não é redirecionada corretamente retornando um status 302 e depois um 404. As rotas que dependem de login também retornam um 302 e depois um 404, e até agora não achei nada que me ajudasse a resolver esse problema.
+
+### Observação:
+Localmente, tanto o projeto laravel que desenvolvi para fazer minha API no backend, quanto o projeto nuxt que desenvolvi para fazer o front-end da minha aplicação, funcionam corretamente (todas as rotas e funcionalidades).
 
 ## Links uteis e documentações utilizadas:
 - [Treinamento gratuito Vue Brasil](https://igorhalfeld.teachable.com/p/treinamento-completo-e-gratuito-de-vue-js-3-do-iniciante-ao-avancado)
