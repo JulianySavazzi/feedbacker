@@ -26,7 +26,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/home', function () {
-    return response()->json('OK!', Response::HTTP_OK);
+    return redirect('/');
 });
 
 Route::get('/oi', function(){
