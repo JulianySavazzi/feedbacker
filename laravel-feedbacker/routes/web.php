@@ -25,6 +25,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/home', function () {
+    return response()->json('OK!', Response::HTTP_OK);
+});
+
 Route::get('/oi', function(){
     return response()->json('OI! Funcionou.', Response::HTTP_OK);
 })->name('oi');
