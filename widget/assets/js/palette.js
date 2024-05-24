@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-undef
-module.exports = {
+export default {
 	brand: {
 		pink: '#EF4983',
 		violet: '#8296FB',
