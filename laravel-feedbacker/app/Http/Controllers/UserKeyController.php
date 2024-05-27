@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Feedback;
 
 class UserKeyController extends Controller
 {
@@ -22,5 +23,18 @@ class UserKeyController extends Controller
             ->update(['api_token'=> $apiKey]),
             'user' => $userLogged
                 ], Response::HTTP_OK);
+    }
+
+    public function checkApiKey(Request $request)
+    {
+        $apiKey = $request->query("api_key");
+        $userLoggedApiKey = Feedback::where('api_token', Auth::user());
+
+        if($userLoggedApiKey != null && $userLoggedApiKey === $apiKey){
+            return response()->json(true, Response::HTTP_OK);
+        } else {
+            return response()->json(false, Response::HTTP_NOT_FOUND);
+        }
+
     }
 }

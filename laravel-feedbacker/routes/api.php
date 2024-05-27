@@ -28,11 +28,17 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
         return $request->user();
     })->name('user');
 
-    Route::post('/user/generate', [\App\Http\Controllers\UserKeyController::class, 'generate'])->name('user.generate');
+    Route::post('/user/generate', [\App\Http\Controllers\UserKeyController::class, 'generate'])
+        ->name('user.generate');
 
-    Route::get('/feedbacks', [\App\Http\Controllers\FeedbackController::class, 'all'])->name('feedbacks.all');
+    Route::get('/feedbacks', [\App\Http\Controllers\FeedbackController::class, 'all'])
+        ->name('feedbacks.all');
 
-    Route::get('/feedbacks/summary', [\App\Http\Controllers\FeedbackController::class, 'summary'])->name('feedbacks.summary');
+    Route::get('/feedbacks/summary', [\App\Http\Controllers\FeedbackController::class, 'summary'])
+        ->name('feedbacks.summary');
+
+    Route::get('/feedbacks/exists', [\App\Http\Controllers\UserKeyController::class, 'checkApiKey'])
+        ->name('feedbacks.exists');
 });
 
 Route::get('/testing', function(){

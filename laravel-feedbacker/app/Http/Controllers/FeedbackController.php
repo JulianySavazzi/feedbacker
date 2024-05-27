@@ -11,7 +11,7 @@ use Illuminate\Pagination\CursorPaginator;
 class FeedbackController extends Controller
 {
     /**
-     * 
+     *
      * feedbacks table -> columns
      * text √
      * fingerprint -> user id (foreign) √
@@ -58,7 +58,7 @@ class FeedbackController extends Controller
 
         return response()->json($response, Response::HTTP_OK);
     }
-    
+
     /**
      * retornar os feedbacks em json de acordo com o filtro:
      * {
@@ -81,4 +81,5 @@ class FeedbackController extends Controller
 
         return response()->json($feedbacks, Response::HTTP_OK);
     }
+
 }

@@ -150,6 +150,7 @@ Localmente, tanto o projeto laravel que desenvolvi para fazer minha API no backe
 	- [PHP Runtime For Vercel](https://github.com/vercel-community/php)
 	- [PHP DEPLOY APP FOR VERCEL](https://php.vercel.app/)
 	- [CORS in Laravel](https://laravel-news.com/diving-into-cross-origin-resource-sharing)
+    - [FingerprintJS](https://github.com/fingerprintjs/fingerprintjs/)
 
 
 
