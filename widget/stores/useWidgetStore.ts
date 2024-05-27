@@ -11,7 +11,8 @@ export type StoreState = {
 
 //estado inicial do widget -> atributos do feedback
 const initialState: StoreState = {
-	currentComponent: 'WizardSelectFeedbackType',
+	// currentComponent: 'WizardSelectFeedbackType',
+	currentComponent: 'WizardError',
 	message: '',
 	feedbackType: '',
 	fingerprint: '',
