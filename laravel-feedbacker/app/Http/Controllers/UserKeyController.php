@@ -23,4 +23,18 @@ class UserKeyController extends Controller
             'user' => $userLogged
                 ], Response::HTTP_OK);
     }
+
+
+    public function checkApiKey(Request $request)
+    {
+        $apiKey = filter_var($request->query("api_key"), FILTER_SANITIZE_ENCODED);
+        $userApiKey = User::all()->where('api_token', $apiKey)->count();
+
+        if($userApiKey){
+            return response()->json(null, Response::HTTP_OK);
+        } else {
+            return response()->json(null, Response::HTTP_NOT_FOUND);
+        }
+
+    }
 }
