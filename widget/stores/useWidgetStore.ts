@@ -9,6 +9,13 @@ export type StoreState = {
 	currentPage: string
 }
 
+// type Response = {
+// 	data: Feedback
+// 	error: Error | null
+// }
+
+type Options = {}
+
 //estado inicial do widget -> atributos do feedback
 const initialState: StoreState = {
 	currentComponent: 'WizardSelectFeedbackType',
@@ -53,6 +60,23 @@ export function resetStore (): void {
 	setFingerprint(initialState.fingerprint)
 	setApiKey(initialState.apiKey)
 	setCurrentPage(initialState.currentPage)
+}
+
+//request create feedback
+export async function createFeedback(device: string, options: Options) : Promise<void>{
+	await useApiFetch('/sanctum/csrf-cookie')
+	const create = await useApiFetch('/api/feedbacks', {
+		method: "POST",
+		body: {
+			type: state.feedbackType,
+			text: state.message,
+			page: state.currentPage,
+			apiKey: state.apiKey,
+			device: device,
+			fingerprint: state.fingerprint,
+		}
+	})
+	return
 }
 
 //exportar estado como apenas leitura -> nao modificar o estado diretamente

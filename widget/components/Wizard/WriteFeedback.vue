@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import useStore from "assets/js/hooks/store";
 import useNavigation from "assets/js/hooks/navigation";
-import {setMessage} from "~/stores/useWidgetStore";
+import {setMessage, createFeedback} from "~/stores/useWidgetStore";
 
 const emit = defineEmits([''])
 
@@ -37,8 +37,20 @@ async function submitFeedback(): Promise<void> {
     state.isLoading = true
 
     //response CRUD feedback
-    const response = ''
+    const {error}: any = await createFeedback(window.navigator.userAgent, {
+      onResponseError({response}: any) {
+        state.isLoading = false
+        console.log(response.status)
+      }
+    })
 
+    if (!error.value) {
+      navigation.setSuccessState()
+    } else {
+      navigation.setSuccessState()
+    }
+
+    state.isLoading = false
 
   } catch (e) {
     handleError(e)

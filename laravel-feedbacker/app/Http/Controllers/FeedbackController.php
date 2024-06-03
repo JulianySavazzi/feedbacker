@@ -11,7 +11,7 @@ use Illuminate\Pagination\CursorPaginator;
 class FeedbackController extends Controller
 {
     /**
-     * 
+     *
      * feedbacks table -> columns
      * text √
      * fingerprint -> user id (foreign) √
@@ -58,7 +58,7 @@ class FeedbackController extends Controller
 
         return response()->json($response, Response::HTTP_OK);
     }
-    
+
     /**
      * retornar os feedbacks em json de acordo com o filtro:
      * {
@@ -78,6 +78,23 @@ class FeedbackController extends Controller
             "idea" => Feedback::where('fingerprint', $userLogged)->where('type', 'IDEA')->count(),
             "other" => Feedback::where('fingerprint', $userLogged)->where('type', 'OTHER')->count()
         ];
+
+        return response()->json($feedbacks, Response::HTTP_OK);
+    }
+
+    public function store(Request $request)
+    {
+        //Feedback instance
+        $feedbacks = new Feedback();
+
+        $feedbacks->type = filter_var($request->type, FILTER_SANITIZE_ENCODED);
+        $feedbacks->text = filter_var($request->text, FILTER_SANITIZE_ENCODED);
+        $feedbacks->fingerprint = filter_var($request->fingerprint, FILTER_SANITIZE_ENCODED);
+        $feedbacks->device = filter_var($request->device, FILTER_SANITIZE_ENCODED);
+        $feedbacks->page = filter_var($request->page, FILTER_SANITIZE_ENCODED);
+        $feedbacks->api_key = filter_var($request->apiKey, FILTER_SANITIZE_ENCODED);
+        //save data
+        $feedbacks->save();
 
         return response()->json($feedbacks, Response::HTTP_OK);
     }

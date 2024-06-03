@@ -4,7 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b241bb7-0e2e-499f-9430-bfbdeb0e1054" name="Changes" comment="" />
+    <list default="true" id="9b241bb7-0e2e-499f-9430-bfbdeb0e1054" name="Changes" comment="add init widget">
+      <changelist_data name="“JulianySavazzi”" email="“julianysaz@gmail.com”" />
+      <change afterPath="$PROJECT_DIR$/widget/assets/js/hooks/iframe.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravel-feedbacker/app/Http/Controllers/FeedbackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel-feedbacker/app/Http/Controllers/FeedbackController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravel-feedbacker/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel-feedbacker/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/components.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/dev/index.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/dev/index.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/dev/index.mjs.map" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/dev/index.mjs.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/imports.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/imports.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/manifest/latest.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/manifest/latest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/manifest/meta/dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/manifest/meta/dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/nitro.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/nitro.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/nuxt.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/nuxt.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/tsconfig.server.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/tsconfig.server.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/types/imports.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/types/imports.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/types/middleware.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/types/middleware.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/types/nitro-routes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/types/nitro-routes.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/types/plugins.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/types/plugins.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/types/schema.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/types/schema.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/components/Widget.vue" beforeDir="false" afterPath="$PROJECT_DIR$/widget/components/Widget.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/components/Wizard/WriteFeedback.vue" beforeDir="false" afterPath="$PROJECT_DIR$/widget/components/Wizard/WriteFeedback.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/stores/useWidgetStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/stores/useWidgetStore.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,12 +44,17 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Composition API Component" />
-        <option value="TypeScript File" />
         <option value="JavaScript File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="“JulianySavazzi” &lt;“julianysaz@gmail.com”&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -162,7 +193,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Applications/XAMPP/xamppfiles/htdocs/feedbacker",
+    "git-widget-placeholder": "local-server-api",
+    "last_opened_file_path": "/Applications/XAMPP/xamppfiles/htdocs/feedbacker/widget",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -179,6 +211,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/widget" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/widget/components/Wizard" />
       <recent name="$PROJECT_DIR$/widget/components/Index" />
@@ -212,8 +247,20 @@
       <workItem from="1716570920951" duration="165000" />
       <workItem from="1716571131683" duration="6074000" />
       <workItem from="1716594292680" duration="852000" />
-      <workItem from="1716814120096" duration="12448000" />
+      <workItem from="1716814120096" duration="12825000" />
+      <workItem from="1716855659264" duration="33000" />
+      <workItem from="1716855724771" duration="1770000" />
+      <workItem from="1717186161923" duration="18756000" />
     </task>
+    <task id="LOCAL-00001" summary="add init widget">
+      <option name="closed" value="true" />
+      <created>1717243055106</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717243055111</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,5 +276,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add init widget" />
+    <option name="LAST_COMMIT_MESSAGE" value="add init widget" />
   </component>
 </project>
