@@ -33,27 +33,26 @@ function handleError (error: Error){
 
 async function submitFeedback(): Promise<void> {
   try {
+    state.hasError = null
     setMessage(state.feedback)
     state.isLoading = true
 
     //response CRUD feedback
-    const {error}: any = await createFeedback(window.navigator.userAgent, {
-      onResponseError({response}: any) {
-        state.isLoading = false
-        console.log(response.status)
-      }
-    })
+    const {status}: any = await createFeedback(window.navigator.userAgent)
 
-    if (!error.value) {
+    if (status.value === 'success') {
+      console.log('200 OK ', status.value)
       navigation.setSuccessState()
     } else {
-      navigation.setSuccessState()
+      console.log('ERRO!', status.value)
+      navigation.setErrorState()
     }
-
-    state.isLoading = false
-
   } catch (e) {
-    handleError(e)
+    console.log(e)
+    navigation.setErrorState()
+  } finally {
+    console.log('FINALLY!')
+    state.isLoading = false
   }
 }
 </script>

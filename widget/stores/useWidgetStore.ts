@@ -63,9 +63,9 @@ export function resetStore (): void {
 }
 
 //request create feedback
-export async function createFeedback(device: string, options: Options) : Promise<void>{
+export async function createFeedback(device: string) {
 	await useApiFetch('/sanctum/csrf-cookie')
-	const create = await useApiFetch('/api/feedbacks', {
+	const createFeedback = await useApiFetch('/api/feedbacks', {
 		method: "POST",
 		body: {
 			type: state.feedbackType,
@@ -76,7 +76,7 @@ export async function createFeedback(device: string, options: Options) : Promise
 			fingerprint: state.fingerprint,
 		}
 	})
-	return
+	return createFeedback
 }
 
 //exportar estado como apenas leitura -> nao modificar o estado diretamente

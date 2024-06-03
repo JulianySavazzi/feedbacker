@@ -14,12 +14,12 @@ use Illuminate\Database\Eloquent\Model;
  * O Eloquent também assumirá que a tabela de banco de dados
  * correspondente de cada modelo possui uma coluna
  * de chave primária chamada id.
- * 
+ *
  * Por padrão, o Eloquent espera que colunas created_at updated_at existam
  * na tabela de banco de dados correspondente do seu modelo.
  * O Eloquent definirá automaticamente os valores dessas colunas
  * quando os modelos forem criados ou atualizados.
- * 
+ *
  * Por padrão, todos os modelos do Eloquent usarão a conexão
  * de banco de dados padrão configurada para sua aplicação.
  */
@@ -27,10 +27,10 @@ use Illuminate\Database\Eloquent\Model;
 class Feedback extends Model
 {
     use HasFactory;
-    
+
     /**
      * The database table name
-     * 
+     *
     */
     protected $table = 'feedbacks';
 
@@ -46,5 +46,6 @@ class Feedback extends Model
         'type',
         'device',
         'page',
+        'user',
     ];
 }

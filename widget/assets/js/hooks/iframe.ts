@@ -24,7 +24,7 @@ export default function useIframeControl (): IframeControl {
         } else {
             setCurrentPage('https://playground-url.com')
             setApiKey('api_key_teste')
-            setFingerprint('t1e2s3t4e5')
+            setFingerprint('1424345346')
         }
     }
 

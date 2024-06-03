@@ -35,12 +35,12 @@ class FeedbackController extends Controller
         $limit = (int)filter_var($request->query("limit"), FILTER_SANITIZE_NUMBER_INT);
         $offset = (int)filter_var($request->query("offset"), FILTER_SANITIZE_NUMBER_INT);
         //select by user logged
-        $filter = Feedback::where('fingerprint', Auth::id())->orderByDesc('created_at');
+        $filter = Feedback::where('user', Auth::id())->orderByDesc('created_at');
 
         if(!$type || $type === 'ALL' || $type === 'TODOS' || $type === ''){
             $feedbacks = $filter->limit($limit)->offset($offset)->get();
             //feedbacks count total
-            $total = Feedback::all()->where('fingerprint', Auth::id())->count();
+            $total = Feedback::all()->where('user', Auth::id())->count();
         } else {
             $feedbacks = $filter->where('type', $type)->limit($limit)->offset($offset)->get();
             //feedbacks count total by type
@@ -73,10 +73,10 @@ class FeedbackController extends Controller
         $userLogged = Auth::id();
 
         $feedbacks = [
-            "all" => Feedback::all()->where('fingerprint', $userLogged)->count(),
-            "issue" => Feedback::where('fingerprint', $userLogged)->where('type', 'ISSUE')->count(),
-            "idea" => Feedback::where('fingerprint', $userLogged)->where('type', 'IDEA')->count(),
-            "other" => Feedback::where('fingerprint', $userLogged)->where('type', 'OTHER')->count()
+            "all" => Feedback::all()->where('user', $userLogged)->count(),
+            "issue" => Feedback::where('user', $userLogged)->where('type', 'ISSUE')->count(),
+            "idea" => Feedback::where('user', $userLogged)->where('type', 'IDEA')->count(),
+            "other" => Feedback::where('user', $userLogged)->where('type', 'OTHER')->count()
         ];
 
         return response()->json($feedbacks, Response::HTTP_OK);
@@ -86,6 +86,7 @@ class FeedbackController extends Controller
     {
         //Feedback instance
         $feedbacks = new Feedback();
+        $foreign = 1;
 
         $feedbacks->type = filter_var($request->type, FILTER_SANITIZE_ENCODED);
         $feedbacks->text = filter_var($request->text, FILTER_SANITIZE_ENCODED);
@@ -93,6 +94,7 @@ class FeedbackController extends Controller
         $feedbacks->device = filter_var($request->device, FILTER_SANITIZE_ENCODED);
         $feedbacks->page = filter_var($request->page, FILTER_SANITIZE_ENCODED);
         $feedbacks->api_key = filter_var($request->apiKey, FILTER_SANITIZE_ENCODED);
+        $feedbacks->user = filter_var($foreign, FILTER_SANITIZE_NUMBER_INT);
         //save data
         $feedbacks->save();
 

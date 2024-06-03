@@ -36,8 +36,11 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/feedbacks/summary', [\App\Http\Controllers\FeedbackController::class, 'summary'])
         ->name('feedbacks.summary');
 
-    Route::post('/feedbacks', [\App\Http\Controllers\FeedbackController::class, 'store'])
-    ->name('feedbacks.store');
+//    Route::post('/feedbacks', [\App\Http\Controllers\FeedbackController::class, 'store'])
+//    ->name('feedbacks.store');
 });
-    Route::get('/apikey/exists', [\App\Http\Controllers\UserKeyController::class, 'checkApiKey'])
-        ->name('apikey.exists');
+Route::get('/apikey/exists', [\App\Http\Controllers\UserKeyController::class, 'checkApiKey'])
+    ->name('apikey.exists');
+
+Route::post('/feedbacks', [\App\Http\Controllers\FeedbackController::class, 'store'])
+    ->name('feedbacks.store');

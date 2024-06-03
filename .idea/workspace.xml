@@ -6,30 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9b241bb7-0e2e-499f-9430-bfbdeb0e1054" name="Changes" comment="add init widget">
       <changelist_data name="“JulianySavazzi”" email="“julianysaz@gmail.com”" />
-      <change afterPath="$PROJECT_DIR$/widget/assets/js/hooks/iframe.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravel-feedbacker/app/Http/Controllers/FeedbackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel-feedbacker/app/Http/Controllers/FeedbackController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravel-feedbacker/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel-feedbacker/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/components.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/dev/index.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/dev/index.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/dev/index.mjs.map" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/dev/index.mjs.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/imports.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/imports.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/manifest/latest.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/manifest/latest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/manifest/meta/dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/manifest/meta/dev.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/nitro.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/nitro.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/nuxt.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/nuxt.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/tsconfig.server.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/tsconfig.server.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/types/imports.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/types/imports.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/types/middleware.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/types/middleware.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/types/nitro-routes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/types/nitro-routes.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/types/plugins.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/types/plugins.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/.nuxt/types/schema.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/types/schema.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/components/Widget.vue" beforeDir="false" afterPath="$PROJECT_DIR$/widget/components/Widget.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/components/Wizard/WriteFeedback.vue" beforeDir="false" afterPath="$PROJECT_DIR$/widget/components/Wizard/WriteFeedback.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/stores/useWidgetStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/stores/useWidgetStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +226,7 @@
       <workItem from="1716814120096" duration="12825000" />
       <workItem from="1716855659264" duration="33000" />
       <workItem from="1716855724771" duration="1770000" />
-      <workItem from="1717186161923" duration="18756000" />
+      <workItem from="1717186161923" duration="18882000" />
     </task>
     <task id="LOCAL-00001" summary="add init widget">
       <option name="closed" value="true" />
