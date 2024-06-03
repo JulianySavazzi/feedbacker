@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Feedback;
 use Illuminate\Support\Facades\Auth;
@@ -86,18 +87,19 @@ class FeedbackController extends Controller
     {
         //Feedback instance
         $feedbacks = new Feedback();
-        $foreign = 1;
+        //get foreign key
+        $foreign = User::where('api_token', filter_var($request->apiKey, FILTER_DEFAULT))->first()->id;
 
         $feedbacks->type = filter_var($request->type, FILTER_SANITIZE_ENCODED);
-        $feedbacks->text = filter_var($request->text, FILTER_SANITIZE_ENCODED);
+        $feedbacks->text = filter_var($request->text, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_STRIP_LOW);
         $feedbacks->fingerprint = filter_var($request->fingerprint, FILTER_SANITIZE_ENCODED);
         $feedbacks->device = filter_var($request->device, FILTER_SANITIZE_ENCODED);
         $feedbacks->page = filter_var($request->page, FILTER_SANITIZE_ENCODED);
         $feedbacks->api_key = filter_var($request->apiKey, FILTER_SANITIZE_ENCODED);
-        $feedbacks->user = filter_var($foreign, FILTER_SANITIZE_NUMBER_INT);
+        $feedbacks->user = (int)filter_var($foreign, FILTER_SANITIZE_NUMBER_INT);
         //save data
         $feedbacks->save();
 
-        return response()->json($feedbacks, Response::HTTP_OK);
+        return response()->json($feedbacks, Response::HTTP_CREATED);
     }
 }

@@ -23,8 +23,8 @@ export default function useIframeControl (): IframeControl {
             return
         } else {
             setCurrentPage('https://playground-url.com')
-            setApiKey('api_key_teste')
-            setFingerprint('1424345346')
+            setApiKey('5q2R83Eng7KLZlKmhw2yRMg1SgNj4cDDMon3EHYqgS2V2npWbji2XQP9Esdo')
+            setFingerprint('8978678587565')
         }
     }
 
