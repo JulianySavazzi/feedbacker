@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import useIframeControl from "assets/js/hooks/iframe";
+import useWidgetStore from "~/stores/useWidgetStore";
 
 const iframe = useIframeControl()
+const store = useWidgetStore
 
 const state = reactive({
 	component: 'Standby'
 })
 
-onMounted(() => {
+watch(() => store.currentComponent, () => {
   //montar o iframe quando montar o widget
   iframe.updateCoreValueOnStore()
 })

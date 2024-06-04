@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9b241bb7-0e2e-499f-9430-bfbdeb0e1054" name="Changes" comment="add init widget">
       <changelist_data name="“JulianySavazzi”" email="“julianysaz@gmail.com”" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/manifest/latest.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/manifest/latest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/manifest/meta/dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/manifest/meta/dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/.nuxt/nitro.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/nitro.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/components/Widget.vue" beforeDir="false" afterPath="$PROJECT_DIR$/widget/components/Widget.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/public/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/widget/public/init.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +28,7 @@
         <option value="Vue Composition API Component" />
         <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -168,6 +175,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "local-server-api",
     "last_opened_file_path": "/Applications/XAMPP/xamppfiles/htdocs/feedbacker/widget",
@@ -227,6 +235,7 @@
       <workItem from="1716855659264" duration="33000" />
       <workItem from="1716855724771" duration="1770000" />
       <workItem from="1717186161923" duration="18882000" />
+      <workItem from="1717420180084" duration="15776000" />
     </task>
     <task id="LOCAL-00001" summary="add init widget">
       <option name="closed" value="true" />

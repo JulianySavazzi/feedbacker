@@ -2,15 +2,18 @@ function init (apikey){
 
     async function handleLoadWidget(){
         const page = `${window.location.origin}${window.location.pathname}`
-        const fp = await window.FingerprintJS.load()
-        const fingerprint = await fp.get()
+        // const fp = await window.FingerprintJS.load()
+        // const fingerprint = await fp.get()
+        const fingerprint = 'fingerprint'
 
         //URL DO WIDGET FEEDBACKER
         const WIDGET_URL = `?api_key=${apikey}&page=${page}&fingerprint=${fingerprint.visitorId}`
         const config = {method: 'GET'}
-        const res = await fetch(`?api_key=${apikey}`)
+        const res = await fetch(`http://127.0.0.1:8000/api/apikey/exists?api_key=${apikey}`)
 
+        console.log('HANDLE WIDGET')
         if(res.status === 200){
+            console.log('IFRAME status 200')
             //iframe
             const iframe = document.createElement('iframe')
             iframe.src = WIDGET_URL
@@ -48,3 +51,4 @@ function init (apikey){
 }
 
 window.init = init
+console.log('INIT')
