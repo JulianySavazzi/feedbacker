@@ -37,7 +37,7 @@ export default function useIframeControl (): IframeControl {
 
     function notifyOpen(){
         window.parent.postMessage({
-            isWidget: false,
+            isWidget: true,
             isOpen: true
         }, '*')
     }

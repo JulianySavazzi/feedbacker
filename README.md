@@ -5,7 +5,8 @@ Aplicação web de dashboard com autenticação e instalador do web component de
 - ### Sobre a aplicação:
 	- a pasta laravel-feedbacker, contém o projeto criado com o framework Laravel para o backend (API);
 	- a pasta nuxt-feedbacker contém o projeto nuxt usando vue3 para o front-end da dashboard;
-	- a pasta widget ;
+	- a pasta widget contém o projeto da interface para envio de feedbacks e configurações do iframe do widget;
+    - a pasta try-widget contém uma página html para testar o funcionamento do iframe de widget;
 
 	- o projeto conta com alguns testes unitários e testes de integração;
 
@@ -31,11 +32,17 @@ servidor backend na pasta laravel-feedbacker pelo terminal:
 php artisan serve
 ```
 
-servidor web via node na pasta nuxt-feedbacker pelo terminal:
+servidor web via node na pasta nuxt-feedbacker e widget pelo terminal:
 ```bash
 #npm
 npm run dev
 ```
+servidor web via node na pasta try-widget e widget pelo terminal:
+```bash
+#serve
+serve -p 3003
+```
+
 se aparecer um erro de pacotes do pinia ao executar o servidor nuxt, verificar se o pinia foi instalado e fazer o seguinte comando na pasta nuxt-feedbacker:
 ```bash
 #npm
@@ -63,7 +70,7 @@ npm install cypress --save-dev
 #npx cypress open
 npm run cy:open
 ```
-- para o ultimo comdando funcionar no package.json -> scripts -> "cy:open": "cypress open", se não precisa executar pelo comando npx
+- para o ultimo comando funcionar no package.json -> scripts -> "cy:open": "cypress open", se não precisa executar pelo comando npx
 
 - para executar o cypress em segundo plano salvando os outputs dos testes em uma pasta:
 

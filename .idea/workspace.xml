@@ -7,10 +7,14 @@
     <list default="true" id="9b241bb7-0e2e-499f-9430-bfbdeb0e1054" name="Changes" comment="add init widget">
       <changelist_data name="“JulianySavazzi”" email="“julianysaz@gmail.com”" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravel-feedbacker/config/cors.php" beforeDir="false" afterPath="$PROJECT_DIR$/laravel-feedbacker/config/cors.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/widget/.nuxt/manifest/latest.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/manifest/latest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/widget/.nuxt/manifest/meta/dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/manifest/meta/dev.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/widget/.nuxt/nitro.json" beforeDir="false" afterPath="$PROJECT_DIR$/widget/.nuxt/nitro.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widget/components/Widget.vue" beforeDir="false" afterPath="$PROJECT_DIR$/widget/components/Widget.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/widget/app.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/assets/js/hooks/iframe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/widget/assets/js/hooks/iframe.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/widget/pages/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/widget/public/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/widget/public/init.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,27 +177,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "local-server-api",
-    "last_opened_file_path": "/Applications/XAMPP/xamppfiles/htdocs/feedbacker/widget",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "proofread",
-    "ts.external.directory.path": "/Applications/XAMPP/xamppfiles/htdocs/feedbacker/nuxt-feedbacker/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;local-server-api&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Applications/XAMPP/xamppfiles/htdocs/feedbacker/widget&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;proofread&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/XAMPP/xamppfiles/htdocs/feedbacker/nuxt-feedbacker/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "vue.recent.templates": [
-      "Vue Composition API Component"
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/widget" />
@@ -235,7 +239,8 @@
       <workItem from="1716855659264" duration="33000" />
       <workItem from="1716855724771" duration="1770000" />
       <workItem from="1717186161923" duration="18882000" />
-      <workItem from="1717420180084" duration="15776000" />
+      <workItem from="1717420180084" duration="19021000" />
+      <workItem from="1717607068132" duration="1062000" />
     </task>
     <task id="LOCAL-00001" summary="add init widget">
       <option name="closed" value="true" />
