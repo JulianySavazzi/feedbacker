@@ -5,11 +5,18 @@ Aplicação web de dashboard com autenticação e instalador do web component de
 - ### Sobre a aplicação:
 	- a pasta laravel-feedbacker, contém o projeto criado com o framework Laravel para o backend (API);
 	- a pasta nuxt-feedbacker contém o projeto nuxt usando vue3 para o front-end da dashboard;
-	- a pasta widget ;
-
+	- a pasta widget contém o projeto nuxt do componente de envio de feedbacks;
+    - a pasta try-widget contém uma página web para testar o widget;
+	- 💡
 	- o projeto conta com alguns testes unitários e testes de integração;
 
 	- o deploy da API será no Vercel, e do dashboard na Netlify;
+	- ❗️
+	- a branch local-server-api está com o projeto pronto e configurado localmente (funcionando no servidor local);
+    - a branch main tem o deploy da dashboard e backend respectivamente no netlify e vercel, porém o backend 
+	  deployado está apresentando erros de redirecionamento (status 303), e por enquanto o widget não está completo 
+	  nela (apenas na branch para servidor local);
+    - [acessar feedbacker dashboard](https://julianysavazzi-feedbacker.netlify.app/) 
 
 - ### Observações:
 	- a pasta feedbacker-dashboard contém um projeto Vue3 CLI criado no treinamento gratuido da Vue.js Brasil;
